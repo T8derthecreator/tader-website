@@ -41,7 +41,7 @@ import {
 const homepageSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "TADER",
+  name: "ZENOK",
   parentOrganization: {
     "@type": "Organization",
     name: "ZENOK",
@@ -53,7 +53,7 @@ const homepageSchema = {
 const productListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "TADER Carbide End Mills & Cutting Tools",
+  name: "ZENOK Carbide End Mills & Cutting Tools",
   numberOfItems: taderData.skus.length,
   itemListElement: taderData.categoryPages.map((category, index) => ({
     "@type": "ListItem",
@@ -166,7 +166,10 @@ function CatalogFilterPanel({
     : taderData.productFamilies.filter((family) => typeof family.category === "string");
   const availableFlutes = Array.from(new Set(families.map((family) => family.flutes).filter(Boolean))) as number[];
   const availableSubTypes = Array.from(new Set(families.map((family) => String(family.sub_type))));
-  const availableSeries = families.map((family) => family.series);
+  const availableSeries = families.map((family) => ({
+    value: family.series,
+    label: `${family.series} · ${family.line_name}`,
+  }));
 
   const FilterButton = ({
     active,
@@ -195,17 +198,17 @@ function CatalogFilterPanel({
       <div className="flex items-center justify-between border-b border-black/8 pb-4">
         <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">Filter Catalog</p>
-          <p className="mt-2 text-sm text-steel-500">By flute count, construction, sub-type, or series.</p>
+          <p className="mt-2 text-sm text-steel-500">By flute count, construction, configuration, or ZENOK line code.</p>
         </div>
         <Filter className="size-4 text-steel-400" />
       </div>
 
       <div className="space-y-3">
-        <label className="font-mono text-[11px] uppercase tracking-[0.22em] text-steel-300">Search SKU / model</label>
+        <label className="font-mono text-[11px] uppercase tracking-[0.22em] text-steel-300">Search SKU / model / line code</label>
         <Input
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="MS2, TADER-MS2..., model no."
+          placeholder="Search ZENOK SKU, model no., or family code"
           className="rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
         />
       </div>
@@ -251,14 +254,14 @@ function CatalogFilterPanel({
       </div>
 
       <div className="space-y-3">
-        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-steel-300">Series</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-steel-300">ZENOK line code</p>
         <div className="flex flex-wrap gap-2">
-          {availableSeries.map((value) => (
+          {availableSeries.map((item) => (
             <FilterButton
-              key={value}
-              active={activeSeries.includes(value)}
-              label={value}
-              onClick={() => toggleSeries(value)}
+              key={item.value}
+              active={activeSeries.includes(item.value)}
+              label={item.label}
+              onClick={() => toggleSeries(item.value)}
             />
           ))}
         </div>
@@ -274,7 +277,7 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
         <table className="min-w-full border-collapse text-left text-sm text-steel-500">
           <thead className="bg-[#f3efe8] font-mono text-[11px] uppercase tracking-[0.18em] text-steel-400">
             <tr>
-              <th className="px-4 py-3">Series</th>
+              <th className="px-4 py-3">Product family</th>
               <th className="px-4 py-3">SKU</th>
               <th className="px-4 py-3">Dia.</th>
               <th className="px-4 py-3">R</th>
@@ -289,8 +292,8 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
           <tbody>
             {items.map((sku) => (
               <tr key={sku.slug} className="border-t border-black/8 transition-colors duration-200 hover:bg-[#f8f4ee]">
-                <td className="px-4 py-4 font-medium text-graphite">{sku.series}</td>
-                <td className="px-4 py-4 font-mono text-[12px] uppercase tracking-[0.08em] text-steel-300">{sku.tader_sku}</td>
+                <td className="px-4 py-4 font-medium text-graphite">{sku.line_name}</td>
+                <td className="px-4 py-4 font-mono text-[12px] uppercase tracking-[0.08em] text-steel-300">{sku.catalog_sku}</td>
                 <td className="px-4 py-4">{formatMillimeter(sku.diameter_mm)}</td>
                 <td className="px-4 py-4">{formatMillimeter(sku.radius_mm)}</td>
                 <td className="px-4 py-4">{formatMillimeter(sku.cut_length_mm)}</td>
@@ -335,7 +338,7 @@ function ProductFamilyGrid({ categorySlug }: { categorySlug?: string }) {
         <InsightCard
           key={`${family.series}-${family.category_slug}`}
           index={family.series}
-          title={`${family.sub_type} / ${family.series}`}
+          title={family.line_name}
           description={`${family.intro} Diameter ${family.diameter_range_mm[0] ?? "—"} to ${family.diameter_range_mm[1] ?? "—"} mm.`}
           href={family.route}
           ctaLabel="Open category"
@@ -374,9 +377,11 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
       if (!search.trim()) return true;
       const query = search.toLowerCase();
       return (
-        sku.tader_sku.toLowerCase().includes(query) ||
+        sku.catalog_sku.toLowerCase().includes(query) ||
         sku.model_no.toLowerCase().includes(query) ||
-        sku.series.toLowerCase().includes(query)
+        sku.series.toLowerCase().includes(query) ||
+        sku.line_name.toLowerCase().includes(query) ||
+        sku.type_label.toLowerCase().includes(query)
       );
     });
   }, [activeConstructions, activeFlutes, activeSeries, activeSubTypes, categorySlug, search]);
@@ -396,8 +401,12 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
       />
       <PageHero
         eyebrow={category ? `Products / ${category.shortLabel}` : "Product Catalog"}
-        title={category ? category.label : "Carbide End Mills & Cutting Tools"}
-        description={category ? category.description : "Filter by tool type, flute count, construction, and series to reach the exact SKU geometry for your machining program."}
+        title={category ? category.label : "Micro Carbide End Mills & Cutting Tools"}
+        description={
+          category
+            ? category.description
+            : "Filter by tool type, flute count, construction, and ZENOK geometry family to reach the exact SKU geometry for your machining program."
+        }
         image={taderData.siteMeta.blueprintImage}
         primaryHref="/quote-request"
         primaryLabel="Request Quote"
@@ -453,9 +462,9 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
 
       <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
         <SectionHeading
-          eyebrow="Series Access"
-          title="Navigate by series family when the geometry path is already known."
-          description="Each family card summarizes flute count, construction options, and size envelope so buyers can move quickly between regular, long-neck, hardened, and aluminum-specific configurations."
+          eyebrow="Product Line Access"
+          title="Navigate by product line once the geometry path is already known."
+          description="Each product line card summarizes flute count, construction options, and size envelope so buyers can move quickly between regular, long-neck, hardened, and aluminum-specific configurations."
         />
         <ProductFamilyGrid categorySlug={categorySlug} />
       </section>
@@ -467,8 +476,8 @@ export function HomePage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="TADER | Precision Micro End Mills from Taiwan"
-        description="Taiwan-made micro end mills for U.S. CNC shops in medical, aerospace, and electronics. Explore series structure, B vs C construction, and quote-ready SKU data."
+        title="ZENOK | Precision Micro End Mills for U.S. CNC Shops"
+        description="Taiwan-made micro end mills for U.S. CNC shops in medical, aerospace, and electronics. Explore product-line structure, B vs C construction, and quote-ready SKU data."
         canonicalPath="/"
         schema={homepageSchema}
         keywords={["micro end mills", "Taiwan carbide tools", "4.8% duty"]}
@@ -489,7 +498,7 @@ export function HomePage() {
         <SectionHeading
           eyebrow="Commercial USP"
           title="Taiwan MFN 4.8% duty advantage paired with micro-tooling specialization."
-          description="TADER is framed for U.S. industrial buyers who assess both process fit and landed cost. The value proposition combines Taiwan-origin sourcing, vertical integration, and category depth in miniature carbide tooling."
+          description="ZENOK is positioned for U.S. industrial buyers who assess both process fit and landed cost. The value proposition combines Taiwan-origin sourcing, vertical integration, and category depth in miniature carbide tooling."
         />
         <MetricStrip items={taderData.siteMeta.heroHighlights} />
       </section>
@@ -522,7 +531,7 @@ export function HomePage() {
         <SectionHeading
           eyebrow="Target Industries"
           title="Built around the requirements of medical, aerospace, and electronics machining."
-          description="These sectors share a need for tiny features, clean edge quality, and predictable dimensional behavior. TADER’s structure makes those needs legible at the catalog level rather than burying them in sales copy."
+          description="These sectors share a need for tiny features, clean edge quality, and predictable dimensional behavior. ZENOK’s catalog structure makes those needs legible at the specification level rather than burying them in sales copy."
         />
         <div className="grid gap-4 lg:grid-cols-3">
           {taderData.applications.map((application, index) => (
@@ -547,7 +556,7 @@ export function HomePage() {
               Construction logic, holder compatibility, and carbide strategy made explicit.
             </h2>
             <p className="max-w-xl text-base leading-8 text-steel-500">
-              TADER’s technology page explains B vs C construction, highlights shrink-fit compatibility limitations, and compares carbide tipped versus solid carbide choices through application-fit logic.
+              This technology page explains B vs C construction, highlights shrink-fit compatibility limitations, and compares carbide tipped versus solid carbide choices through application-fit logic.
             </p>
             <Link href="/technology">
               <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
@@ -556,7 +565,7 @@ export function HomePage() {
             </Link>
           </div>
           <div className="overflow-hidden border border-black/8 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
-            <img src={taderData.siteMeta.blueprintImage} alt="TADER technology blueprint" className="h-full min-h-[28rem] w-full object-cover" />
+            <img src={taderData.siteMeta.blueprintImage} alt="Micro tooling technology blueprint" className="h-full min-h-[28rem] w-full object-cover" />
           </div>
         </div>
       </section>
@@ -567,8 +576,8 @@ export function HomePage() {
 export function ProductsPage() {
   return (
     <CatalogView
-      pageTitle="Carbide End Mills & Cutting Tools | TADER"
-      pageDescription="Browse TADER carbide end mills and cutting tools, filter by geometry and construction, and move from family overview to SKU-level dimensions."
+      pageTitle="Carbide End Mills & Cutting Tools | ZENOK"
+      pageDescription="Browse ZENOK carbide end mills and cutting tools, filter by geometry and construction, and move from family overview to SKU-level dimensions."
       canonicalPath="/products"
     />
   );
@@ -581,8 +590,8 @@ function CategoryCatalogPage({ categorySlug }: { categorySlug: string }) {
   return (
     <CatalogView
       categorySlug={categorySlug}
-      pageTitle={`${category.label} | TADER`}
-      pageDescription={`${category.description} Review series structure, filter active SKUs, and move to quote-ready dimensional detail.`}
+      pageTitle={`${category.label} | ZENOK`}
+      pageDescription={`${category.description} Review product-line structure, filter active SKUs, and move to quote-ready dimensional detail.`}
       canonicalPath={category.route}
     />
   );
@@ -616,7 +625,7 @@ export function ProductDetailPage() {
   if (!sku) {
     return (
       <SiteLayout>
-        <SeoHead title="Product Not Found | TADER" description="The requested product could not be found." canonicalPath="/products" noIndex />
+        <SeoHead title="Product Not Found | ZENOK" description="The requested product could not be found." canonicalPath="/products" noIndex />
         <section className="container py-24">
           <h1 className="font-display text-4xl text-graphite">Product not found</h1>
         </section>
@@ -631,7 +640,7 @@ export function ProductDetailPage() {
     <SiteLayout>
       <SeoHead
         title={productTitle(sku)}
-        description={`${sku.series} ${sku.type_label} with ${sku.flutes ?? "—"} flutes. Dimensions D ${formatMillimeter(sku.diameter_mm)}, l ${formatMillimeter(sku.cut_length_mm)}, L ${formatMillimeter(sku.overall_length_mm)}.`}
+        description={`${sku.type_label} with ${sku.flutes ?? "—"} flutes. Dimensions D ${formatMillimeter(sku.diameter_mm)}, l ${formatMillimeter(sku.cut_length_mm)}, L ${formatMillimeter(sku.overall_length_mm)}. ZENOK line ${sku.series} / ${sku.line_name}.`}
         canonicalPath={`/products/${sku.slug}`}
         schema={productSchema(sku)}
       />
@@ -640,17 +649,17 @@ export function ProductDetailPage() {
         <div className="grid gap-8 border-b border-black/8 pb-10 lg:grid-cols-[1fr_360px]">
           <div className="space-y-7">
             <div className="space-y-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">SKU Detail / {sku.series}</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">SKU Detail / {sku.type_label}</p>
               <h1 className="font-display text-5xl leading-[0.94] text-graphite lg:text-6xl">
                 {sku.diameter_mm} mm {sku.type_label}
               </h1>
               <p className="max-w-3xl text-base leading-8 text-steel-300">
-                Series {sku.series} / {sku.sub_type}. Built for demanding micro-machining programs where dimensional readability and holder compatibility matter before commitment.
+                ZENOK line {sku.series} / {sku.line_name}. Built for demanding micro-machining programs where dimensional readability and holder compatibility matter before commitment.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Badge className="rounded-none border border-copper/30 bg-copper/10 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-copper">
-                SKU {sku.tader_sku}
+                SKU {sku.catalog_sku}
               </Badge>
               <Badge className="rounded-none border border-black/8 bg-[#f5f1ea] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500">
                 Model {sku.model_no}
@@ -698,7 +707,7 @@ export function ProductDetailPage() {
               <div className="mt-5 space-y-2 text-sm leading-7 text-steel-300">
                 <DataPill label="B" value="Carbide Tipped" />
                 <DataPill label="C" value="Full Solid Carbide" />
-                <DataPill label="Series family" value={family ? String(family.sub_type) : sku.sub_type} />
+                <DataPill label="ZENOK line" value={family ? `${family.series} · ${family.line_name}` : `${sku.series} · ${sku.line_name}`} />
               </div>
             </div>
 
@@ -721,8 +730,8 @@ export function ProductDetailPage() {
         <section className="space-y-8 border-t border-black/8 pt-10">
           <SectionHeading
             eyebrow="Related SKUs"
-            title="Compare nearby series members before finalizing the tool list."
-            description="Adjacent SKUs within the same series can help evaluate alternate diameters, effective lengths, or holder compatibility options for the same application path."
+            title="Compare nearby options within the same ZENOK line before finalizing the tool list."
+            description="Adjacent SKUs within the same ZENOK line can help evaluate alternate diameters, effective lengths, or holder compatibility options for the same application path."
           />
           <CatalogTable items={related} />
         </section>
@@ -735,14 +744,14 @@ export function ApplicationsPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Applications | TADER"
-        description="Explore TADER micro end mill applications across medical, aerospace, and electronics machining environments."
+        title="Applications | ZENOK"
+        description="Explore ZENOK micro end mill applications across medical, aerospace, and electronics machining environments."
         canonicalPath="/applications"
       />
       <PageHero
         eyebrow="Applications"
         title="Three demanding sectors. One precision-first tooling story."
-        description="TADER’s target industries share a need for miniature features, process stability, and close dimensional communication between tooling supplier and machine shop."
+        description="Our target industries share a need for miniature features, process stability, and close dimensional communication between tooling supplier and machine shop."
         image={taderData.siteMeta.heroImage}
         primaryHref="/quote-request"
         primaryLabel="Discuss Application"
@@ -791,7 +800,7 @@ function ApplicationDetailView({ slug }: { slug: string }) {
   return (
     <SiteLayout>
       <SeoHead
-        title={`${application.title} | TADER`}
+        title={`${application.title} | ZENOK`}
         description={application.description}
         canonicalPath={`/applications/${application.slug}`}
       />
@@ -810,7 +819,7 @@ function ApplicationDetailView({ slug }: { slug: string }) {
           {iconMap[slug]}
           <h2 className="font-display text-4xl text-graphite">Process fit for high-consequence components.</h2>
           <p className="text-sm leading-8 text-steel-300">
-            TADER positions this application space around miniature features, dimensional consistency, and clear construction choices that can be discussed alongside machine setup and holder strategy.
+            ZENOK positions this application space around miniature features, dimensional consistency, and clear construction choices that can be discussed alongside machine setup and holder strategy.
           </p>
         </div>
         <div className="space-y-4">
@@ -842,7 +851,7 @@ export function TechnologyPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Technology | TADER"
+        title="Technology | ZENOK"
         description="Compare B vs C construction, Taiwan 4.8% MFN duty positioning, and carbide tipped versus solid carbide trade-offs."
         canonicalPath="/technology"
       />
@@ -882,12 +891,12 @@ export function AboutPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="About | TADER"
-        description="Learn about ZENOK, the TADER brand story, vertical integration from carbide rod to finished tool, and manufacturing capability positioning."
+        title="About | ZENOK"
+        description="Learn about ZENOK, its vertical integration from carbide rod to finished tool, and its manufacturing capability positioning."
         canonicalPath="/about"
       />
       <PageHero
-        eyebrow="About ZENOK / TADER"
+        eyebrow="About ZENOK"
         title="A tooling story built from material control to finished micro geometry."
         description="The brand narrative emphasizes Taiwan-based manufacturing discipline, vertical integration, and the ability to support U.S. buyers who compare tooling cost against process-critical performance."
         image={taderData.siteMeta.heroImage}
@@ -909,7 +918,7 @@ export function AboutPage() {
         </div>
         <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-3">
           <div className="bg-white/88 p-7"><Factory className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Manufacturing capability aligned to micro-diameter, long-neck, and application-specific carbide tooling.</p></div>
-          <div className="bg-white/88 p-7"><Boxes className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Integrated product architecture spanning flat, ball nose, corner radius, and aluminum series.</p></div>
+          <div className="bg-white/88 p-7"><Boxes className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Integrated product architecture spanning flat, ball nose, corner radius, and aluminum product lines.</p></div>
           <div className="bg-white/88 p-7"><CircleDollarSign className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Pricing moat narrative supported by upstream carbide rod capability and Taiwan-origin sourcing position.</p></div>
         </div>
       </section>
@@ -945,7 +954,7 @@ export function QuoteRequestPage() {
       }
 
       form.reset();
-      setSubmitMessage("Your RFQ has been sent. The TADER team can now review the submitted series, quantity, and application context.");
+      setSubmitMessage("Your RFQ has been sent. The ZENOK team can now review the submitted product line, quantity, and application context.");
     } catch {
       setSubmitError("The form could not be submitted right now. Please try again, or email the same RFQ details directly if needed.");
     } finally {
@@ -956,14 +965,14 @@ export function QuoteRequestPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Quote Request | TADER"
-        description="Submit your TADER quote request with Formspree and reference specific series, model numbers, and application context."
+        title="Quote Request | ZENOK"
+        description="Submit your ZENOK quote request with Formspree and reference specific product lines, model numbers, and application context."
         canonicalPath="/quote-request"
       />
       <PageHero
         eyebrow="Quote Request"
-        title="Send your RFQ with the series, dimensions, and application context already defined."
-        description="The quote page is structured for engineering buyers: mention the series, SKU or model number, required quantity, material, and holder constraints so discussion can start with the right assumptions."
+        title="Send your RFQ with the product line, dimensions, and application context already defined."
+        description="The quote page is structured for engineering buyers: mention the product line, SKU or model number, required quantity, material, and holder constraints so discussion can start with the right assumptions."
         image={taderData.siteMeta.blueprintImage}
         primaryHref="#formspree-embed"
         primaryLabel="Open Quote Form"
@@ -988,7 +997,7 @@ export function QuoteRequestPage() {
           className="border border-black/8 bg-white/88 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)]"
         >
           <form className="grid gap-5" onSubmit={handleSubmit}>
-            <input type="hidden" name="_subject" value="TADER Quote Request" />
+            <input type="hidden" name="_subject" value="ZENOK Quote Request" />
             <div className="grid gap-5 md:grid-cols-2">
               <label className="grid gap-2 text-sm text-steel-200">
                 <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Name</span>
@@ -1027,11 +1036,11 @@ export function QuoteRequestPage() {
                 />
               </label>
               <label className="grid gap-2 text-sm text-steel-200 md:col-span-2">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Series / SKU / Model</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">ZENOK line / SKU / Model</span>
                 <Input
                   name="model"
                   className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Example: TADER-MS2-001-2F or MS2D0010S04"
+                  placeholder="Example: FEM-RG-2F-D0010"
                 />
               </label>
               <label className="grid gap-2 text-sm text-steel-200">
@@ -1088,11 +1097,11 @@ export function NotFoundPage() {
 
   return (
     <SiteLayout>
-      <SeoHead title="404 | TADER" description="Page not found." canonicalPath="/404" noIndex />
+      <SeoHead title="404 | ZENOK" description="Page not found." canonicalPath="/404" noIndex />
       <section className="container space-y-8 py-24 lg:py-32">
         <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">404 / Route Missing</p>
         <h1 className="font-display text-5xl text-graphite lg:text-7xl">The requested page is outside the current tooling map.</h1>
-        <p className="max-w-2xl text-base leading-8 text-steel-500">The route <span className="font-mono text-graphite">{location}</span> is not available in the current TADER site structure.</p>
+        <p className="max-w-2xl text-base leading-8 text-steel-500">The route <span className="font-mono text-graphite">{location}</span> is not available in the current ZENOK site structure.</p>
         <div className="flex flex-wrap gap-4">
           <Link href="/"><Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white">Return Home</Button></Link>
           <Link href="/products"><Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite">Open Products</Button></Link>

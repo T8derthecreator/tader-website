@@ -109,7 +109,7 @@ export function getRelatedSkus(sku: SkuRecord) {
 export function productTitle(sku: SkuRecord) {
   const diameter = sku.diameter_mm ? `${sku.diameter_mm}mm` : "Micro";
   const categoryName = getCategoryBySlug(sku.category_slug)?.label ?? sku.type_label;
-  return `${diameter} ${categoryName} | ${sku.coating} | TADER`;
+  return `${diameter} ${categoryName} | ${sku.coating} | ZENOK`;
 }
 
 export function productSchema(sku: SkuRecord) {
@@ -117,14 +117,14 @@ export function productSchema(sku: SkuRecord) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `${sku.diameter_mm}mm ${sku.type_label}`,
-    sku: sku.tader_sku,
+    sku: sku.catalog_sku,
     mpn: sku.model_no,
     brand: {
       "@type": "Brand",
-      name: "TADER",
+      name: "ZENOK",
     },
     category: sku.type_label,
-    description: `${sku.type_label} for demanding micro-machining applications. Series ${sku.series}, ${sku.sub_type}, ${sku.flutes ?? "—"} flutes.` ,
+    description: `${sku.type_label} for demanding micro-machining applications. ZENOK line ${sku.series} / ${sku.line_name}, ${sku.flutes ?? "—"} flutes.` ,
     offers: {
       "@type": "Offer",
       priceCurrency: "USD",

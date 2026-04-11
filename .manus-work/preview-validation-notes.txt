@@ -1,0 +1,9 @@
+2026-04-11 預覽驗證摘要
+
+1. 首頁標題、統計區與品牌識別已改為 ZENOK。
+2. /products 頁篩選器、搜尋框、表格欄位與 family code 按鈕已改為新 ZENOK 命名。
+3. /products 頁 hero 副標仍顯示舊句："Filter by tool type, flute count, construction, and product line..."，需要改為 ZENOK line 或 geometry family 的新說法。
+4. 尚未檢查單一產品詳情頁。
+5. /products 頁 hero 副標已修正為 ZENOK geometry family 說法。
+6. 單一 SKU 詳情頁標題、導言、Construction Notes 與 Related SKUs 區塊皆已改為 ZENOK line 文案。
+7. 預覽中未再發現 TADER 或 Product line 的可見文字。

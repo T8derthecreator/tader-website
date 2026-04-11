@@ -44,9 +44,9 @@ export function SiteLayout({ children }: SiteLayoutProps) {
           <Link href="/" className="group flex items-end gap-3 text-graphite">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.36em] text-copper/90">
-                ZENOK
+                {taderData.siteMeta.company}
               </p>
-              <p className="font-display text-2xl tracking-[0.18em]">TADER</p>
+              <p className="font-display text-2xl tracking-[0.14em]">MICRO TOOLING</p>
             </div>
             <span className="mb-1 hidden h-px flex-1 bg-black/12 lg:block" />
           </Link>
@@ -81,8 +81,8 @@ export function SiteLayout({ children }: SiteLayoutProps) {
               Built for buyers who compare diameter, reach, construction, and landed cost with equal rigor.
             </h2>
             <p className="max-w-xl text-sm leading-7 text-steel-500">
-              TADER supports U.S. machining programs in medical, aerospace, and electronics with
-              micro end mills shaped around demanding geometries and sourcing discipline.
+              ZENOK supports U.S. machining programs in medical, aerospace, and electronics with
+              micro end mills organized around clear geometry families, sourcing discipline, and quote-ready dimensional detail.
             </p>
           </div>
 
