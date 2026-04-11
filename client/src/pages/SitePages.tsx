@@ -90,13 +90,13 @@ function PageHero({
   secondaryLabel?: string;
 }) {
   return (
-    <section className="border-b border-white/10">
+    <section className="border-b border-black/8">
       <div className="container grid gap-8 py-10 lg:grid-cols-[1.2fr_0.85fr] lg:py-14">
         <div className="flex min-h-[32rem] flex-col justify-between gap-12">
           <div className="space-y-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-copper/85">{eyebrow}</p>
             <div className="space-y-6">
-              <h1 className="max-w-4xl font-display text-5xl leading-[0.92] text-white sm:text-6xl xl:text-7xl">
+              <h1 className="max-w-4xl font-display text-5xl leading-[0.92] text-graphite sm:text-6xl xl:text-7xl">
                 {title}
               </h1>
               <p className="max-w-2xl text-base leading-8 text-steel-300 xl:text-lg">{description}</p>
@@ -104,14 +104,14 @@ function PageHero({
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <Link href={primaryHref}>
-              <Button className="rounded-none border border-copper/40 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-copper-soft">
+              <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
                 {primaryLabel}
                 <ArrowRight className="ml-2 size-4" />
               </Button>
             </Link>
             {secondaryHref && secondaryLabel ? (
               <Link href={secondaryHref}>
-                <Button variant="outline" className="rounded-none border-white/20 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white hover:bg-white/6">
+                <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
                   {secondaryLabel}
                 </Button>
               </Link>
@@ -119,10 +119,10 @@ function PageHero({
           </div>
         </div>
 
-        <div className="relative overflow-hidden border border-white/10 bg-graphite-elevated">
+        <div className="relative overflow-hidden border border-black/8 bg-white/88 shadow-[0_28px_60px_rgba(15,23,42,0.08)]">
           <img src={image} alt={title} className="h-full min-h-[26rem] w-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,18,0.08),rgba(11,15,18,0.72))]" />
-          <div className="absolute inset-x-0 bottom-0 grid gap-4 border-t border-white/10 bg-black/30 p-6 backdrop-blur-sm sm:grid-cols-2">
+          <div className="absolute inset-x-0 bottom-0 grid gap-4 border-t border-black/8 bg-black/30 p-6 backdrop-blur-sm sm:grid-cols-2">
             {taderData.siteMeta.heroHighlights.map((item) => (
               <div key={item.label} className="border-l border-copper/60 pl-4">
                 <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-steel-300">{item.label}</p>
@@ -182,8 +182,8 @@ function CatalogFilterPanel({
       onClick={onClick}
       className={`rounded-none border px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors ${
         active
-          ? "border-copper bg-copper/16 text-white"
-          : "border-white/12 bg-white/[0.03] text-steel-300 hover:border-white/30 hover:text-white"
+          ? "border-copper bg-copper text-white"
+          : "border-black/10 bg-white/84 text-steel-500 hover:border-copper/40 hover:text-graphite"
       }`}
     >
       {label}
@@ -191,13 +191,13 @@ function CatalogFilterPanel({
   );
 
   return (
-    <aside className="space-y-8 border border-white/10 bg-white/[0.03] p-6">
-      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+    <aside className="space-y-8 border border-black/8 bg-white/82 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
+      <div className="flex items-center justify-between border-b border-black/8 pb-4">
         <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">Filter Catalog</p>
-          <p className="mt-2 text-sm text-steel-300">By flute count, construction, sub-type, or series.</p>
+          <p className="mt-2 text-sm text-steel-500">By flute count, construction, sub-type, or series.</p>
         </div>
-        <Filter className="size-4 text-white/60" />
+        <Filter className="size-4 text-steel-400" />
       </div>
 
       <div className="space-y-3">
@@ -206,7 +206,7 @@ function CatalogFilterPanel({
           value={search}
           onChange={(event) => setSearch(event.target.value)}
           placeholder="MS2, TADER-MS2..., model no."
-          className="rounded-none border-white/10 bg-black/20 text-white placeholder:text-steel-500"
+          className="rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
         />
       </div>
 
@@ -269,10 +269,10 @@ function CatalogFilterPanel({
 
 function CatalogTable({ items }: { items: SkuRecord[] }) {
   return (
-    <div className="overflow-hidden border border-white/10 bg-white/[0.03]">
+    <div className="overflow-hidden border border-black/8 bg-white/82 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
       <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse text-left text-sm text-steel-200">
-          <thead className="bg-white/[0.04] font-mono text-[11px] uppercase tracking-[0.18em] text-steel-400">
+        <table className="min-w-full border-collapse text-left text-sm text-steel-500">
+          <thead className="bg-[#f3efe8] font-mono text-[11px] uppercase tracking-[0.18em] text-steel-400">
             <tr>
               <th className="px-4 py-3">Series</th>
               <th className="px-4 py-3">SKU</th>
@@ -288,8 +288,8 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
           </thead>
           <tbody>
             {items.map((sku) => (
-              <tr key={sku.slug} className="border-t border-white/8 transition-colors duration-200 hover:bg-white/[0.03]">
-                <td className="px-4 py-4 font-medium text-white">{sku.series}</td>
+              <tr key={sku.slug} className="border-t border-black/8 transition-colors duration-200 hover:bg-[#f8f4ee]">
+                <td className="px-4 py-4 font-medium text-graphite">{sku.series}</td>
                 <td className="px-4 py-4 font-mono text-[12px] uppercase tracking-[0.08em] text-steel-300">{sku.tader_sku}</td>
                 <td className="px-4 py-4">{formatMillimeter(sku.diameter_mm)}</td>
                 <td className="px-4 py-4">{formatMillimeter(sku.radius_mm)}</td>
@@ -302,7 +302,7 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
                     {sku.construction_options.map((option) => (
                       <Badge
                         key={option}
-                        className="rounded-none border border-copper/30 bg-copper/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-copper-soft"
+                        className="rounded-none border border-copper/30 bg-copper/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-copper"
                       >
                         {option}
                       </Badge>
@@ -310,7 +310,7 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
                   </div>
                 </td>
                 <td className="px-4 py-4">
-                  <Link href={`/products/${sku.slug}`} className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:text-copper-soft">
+                  <Link href={`/products/${sku.slug}`} className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-graphite transition-colors duration-200 hover:text-copper">
                     View
                     <ArrowRight className="size-4" />
                   </Link>
@@ -428,18 +428,18 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
           />
 
           <div className="space-y-8">
-            <div className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
-              <div className="bg-graphite-elevated p-6">
+            <div className="grid gap-px border border-black/8 bg-black/8 sm:grid-cols-3">
+              <div className="bg-white/88 p-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Visible SKUs</p>
-                <p className="mt-3 font-display text-4xl text-white">{filtered.length}</p>
+                <p className="mt-3 font-display text-4xl text-graphite">{filtered.length}</p>
               </div>
-              <div className="bg-graphite-elevated p-6">
+              <div className="bg-white/88 p-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Base category count</p>
-                <p className="mt-3 font-display text-4xl text-white">{baseSkus.length}</p>
+                <p className="mt-3 font-display text-4xl text-graphite">{baseSkus.length}</p>
               </div>
-              <div className="bg-graphite-elevated p-6">
+              <div className="bg-white/88 p-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Family routes</p>
-                <p className="mt-3 font-display text-4xl text-white">{category ? getFamiliesByCategory(category.slug).length : taderData.categoryPages.length}</p>
+                <p className="mt-3 font-display text-4xl text-graphite">{category ? getFamiliesByCategory(category.slug).length : taderData.categoryPages.length}</p>
               </div>
             </div>
 
@@ -451,7 +451,7 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
         </div>
       </section>
 
-      <section className="container space-y-10 border-t border-white/10 py-14 lg:py-20">
+      <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Series Access"
           title="Navigate by series family when the geometry path is already known."
@@ -494,7 +494,7 @@ export function HomePage() {
         <MetricStrip items={taderData.siteMeta.heroHighlights} />
       </section>
 
-      <section className="container space-y-10 border-t border-white/10 py-14 lg:py-20">
+      <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Quick Product Entry"
           title="Start from the geometry family that matches the machining problem."
@@ -518,7 +518,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="container space-y-10 border-t border-white/10 py-14 lg:py-20">
+      <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Target Industries"
           title="Built around the requirements of medical, aerospace, and electronics machining."
@@ -526,7 +526,7 @@ export function HomePage() {
         />
         <div className="grid gap-4 lg:grid-cols-3">
           {taderData.applications.map((application, index) => (
-            <Link key={application.slug} href={`/applications/${application.slug}`} className="group relative overflow-hidden border border-white/10 bg-graphite-elevated">
+            <Link key={application.slug} href={`/applications/${application.slug}`} className="group relative overflow-hidden border border-black/8 bg-white/88 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
               <img src={application.image} alt={application.title} className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,18,0.08),rgba(11,15,18,0.82))]" />
               <div className="absolute inset-x-0 bottom-0 space-y-4 p-6">
@@ -539,23 +539,23 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="container space-y-10 border-t border-white/10 py-14 lg:py-24">
+      <section className="container space-y-10 border-t border-black/8 py-14 lg:py-24">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="space-y-6">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Technology Focus</p>
-            <h2 className="font-display text-4xl leading-tight text-white lg:text-5xl">
+            <h2 className="font-display text-4xl leading-tight text-graphite lg:text-5xl">
               Construction logic, holder compatibility, and carbide strategy made explicit.
             </h2>
-            <p className="max-w-xl text-base leading-8 text-steel-300">
+            <p className="max-w-xl text-base leading-8 text-steel-500">
               TADER’s technology page explains B vs C construction, highlights shrink-fit compatibility limitations, and compares carbide tipped versus solid carbide choices through application-fit logic.
             </p>
             <Link href="/technology">
-              <Button variant="outline" className="rounded-none border-white/20 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white hover:bg-white/5">
+              <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
                 Explore Technology
               </Button>
             </Link>
           </div>
-          <div className="overflow-hidden border border-white/10">
+          <div className="overflow-hidden border border-black/8 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
             <img src={taderData.siteMeta.blueprintImage} alt="TADER technology blueprint" className="h-full min-h-[28rem] w-full object-cover" />
           </div>
         </div>
@@ -618,7 +618,7 @@ export function ProductDetailPage() {
       <SiteLayout>
         <SeoHead title="Product Not Found | TADER" description="The requested product could not be found." canonicalPath="/products" noIndex />
         <section className="container py-24">
-          <h1 className="font-display text-4xl text-white">Product not found</h1>
+          <h1 className="font-display text-4xl text-graphite">Product not found</h1>
         </section>
       </SiteLayout>
     );
@@ -637,11 +637,11 @@ export function ProductDetailPage() {
       />
 
       <section className="container space-y-10 py-14 lg:py-20">
-        <div className="grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[1fr_360px]">
+        <div className="grid gap-8 border-b border-black/8 pb-10 lg:grid-cols-[1fr_360px]">
           <div className="space-y-7">
             <div className="space-y-3">
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">SKU Detail / {sku.series}</p>
-              <h1 className="font-display text-5xl leading-[0.94] text-white lg:text-6xl">
+              <h1 className="font-display text-5xl leading-[0.94] text-graphite lg:text-6xl">
                 {sku.diameter_mm} mm {sku.type_label}
               </h1>
               <p className="max-w-3xl text-base leading-8 text-steel-300">
@@ -649,27 +649,27 @@ export function ProductDetailPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Badge className="rounded-none border border-copper/30 bg-copper/10 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-copper-soft">
+              <Badge className="rounded-none border border-copper/30 bg-copper/10 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-copper">
                 SKU {sku.tader_sku}
               </Badge>
-              <Badge className="rounded-none border border-white/10 bg-white/[0.04] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-steel-200">
+              <Badge className="rounded-none border border-black/8 bg-[#f5f1ea] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500">
                 Model {sku.model_no}
               </Badge>
               {sku.construction_options.map((option) => (
-                <Badge key={option} className="rounded-none border border-white/10 bg-white/[0.04] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white">
+                <Badge key={option} className="rounded-none border border-black/8 bg-[#f5f1ea] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-graphite">
                   Construction {option}
                 </Badge>
               ))}
             </div>
           </div>
 
-          <div className="space-y-4 border border-white/10 bg-white/[0.03] p-6">
+          <div className="space-y-4 border border-black/8 bg-white/82 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
             <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">Quote Trigger</p>
-            <p className="text-sm leading-7 text-steel-300">
+            <p className="text-sm leading-7 text-steel-500">
               Ready to discuss application fit, pricing, or holder constraints for this SKU? Send the model number with your requested quantity and material context.
             </p>
             <Link href="/quote-request">
-              <Button className="w-full rounded-none border border-copper/40 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-copper-soft">
+              <Button className="w-full rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white hover:bg-copper-soft">
                 Request a Quote
               </Button>
             </Link>
@@ -677,24 +677,24 @@ export function ProductDetailPage() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-6 border border-white/10 bg-white/[0.03] p-6">
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
-              <h2 className="font-display text-3xl text-white">Specification Table</h2>
+          <div className="space-y-6 border border-black/8 bg-white/82 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
+            <div className="flex items-center justify-between border-b border-black/8 pb-4">
+              <h2 className="font-display text-3xl text-graphite">Specification Table</h2>
               <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">D / R / l / l1 / L / d</p>
             </div>
-            <div className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 xl:grid-cols-3">
-              <div className="bg-graphite-elevated p-5"><DataPill label="D" value={formatMillimeter(sku.diameter_mm)} /></div>
-              <div className="bg-graphite-elevated p-5"><DataPill label="R" value={formatMillimeter(sku.radius_mm)} /></div>
-              <div className="bg-graphite-elevated p-5"><DataPill label="l" value={formatMillimeter(sku.cut_length_mm)} /></div>
-              <div className="bg-graphite-elevated p-5"><DataPill label="l1" value={formatMillimeter(sku.effective_length_mm)} /></div>
-              <div className="bg-graphite-elevated p-5"><DataPill label="L" value={formatMillimeter(sku.overall_length_mm)} /></div>
-              <div className="bg-graphite-elevated p-5"><DataPill label="d" value={formatMillimeter(sku.shank_diameter_mm)} /></div>
+            <div className="grid gap-px border border-black/8 bg-black/8 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="bg-white/88 p-5"><DataPill label="D" value={formatMillimeter(sku.diameter_mm)} /></div>
+              <div className="bg-white/88 p-5"><DataPill label="R" value={formatMillimeter(sku.radius_mm)} /></div>
+              <div className="bg-white/88 p-5"><DataPill label="l" value={formatMillimeter(sku.cut_length_mm)} /></div>
+              <div className="bg-white/88 p-5"><DataPill label="l1" value={formatMillimeter(sku.effective_length_mm)} /></div>
+              <div className="bg-white/88 p-5"><DataPill label="L" value={formatMillimeter(sku.overall_length_mm)} /></div>
+              <div className="bg-white/88 p-5"><DataPill label="d" value={formatMillimeter(sku.shank_diameter_mm)} /></div>
             </div>
           </div>
 
           <div className="space-y-6">
-            <div className="border border-white/10 bg-white/[0.03] p-6">
-              <h2 className="font-display text-2xl text-white">Construction Notes</h2>
+            <div className="border border-black/8 bg-white/82 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
+              <h2 className="font-display text-2xl text-graphite">Construction Notes</h2>
               <div className="mt-5 space-y-2 text-sm leading-7 text-steel-300">
                 <DataPill label="B" value="Carbide Tipped" />
                 <DataPill label="C" value="Full Solid Carbide" />
@@ -718,7 +718,7 @@ export function ProductDetailPage() {
           </div>
         </div>
 
-        <section className="space-y-8 border-t border-white/10 pt-10">
+        <section className="space-y-8 border-t border-black/8 pt-10">
           <SectionHeading
             eyebrow="Related SKUs"
             title="Compare nearby series members before finalizing the tool list."
@@ -806,18 +806,18 @@ function ApplicationDetailView({ slug }: { slug: string }) {
         secondaryLabel="Review Tool Catalog"
       />
       <section className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
-        <div className="space-y-6 border border-white/10 bg-white/[0.03] p-8">
+        <div className="space-y-6 border border-black/8 bg-white/82 p-8 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
           {iconMap[slug]}
-          <h2 className="font-display text-4xl text-white">Process fit for high-consequence components.</h2>
+          <h2 className="font-display text-4xl text-graphite">Process fit for high-consequence components.</h2>
           <p className="text-sm leading-8 text-steel-300">
             TADER positions this application space around miniature features, dimensional consistency, and clear construction choices that can be discussed alongside machine setup and holder strategy.
           </p>
         </div>
         <div className="space-y-4">
           {application.focus.map((point, index) => (
-            <div key={point} className="border border-white/10 bg-white/[0.03] p-6">
+            <div key={point} className="border border-black/8 bg-white p-6">
               <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">0{index + 1}</p>
-              <p className="mt-4 text-lg text-white">{point}</p>
+              <p className="mt-4 text-lg text-graphite">{point}</p>
             </div>
           ))}
         </div>
@@ -907,10 +907,10 @@ export function AboutPage() {
             <InsightCard key={section.title} index={`0${index + 1}`} title={section.title} description={section.body} />
           ))}
         </div>
-        <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
-          <div className="bg-graphite-elevated p-7"><Factory className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Manufacturing capability aligned to micro-diameter, long-neck, and application-specific carbide tooling.</p></div>
-          <div className="bg-graphite-elevated p-7"><Boxes className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Integrated product architecture spanning flat, ball nose, corner radius, and aluminum series.</p></div>
-          <div className="bg-graphite-elevated p-7"><CircleDollarSign className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Pricing moat narrative supported by upstream carbide rod capability and Taiwan-origin sourcing position.</p></div>
+        <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-3">
+          <div className="bg-white/88 p-7"><Factory className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Manufacturing capability aligned to micro-diameter, long-neck, and application-specific carbide tooling.</p></div>
+          <div className="bg-white/88 p-7"><Boxes className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Integrated product architecture spanning flat, ball nose, corner radius, and aluminum series.</p></div>
+          <div className="bg-white/88 p-7"><CircleDollarSign className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Pricing moat narrative supported by upstream carbide rod capability and Taiwan-origin sourcing position.</p></div>
         </div>
       </section>
     </SiteLayout>
@@ -971,21 +971,21 @@ export function QuoteRequestPage() {
         secondaryLabel="Back to Catalog"
       />
       <section className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
-        <div className="space-y-6 border border-white/10 bg-white/[0.03] p-8">
-          <h2 className="font-display text-4xl text-white">Information to include</h2>
+        <div className="space-y-6 border border-black/8 bg-white/82 p-8 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
+          <h2 className="font-display text-4xl text-graphite">Information to include</h2>
           <div className="space-y-4 text-sm leading-8 text-steel-300">
             <p>Include the SKU or model number if your selection is already narrowed.</p>
             <p>State the workpiece material, application sector, and any feature-size requirement that matters to tool choice.</p>
             <p>Clarify quantity, expected timing, and whether B or C construction guidance is part of the evaluation.</p>
             <p>Call out holder constraints, especially if shrink-fit compatibility must be confirmed before quotation.</p>
           </div>
-          <div className="border border-copper/25 bg-copper/8 p-5 text-sm leading-7 text-steel-200">
+          <div className="border border-copper/25 bg-copper/8 p-5 text-sm leading-7 text-steel-500">
             Use the existing Formspree workflow below so your request goes directly into the current RFQ intake channel.
           </div>
         </div>
         <div
           id="formspree-embed"
-          className="border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.3)]"
+          className="border border-black/8 bg-white/88 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)]"
         >
           <form className="grid gap-5" onSubmit={handleSubmit}>
             <input type="hidden" name="_subject" value="TADER Quote Request" />
@@ -995,7 +995,7 @@ export function QuoteRequestPage() {
                 <Input
                   required
                   name="name"
-                  className="h-12 rounded-none border-white/12 bg-[#0f1419] text-white placeholder:text-steel-500"
+                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
                   placeholder="Procurement or engineering contact"
                 />
               </label>
@@ -1005,7 +1005,7 @@ export function QuoteRequestPage() {
                   required
                   type="email"
                   name="email"
-                  className="h-12 rounded-none border-white/12 bg-[#0f1419] text-white placeholder:text-steel-500"
+                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
                   placeholder="name@company.com"
                 />
               </label>
@@ -1014,7 +1014,7 @@ export function QuoteRequestPage() {
                 <Input
                   required
                   name="company"
-                  className="h-12 rounded-none border-white/12 bg-[#0f1419] text-white placeholder:text-steel-500"
+                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
                   placeholder="Company or facility name"
                 />
               </label>
@@ -1022,7 +1022,7 @@ export function QuoteRequestPage() {
                 <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Sector</span>
                 <Input
                   name="sector"
-                  className="h-12 rounded-none border-white/12 bg-[#0f1419] text-white placeholder:text-steel-500"
+                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
                   placeholder="Medical, aerospace, electronics..."
                 />
               </label>
@@ -1030,7 +1030,7 @@ export function QuoteRequestPage() {
                 <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Series / SKU / Model</span>
                 <Input
                   name="model"
-                  className="h-12 rounded-none border-white/12 bg-[#0f1419] text-white placeholder:text-steel-500"
+                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
                   placeholder="Example: TADER-MS2-001-2F or MS2D0010S04"
                 />
               </label>
@@ -1038,7 +1038,7 @@ export function QuoteRequestPage() {
                 <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Quantity</span>
                 <Input
                   name="quantity"
-                  className="h-12 rounded-none border-white/12 bg-[#0f1419] text-white placeholder:text-steel-500"
+                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
                   placeholder="Example: 50 pcs"
                 />
               </label>
@@ -1046,7 +1046,7 @@ export function QuoteRequestPage() {
                 <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Holder Constraint</span>
                 <Input
                   name="holder"
-                  className="h-12 rounded-none border-white/12 bg-[#0f1419] text-white placeholder:text-steel-500"
+                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
                   placeholder="Shrink-fit, collet, guidance needed"
                 />
               </label>
@@ -1057,20 +1057,20 @@ export function QuoteRequestPage() {
                 required
                 name="message"
                 rows={8}
-                className="min-h-[220px] rounded-none border border-white/12 bg-[#0f1419] px-3 py-3 text-white outline-none transition-colors placeholder:text-steel-500 focus:border-copper/60"
+                className="min-h-[220px] rounded-none border border-black/10 bg-[#f8f5ef] px-3 py-3 text-graphite outline-none transition-colors placeholder:text-steel-400 focus:border-copper/60"
                 placeholder="Describe material, feature size, tolerance concerns, coating preferences, and any B vs C evaluation questions."
               />
             </label>
-            <div className="flex flex-col gap-4 border-t border-white/10 pt-5 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-4 border-t border-black/8 pt-5 md:flex-row md:items-center md:justify-between">
               <div className="space-y-2 text-sm leading-6 text-steel-300">
-                <p>This form submits through Formspree using the existing intake ID <span className="font-mono text-white">{taderData.siteMeta.formspreeId}</span>.</p>
+                <p>This form submits through Formspree using the existing intake ID <span className="font-mono text-graphite">{taderData.siteMeta.formspreeId}</span>.</p>
                 {submitMessage ? <p className="text-copper-soft">{submitMessage}</p> : null}
                 {submitError ? <p className="text-[#f4b08c]">{submitError}</p> : null}
               </div>
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="rounded-none border border-copper/40 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.25em] text-graphite hover:bg-copper-soft disabled:opacity-70"
+                className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.25em] text-white hover:bg-copper-soft disabled:opacity-70"
               >
                 {isSubmitting ? "Sending..." : "Submit RFQ"}
                 <ArrowRight className="ml-2 size-4" />
@@ -1091,11 +1091,11 @@ export function NotFoundPage() {
       <SeoHead title="404 | TADER" description="Page not found." canonicalPath="/404" noIndex />
       <section className="container space-y-8 py-24 lg:py-32">
         <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">404 / Route Missing</p>
-        <h1 className="font-display text-5xl text-white lg:text-7xl">The requested page is outside the current tooling map.</h1>
-        <p className="max-w-2xl text-base leading-8 text-steel-300">The route <span className="font-mono text-white">{location}</span> is not available in the current TADER site structure.</p>
+        <h1 className="font-display text-5xl text-graphite lg:text-7xl">The requested page is outside the current tooling map.</h1>
+        <p className="max-w-2xl text-base leading-8 text-steel-500">The route <span className="font-mono text-graphite">{location}</span> is not available in the current TADER site structure.</p>
         <div className="flex flex-wrap gap-4">
-          <Link href="/"><Button className="rounded-none border border-copper/40 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite">Return Home</Button></Link>
-          <Link href="/products"><Button variant="outline" className="rounded-none border-white/20 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white">Open Products</Button></Link>
+          <Link href="/"><Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white">Return Home</Button></Link>
+          <Link href="/products"><Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite">Open Products</Button></Link>
         </div>
       </section>
     </SiteLayout>

@@ -42,35 +42,35 @@
 
 :root {
   --radius: 0rem;
-  --background: oklch(0.12 0.01 250);
-  --foreground: oklch(0.94 0.01 95);
-  --card: oklch(0.16 0.01 250);
-  --card-foreground: oklch(0.94 0.01 95);
-  --popover: oklch(0.16 0.01 250);
-  --popover-foreground: oklch(0.94 0.01 95);
-  --primary: oklch(0.72 0.09 56);
-  --primary-foreground: oklch(0.14 0.01 250);
-  --secondary: oklch(0.2 0.01 250);
-  --secondary-foreground: oklch(0.9 0.01 95);
-  --muted: oklch(0.18 0.01 250);
-  --muted-foreground: oklch(0.74 0.01 95);
-  --accent: oklch(0.22 0.01 250);
-  --accent-foreground: oklch(0.95 0.01 95);
+  --background: oklch(0.985 0.003 95);
+  --foreground: oklch(0.22 0.01 250);
+  --card: oklch(0.995 0.002 95);
+  --card-foreground: oklch(0.22 0.01 250);
+  --popover: oklch(0.995 0.002 95);
+  --popover-foreground: oklch(0.22 0.01 250);
+  --primary: oklch(0.66 0.11 52);
+  --primary-foreground: oklch(0.98 0.003 95);
+  --secondary: oklch(0.955 0.005 95);
+  --secondary-foreground: oklch(0.26 0.01 250);
+  --muted: oklch(0.965 0.004 95);
+  --muted-foreground: oklch(0.48 0.01 250);
+  --accent: oklch(0.945 0.007 95);
+  --accent-foreground: oklch(0.24 0.01 250);
   --destructive: oklch(0.62 0.21 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.72 0.09 56);
+  --border: oklch(0.86 0.004 95);
+  --input: oklch(0.9 0.004 95);
+  --ring: oklch(0.66 0.11 52);
 
-  --graphite: oklch(0.12 0.01 250);
-  --graphite-elevated: oklch(0.16 0.01 250);
-  --steel-50: oklch(0.96 0.005 100);
-  --steel-200: oklch(0.85 0.006 100);
-  --steel-300: oklch(0.74 0.006 100);
-  --steel-400: oklch(0.62 0.006 100);
-  --steel-500: oklch(0.48 0.006 100);
-  --copper: oklch(0.72 0.09 56);
-  --copper-soft: oklch(0.8 0.07 56);
+  --graphite: oklch(0.2 0.01 250);
+  --graphite-elevated: oklch(0.27 0.012 250);
+  --steel-50: oklch(0.995 0.002 95);
+  --steel-200: oklch(0.84 0.006 95);
+  --steel-300: oklch(0.62 0.008 250);
+  --steel-400: oklch(0.48 0.01 250);
+  --steel-500: oklch(0.35 0.012 250);
+  --copper: oklch(0.66 0.11 52);
+  --copper-soft: oklch(0.75 0.08 52);
 }
 
 .dark {
@@ -107,17 +107,17 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
-      radial-gradient(circle at top left, rgba(214, 153, 109, 0.08), transparent 24%),
-      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0));
+      linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 24, 39, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at top left, rgba(194, 121, 74, 0.12), transparent 22%),
+      linear-gradient(180deg, rgba(255,255,255,0.92), rgba(245,243,238,0.98));
     background-size: 120px 120px, 120px 120px, auto, auto;
     min-height: 100vh;
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--copper) 50%, black);
-    color: white;
+    background: color-mix(in oklab, var(--copper) 32%, white);
+    color: var(--graphite);
   }
 
   a {
