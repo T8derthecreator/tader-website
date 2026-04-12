@@ -5,6 +5,7 @@ Design Philosophy Reminder (Swiss Industrial Editorial):
 - Maintain high contrast, measured motion, and disciplined catalog-style hierarchy throughout.
 */
 import { type ReactNode, useMemo, useState } from "react";
+import { useIsMobile } from "@/hooks/useMobile";
 import { Link, useLocation, useRoute } from "wouter";
 import {
   AlertTriangle,
@@ -90,7 +91,7 @@ function PageHero({
 }: {
   eyebrow: string;
   title: string;
-  description: string;
+  description: ReactNode;
   image: string;
   primaryHref?: string;
   primaryLabel?: string;
@@ -107,24 +108,41 @@ function PageHero({
               <h1 className="max-w-4xl font-display text-5xl leading-[0.92] text-graphite sm:text-6xl xl:text-7xl">
                 {title}
               </h1>
-              <p className="max-w-2xl text-base leading-8 text-steel-300 xl:text-lg">{description}</p>
+              <div className="max-w-2xl text-base leading-8 text-steel-300 xl:text-lg">{description}</div>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             {primaryHref && primaryLabel ? (
-              <Link href={primaryHref}>
-                <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
-                  {primaryLabel}
-                  <ArrowRight className="ml-2 size-4" />
-                </Button>
-              </Link>
+              primaryHref.startsWith("http") ? (
+                <a href={primaryHref} target="_blank" rel="noreferrer">
+                  <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
+                    {primaryLabel}
+                    <ArrowRight className="ml-2 size-4" />
+                  </Button>
+                </a>
+              ) : (
+                <Link href={primaryHref}>
+                  <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
+                    {primaryLabel}
+                    <ArrowRight className="ml-2 size-4" />
+                  </Button>
+                </Link>
+              )
             ) : null}
             {secondaryHref && secondaryLabel ? (
-              <Link href={secondaryHref}>
-                <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
-                  {secondaryLabel}
-                </Button>
-              </Link>
+              secondaryHref.startsWith("http") ? (
+                <a href={secondaryHref} target="_blank" rel="noreferrer">
+                  <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
+                    {secondaryLabel}
+                  </Button>
+                </a>
+              ) : (
+                <Link href={secondaryHref}>
+                  <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
+                    {secondaryLabel}
+                  </Button>
+                </Link>
+              )
             ) : null}
           </div>
         </div>
@@ -423,10 +441,10 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
             : "Filter by tool type, flute count, construction, and ZENOK geometry family to reach the exact SKU geometry for your machining program. The active standard catalog is limited to shank diameters below 6.0 mm."
         }
         image={taderData.siteMeta.blueprintImage}
-        primaryHref={category ? "/products" : "/technology"}
-        primaryLabel={category ? "View Full Catalog" : "Review Construction Logic"}
-        secondaryHref={category ? "/technology" : "/applications"}
-        secondaryLabel={category ? "Review Production Scope" : "Browse Applications"}
+        primaryHref={taderData.siteMeta.primaryCta.href}
+        primaryLabel={taderData.siteMeta.primaryCta.label}
+        secondaryHref={taderData.siteMeta.secondaryCta.href}
+        secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
 
       <section className="container space-y-12 py-14 lg:py-20">
@@ -499,11 +517,13 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
 }
 
 export function HomePage() {
+  const isMobile = useIsMobile();
+
   return (
     <SiteLayout>
       <SeoHead
-        title="ZENOK | Precision Micro End Mills for U.S. CNC Shops"
-        description="Taiwan-made micro end mills for U.S. CNC shops in medical, aerospace, and electronics. Explore product-line structure, B vs C construction, and quote-ready SKU data."
+        title="ZENOK — Taiwan Micro Cutting Tool Cost-Down Partner | 4.8% MFN Duty"
+        description="Submit your CNC micro tooling specs and target price. ZENOK evaluates feasibility and delivers a cost-down proposal within 2 business days. Taiwan-made carbide end mills, 0.1–3.0 mm, 4.8% MFN duty advantage."
         canonicalPath="/"
         schema={homepageSchema}
         keywords={["micro end mills", "Taiwan carbide tools", "4.8% duty"]}
@@ -512,7 +532,13 @@ export function HomePage() {
       <PageHero
         eyebrow="Micro Precision Tooling"
         title={taderData.siteMeta.heroTitle}
-        description={taderData.siteMeta.heroSubtitle}
+        description={
+          isMobile ? (
+            <p>Submit your specs and target price. Cost-down proposal within 2 business days.</p>
+          ) : (
+            <p>{taderData.siteMeta.heroSubtitle}</p>
+          )
+        }
         image={taderData.siteMeta.heroImage}
         primaryHref={taderData.siteMeta.primaryCta.href}
         primaryLabel={taderData.siteMeta.primaryCta.label}
@@ -523,10 +549,35 @@ export function HomePage() {
       <section className="container space-y-10 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Commercial USP"
-          title="Taiwan MFN 4.8% duty advantage paired with micro-tooling specialization."
-          description="ZENOK is positioned for U.S. industrial buyers who assess both process fit and landed cost. The value proposition combines Taiwan-origin sourcing, disciplined micro-tool production, and category depth in miniature carbide tooling."
+          title="Taiwan MFN 4.8% duty advantage paired with cost-down proposal discipline."
+          description="ZENOK is positioned for U.S. industrial buyers who need a cost-down partner, not another undifferentiated product catalog. Every page now supports one workflow: submit specs, set a target price, and receive a feasibility-backed proposal within 2 business days."
         />
         <MetricStrip items={taderData.siteMeta.heroHighlights} />
+      </section>
+
+      <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
+        <SectionHeading
+          eyebrow="Three-Step Process"
+          title="How the cost-down request workflow moves from specs to proposal."
+          description="ZENOK starts from your production context and commercial target rather than a generic catalog pitch. Share the key program inputs and the engineering team evaluates whether Taiwan-made micro tooling can meet the cost objective."
+        />
+        <div className="grid gap-px border border-black/8 bg-black/8 lg:grid-cols-3">
+          <div className="bg-white/92 p-7 lg:p-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Step 1</p>
+            <h3 className="mt-4 font-display text-3xl text-graphite">Share Your Specs</h3>
+            <p className="mt-4 text-sm leading-7 text-steel-400">Submit tool type, dimensions, current price, and monthly volume.</p>
+          </div>
+          <div className="bg-[#f8f5ef] p-7 lg:p-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Step 2</p>
+            <h3 className="mt-4 font-display text-3xl text-graphite">We Evaluate Feasibility</h3>
+            <p className="mt-4 text-sm leading-7 text-steel-400">Our engineering team reviews against our Taiwan carbide production.</p>
+          </div>
+          <div className="bg-white/92 p-7 lg:p-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Step 3</p>
+            <h3 className="mt-4 font-display text-3xl text-graphite">Receive Cost-Down Proposal</h3>
+            <p className="mt-4 text-sm leading-7 text-steel-400">You get a written proposal within 2 business days — no obligation.</p>
+          </div>
+        </div>
       </section>
 
       <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
@@ -542,8 +593,6 @@ export function HomePage() {
               index={`${String(index + 1).padStart(2, "0")}`}
               title={category.label}
               description={`${category.description} ${category.skuCount} SKUs in current site data.`}
-              href={category.route}
-              ctaLabel="Browse route"
             >
               <div className="pt-1">
                 <DataPill label="Diameter range" value={`${category.diameterRangeMm[0] ?? "—"}–${category.diameterRangeMm[1] ?? "—"} mm`} />
@@ -556,12 +605,12 @@ export function HomePage() {
       <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Target Industries"
-          title="Built around the requirements of medical, aerospace, and electronics machining."
-          description="These sectors share a need for tiny features, clean edge quality, and predictable dimensional behavior. ZENOK’s catalog structure makes those needs legible at the specification level rather than burying them in sales copy."
+          title="Cost-down evaluation starts from production context, not generic catalog selection."
+          description="Medical, aerospace, and electronics programs each carry different risk tolerances and tooling consumption patterns. ZENOK's cost-down evaluation starts from your production context — material, feature size, tolerance, and current spend — not from a generic catalog selection."
         />
         <div className="grid gap-4 lg:grid-cols-3">
           {taderData.applications.map((application, index) => (
-            <Link key={application.slug} href={`/applications/${application.slug}`} className="group relative overflow-hidden border border-black/8 bg-white/88 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
+            <article key={application.slug} className="group relative overflow-hidden border border-black/8 bg-white/88 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
               <img src={application.image} alt={application.title} className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,18,0.08),rgba(11,15,18,0.82))]" />
               <div className="absolute inset-x-0 bottom-0 space-y-4 p-6">
@@ -569,7 +618,7 @@ export function HomePage() {
                 <h3 className="font-display text-3xl text-white">{application.title}</h3>
                 <p className="text-sm leading-7 text-steel-200">{application.description}</p>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
       </section>
@@ -579,16 +628,11 @@ export function HomePage() {
           <div className="space-y-6">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Technology Focus</p>
             <h2 className="font-display text-4xl leading-tight text-graphite lg:text-5xl">
-              Construction logic, holder compatibility, and carbide strategy made explicit.
+              Construction logic, coating fit, and supply-chain economics made explicit.
             </h2>
             <p className="max-w-xl text-base leading-8 text-steel-500">
-              This technology page explains B vs C construction, highlights shrink-fit compatibility limitations, and compares carbide tipped versus solid carbide choices through application-fit logic.
+              The technology page explains how ZENOK turns holder constraints, coating selection, and Taiwan sourcing economics into proposals that are technically sound and commercially realistic.
             </p>
-            <Link href="/technology">
-              <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
-                Explore Technology
-              </Button>
-            </Link>
           </div>
           <div className="overflow-hidden border border-black/8 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
             <img src={taderData.siteMeta.blueprintImage} alt="Micro tooling technology blueprint" className="h-full min-h-[28rem] w-full object-cover" />
@@ -768,26 +812,29 @@ export function ApplicationsPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Applications | ZENOK"
-        description="Explore ZENOK micro end mill applications across medical, aerospace, and electronics machining environments."
+        title="Medical, Aerospace & Electronics Micro Tooling Cost-Down | ZENOK"
+        description="Cost-down micro tooling for medical, aerospace, and electronics CNC programs. Submit your specs and current spend — proposal within 2 business days."
         canonicalPath="/applications"
       />
       <PageHero
         eyebrow="Applications"
-        title="Three demanding sectors. One precision-first tooling story."
-        description="Our target industries share a need for miniature features, process stability, and close dimensional communication between tooling supplier and machine shop."
+        title="Production context first. Proposal logic second. Catalog third."
+        description={<p>Tell us your machining challenge and target cost. We'll evaluate whether our Taiwan-made micro tooling can deliver a cost-down solution for your program.</p>}
         image={taderData.siteMeta.heroImage}
-        primaryHref="/products"
-        primaryLabel="Open Catalog"
-        secondaryHref="/technology"
-        secondaryLabel="Review Construction Logic"
+        primaryHref={taderData.siteMeta.inquiryFormUrl}
+        primaryLabel={taderData.siteMeta.primaryCta.label}
+        secondaryHref={taderData.siteMeta.secondaryCta.href}
+        secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
       <section className="container space-y-10 py-14 lg:py-20">
         <SectionHeading
-          eyebrow="Industry Pages"
-          title="Navigate by production context, not just by geometry."
-          description="Medical, aerospace, and electronics buyers each prioritize slightly different risk factors. The application pages frame those differences through production reality rather than generic sector language."
+          eyebrow="Industry Context"
+          title="Evaluate cost-down potential by machining environment."
+          description="Medical, aerospace, and electronics programs each carry different risk tolerances and tooling consumption patterns. ZENOK's cost-down evaluation starts from your production context — material, feature size, tolerance, and current spend — not from a generic catalog selection."
         />
+        <p className="max-w-4xl text-base leading-8 text-steel-400">
+          Medical, aerospace, and electronics programs each carry different risk tolerances and tooling consumption patterns. ZENOK's cost-down evaluation starts from your production context — material, feature size, tolerance, and current spend — not from a generic catalog selection.
+        </p>
         <div className="grid gap-5 lg:grid-cols-3">
           {taderData.applications.map((application, index) => (
             <InsightCard
@@ -795,8 +842,8 @@ export function ApplicationsPage() {
               index={`0${index + 1}`}
               title={application.title}
               description={application.description}
-              href={`/applications/${application.slug}`}
-              ctaLabel="Open application"
+              href={taderData.siteMeta.inquiryFormUrl}
+              ctaLabel="Submit Cost-Down Request →"
             >
               <div className="space-y-3 pt-2 text-sm leading-7 text-steel-300">
                 {application.focus.map((point) => (
@@ -811,89 +858,45 @@ export function ApplicationsPage() {
   );
 }
 
-function ApplicationDetailView({ slug }: { slug: string }) {
-  const application = getApplication(slug);
-  if (!application) return <ApplicationsPage />;
-
-  const iconMap: Record<string, ReactNode> = {
-    medical: <Microscope className="size-8 text-copper-soft" />,
-    aerospace: <Orbit className="size-8 text-copper-soft" />,
-    electronics: <ShieldCheck className="size-8 text-copper-soft" />,
-  };
-
-  return (
-    <SiteLayout>
-      <SeoHead
-        title={`${application.title} | ZENOK`}
-        description={application.description}
-        canonicalPath={`/applications/${application.slug}`}
-      />
-      <PageHero
-        eyebrow={application.eyebrow}
-        title={application.title}
-        description={application.description}
-        image={application.image}
-        primaryHref="/products"
-        primaryLabel="Review Tool Catalog"
-        secondaryHref="/technology"
-        secondaryLabel="Compare Construction Logic"
-      />
-      <section className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
-        <div className="space-y-6 border border-black/8 bg-white/82 p-8 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
-          {iconMap[slug]}
-          <h2 className="font-display text-4xl text-graphite">Process fit for high-consequence components.</h2>
-          <p className="text-sm leading-8 text-steel-300">
-            ZENOK positions this application space around miniature features, dimensional consistency, and clear construction choices that can be discussed alongside machine setup and holder strategy.
-          </p>
-        </div>
-        <div className="space-y-4">
-          {application.focus.map((point, index) => (
-            <div key={point} className="border border-black/8 bg-white p-6">
-              <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">0{index + 1}</p>
-              <p className="mt-4 text-lg text-graphite">{point}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </SiteLayout>
-  );
+function ApplicationDetailView() {
+  return <ApplicationsPage />;
 }
 
 export function MedicalPage() {
-  return <ApplicationDetailView slug="medical" />;
+  return <ApplicationDetailView />;
 }
 
 export function AerospacePage() {
-  return <ApplicationDetailView slug="aerospace" />;
+  return <ApplicationDetailView />;
 }
 
 export function ElectronicsPage() {
-  return <ApplicationDetailView slug="electronics" />;
+  return <ApplicationDetailView />;
 }
 
 export function TechnologyPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Technology | ZENOK"
-        description="Compare B vs C construction, Taiwan 4.8% MFN duty positioning, and carbide tipped versus solid carbide trade-offs."
+        title="Construction, Coating & Carbide Sourcing Logic | ZENOK"
+        description="How ZENOK builds technically sound, cost-competitive micro tooling proposals: B vs C construction, coating selection, Taiwan 4.8% MFN advantage, vertical carbide supply chain."
         canonicalPath="/technology"
       />
       <PageHero
         eyebrow="Technology"
-        title="Construction, sourcing, and carbide strategy explained in buyer language."
-        description="The technology layer translates technical distinctions into procurement implications: holder compatibility, geometry reach, and sourcing economics."
+        title="Construction logic that enables cost-down proposals."
+        description={<p>Understanding B vs C construction, coating selection, and Taiwan sourcing economics is how ZENOK builds proposals that are technically sound and cost-competitive.</p>}
         image={taderData.siteMeta.blueprintImage}
-        primaryHref="/products"
-        primaryLabel="Compare SKUs"
-        secondaryHref="/about"
-        secondaryLabel="Review Company Positioning"
+        primaryHref={taderData.siteMeta.inquiryFormUrl}
+        primaryLabel="Submit Your Specs for a Cost-Down Proposal →"
+        secondaryHref={taderData.siteMeta.secondaryCta.href}
+        secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
       <section className="container space-y-10 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Engineering Topics"
-          title="The site makes technical trade-offs explicit instead of leaving them to email follow-up."
-          description="B vs C construction, Taiwan duty positioning, and holder compatibility are presented as decision variables for engineers and buyers evaluating micro-tooling options."
+          title="The site makes technical trade-offs explicit before the proposal is submitted."
+          description="B vs C construction, Taiwan duty positioning, coating selection, and carbide supply-chain economics are framed as decision variables buyers can use before opening the form."
         />
         <div className="grid gap-5 lg:grid-cols-3">
           {taderData.technologyTopics.map((topic, index) => (
@@ -921,19 +924,19 @@ export function AboutPage() {
       />
       <PageHero
         eyebrow="About ZENOK"
-        title="A tooling story built around disciplined micro-tool production."
-        description="The brand narrative emphasizes Taiwan-based manufacturing discipline, stable execution in sub-3.0 mm tooling, and the ability to support U.S. buyers who compare tooling cost against process-critical performance."
+        title="A cost-down partner built around disciplined micro-tool production."
+        description={<p>ZENOK positions micro-tooling around feasibility, target price, and response speed so buyers can move from machining challenge to commercial proposal without a long sourcing cycle.</p>}
         image={taderData.siteMeta.heroImage}
-        primaryHref="/technology"
-        primaryLabel="Review Technical Basis"
-        secondaryHref="/products"
-        secondaryLabel="Open Active Catalog"
+        primaryHref={taderData.siteMeta.inquiryFormUrl}
+        primaryLabel={taderData.siteMeta.primaryCta.label}
+        secondaryHref={taderData.siteMeta.secondaryCta.href}
+        secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
       <section className="container space-y-10 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Company Profile"
-          title="Vertical integration is positioned as both a technical and pricing moat."
-          description="The site frames ZENOK’s advantage through disciplined process control, which matters for consistency, supply reliability, and defensible cost structure in specialized micro programs."
+          title="Vertical integration is positioned as the commercial basis for credible cost-down proposals."
+          description="The site frames ZENOK's advantage through disciplined process control, carbide supply access, and manufacturing scope that supports realistic pricing on specialized micro programs."
         />
         <div className="grid gap-5 lg:grid-cols-3">
           {taderData.aboutSections.map((section, index) => (
@@ -954,28 +957,28 @@ export function QuoteRequestPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Quote Request | ZENOK"
-        description="Open the ZENOK external inquiry form and submit your product line, model number, quantity, and application context through the existing notification workflow."
+        title="Submit Cost-Down Request | ZENOK"
+        description="Submit your tooling specs, target price, and production context through the external inquiry form. ZENOK evaluates feasibility and responds with a cost-down proposal within 2 business days."
         canonicalPath="/quote-request"
       />
       <PageHero
-        eyebrow="Quote Request"
-        title="Open the existing inquiry workflow with your product line, dimensions, and application context already prepared."
-        description="To keep your current notification mailbox and spreadsheet intake unchanged, the RFQ workflow now opens the dedicated external inquiry form in a new tab while this page stays as a branded reference point."
+        eyebrow="Cost-Down Request"
+        title="Submit your specs and target price through the existing inquiry workflow."
+        description={<p>This branded handoff keeps your current email notification and spreadsheet intake unchanged while guiding buyers into the dedicated external form for cost-down review.</p>}
         image={taderData.siteMeta.blueprintImage}
         primaryHref={taderData.siteMeta.inquiryFormUrl}
-        primaryLabel="Open Inquiry Form"
-        secondaryHref="/products"
-        secondaryLabel="Back to Catalog"
+        primaryLabel={taderData.siteMeta.primaryCta.label}
+        secondaryHref={taderData.siteMeta.secondaryCta.href}
+        secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
       <section className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
         <div className="space-y-6 border border-black/8 bg-white/82 p-8 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
           <h2 className="font-display text-4xl text-graphite">What to prepare before opening the form</h2>
           <div className="space-y-4 text-sm leading-8 text-steel-300">
-            <p>Include the SKU or model number if your selection is already narrowed.</p>
-            <p>State the workpiece material, application sector, and any feature-size requirement that matters to tool choice.</p>
-            <p>Clarify quantity, expected timing, and whether B or C construction guidance is part of the evaluation.</p>
-            <p>Call out holder constraints, especially if shrink-fit compatibility must be confirmed before quotation.</p>
+            <p>Include tool type, SKU or model number if your selection is already narrowed.</p>
+            <p>State the workpiece material, feature size, tolerance expectation, and current tooling price target.</p>
+            <p>Clarify monthly volume, expected timing, and whether B or C construction guidance is part of the evaluation.</p>
+            <p>Call out holder constraints, especially if shrink-fit compatibility must be confirmed before proposal.</p>
           </div>
           <div className="border border-black/8 bg-[#f7f3ec] p-5 text-sm leading-7 text-steel-400">
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Program scope reminder</p>
@@ -983,7 +986,7 @@ export function QuoteRequestPage() {
             <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
           </div>
           <div className="border border-copper/25 bg-copper/8 p-5 text-sm leading-7 text-steel-500">
-            This route now hands off to the existing external inquiry form so your current email notification and spreadsheet logging workflow can stay unchanged.
+            This route hands off to the existing external inquiry form so your current email notification and spreadsheet logging workflow can stay unchanged while buyers submit specs and target price in one place.
           </div>
         </div>
         <div className="border border-black/8 bg-white/88 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
@@ -992,7 +995,7 @@ export function QuoteRequestPage() {
               <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Current workflow</p>
               <h2 className="mt-3 font-display text-4xl text-graphite">Continue in the dedicated multi-step inquiry form</h2>
               <p className="mt-4 text-sm leading-7 text-steel-300">
-                The external form already matches your intake process, sends notifications to the current mailbox, and keeps responses organized in the existing spreadsheet workflow. Opening it in a new tab preserves the catalog session so buyers can compare SKUs and return without losing context.
+                The external form already matches your intake process, sends notifications to the current mailbox, and keeps responses organized in the existing spreadsheet workflow. Opening it in a new tab preserves the catalog session so buyers can compare SKUs, add target price, and return without losing context.
               </p>
             </div>
             <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-2">
@@ -1013,17 +1016,12 @@ export function QuoteRequestPage() {
                 <p className="mt-3 text-sm leading-7 text-steel-300">Submission confirmation through the existing inquiry workflow already tied to your notifications.</p>
               </div>
             </div>
-            <div className="flex flex-col gap-4 border-t border-black/8 pt-5 md:flex-row md:items-center md:justify-between">
+            <div className="border-t border-black/8 pt-5">
               <div className="space-y-2 text-sm leading-6 text-steel-300">
                 <p>Destination: <span className="font-mono text-graphite">toolinginquiryform.netlify.app</span></p>
                 <p>The form opens in a new tab so the product catalog remains available in the current session.</p>
+                <p>Use the primary page action above whenever you're ready to hand off the request.</p>
               </div>
-              <a href={taderData.siteMeta.inquiryFormUrl} target="_blank" rel="noreferrer">
-                <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.25em] text-white hover:bg-copper-soft">
-                  Launch External Form
-                  <ArrowRight className="ml-2 size-4" />
-                </Button>
-              </a>
             </div>
           </div>
         </div>

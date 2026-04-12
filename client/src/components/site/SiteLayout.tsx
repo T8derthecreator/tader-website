@@ -4,24 +4,27 @@ Design Philosophy Reminder (Swiss Industrial Editorial):
 - Use strong hierarchy, disciplined spacing, and restrained copper accents for action emphasis.
 - Preserve asymmetric structure and technical credibility across header, content frame, and footer.
 */
+import { type ReactNode, useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { ReactNode } from "react";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { taderData } from "@/data/taderData";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/useMobile";
 
 type SiteLayoutProps = {
   children: ReactNode;
 };
 
-function NavLink({ href, label }: { href: string; label: string }) {
+function NavLink({ href, label, onSelect }: { href: string; label: string; onSelect?: () => void }) {
   const [location] = useLocation();
   const active = location === href || (href !== "/" && location.startsWith(href));
 
   return (
     <Link
       href={href}
+      onClick={onSelect}
       className={cn(
         "group inline-flex items-center gap-2 border-b border-transparent px-0 py-2 font-mono text-[11px] uppercase tracking-[0.28em] text-steel-400 transition-colors duration-200 hover:text-graphite",
         active && "border-copper/70 text-graphite",
@@ -34,37 +37,83 @@ function NavLink({ href, label }: { href: string; label: string }) {
 }
 
 export function SiteLayout({ children }: SiteLayoutProps) {
+  const isMobile = useIsMobile();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setNavHidden(false);
+      return;
+    }
+
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      const passedThreshold = currentScrollY > 72;
+
+      setNavHidden(scrollingDown && passedThreshold);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMobile]);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,rgba(194,121,74,0.12),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(31,41,55,0.06),transparent_18%)]" />
       <div className="pointer-events-none fixed inset-0 opacity-[0.14] [background-image:linear-gradient(rgba(17,24,39,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(17,24,39,0.03)_1px,transparent_1px)] [background-size:120px_120px]" />
 
-      <header className="sticky top-0 z-50 border-b border-black/8 bg-[rgba(252,251,247,0.88)] backdrop-blur-xl">
-        <div className="container grid gap-6 py-4 lg:grid-cols-[220px_minmax(0,1fr)_220px] lg:items-center">
-          <Link href="/" className="group flex items-end gap-3 text-graphite">
+      <header
+        className={cn(
+          "sticky top-0 z-50 border-b border-black/8 bg-[rgba(252,251,247,0.88)] backdrop-blur-xl transition-transform duration-300",
+          isMobile && navHidden ? "-translate-y-full" : "translate-y-0",
+        )}
+      >
+        <div className="container flex items-center justify-between gap-4 py-4 md:grid md:grid-cols-[220px_minmax(0,1fr)_280px] md:items-center">
+          <Link href="/" className="group flex min-w-0 items-end gap-3 text-graphite">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.36em] text-copper/90">
-                {taderData.siteMeta.company}
-              </p>
-              <p className="font-display text-2xl tracking-[0.14em]">MICRO TOOLING</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.36em] text-copper/90">{taderData.siteMeta.company}</p>
+              <p className="font-display text-xl tracking-[0.14em] md:text-2xl">MICRO TOOLING</p>
             </div>
-            <span className="mb-1 hidden h-px flex-1 bg-black/12 lg:block" />
+            <span className="mb-1 hidden h-px flex-1 bg-black/12 md:block" />
           </Link>
 
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-1 lg:justify-center">
-            <NavLink href="/products" label="Products" />
-            <NavLink href="/applications" label="Applications" />
-            <NavLink href="/technology" label="Technology" />
-            <NavLink href="/about" label="About" />
+          <nav className="hidden flex-wrap items-center gap-x-6 gap-y-1 md:flex md:justify-center">
+            {taderData.navigation.map((item) => (
+              <NavLink key={item.href} href={item.href} label={item.label} />
+            ))}
           </nav>
 
-          <div className="flex items-center justify-start lg:justify-end">
-            <a href={taderData.siteMeta.inquiryFormUrl} target="_blank" rel="noreferrer">
-              <Button className="rounded-none border border-copper/50 bg-copper px-5 py-5 font-mono text-[11px] uppercase tracking-[0.25em] text-white shadow-[0_18px_40px_rgba(194,121,74,0.16)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-copper-soft">
-                Request Quote
-                <ArrowRight className="ml-2 size-4" />
-              </Button>
-            </a>
+          <div className="hidden md:block" />
+
+          <div className="flex items-center md:hidden">
+            <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="rounded-none border-black/12 bg-white/80 text-graphite hover:bg-[#f3efe8]">
+                  <Menu className="size-5" />
+                  <span className="sr-only">Open navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="top" className="w-full rounded-none border-x-0 border-t-0 bg-[#fcfbf7] px-0 pt-12">
+                <div className="container space-y-8 pb-8">
+                  <div className="space-y-2 border-b border-black/8 pb-6">
+                    <SheetTitle className="font-display text-3xl text-graphite">Navigate ZENOK</SheetTitle>
+                    <SheetDescription className="max-w-md text-sm leading-7 text-steel-400">
+                      Review product scope, application fit, and technical logic before opening the cost-down request workflow.
+                    </SheetDescription>
+                  </div>
+                  <nav className="grid gap-4">
+                    {taderData.navigation.map((item) => (
+                      <NavLink key={item.href} href={item.href} label={item.label} onSelect={() => setMenuOpen(false)} />
+                    ))}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </header>
@@ -72,50 +121,12 @@ export function SiteLayout({ children }: SiteLayoutProps) {
       <main className="relative z-10">{children}</main>
 
       <footer className="relative z-10 border-t border-black/8 bg-[#f3efe8]">
-        <div className="container grid gap-10 py-16 lg:grid-cols-[1.3fr_1fr_1fr]">
-          <div className="space-y-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/80">
-              Precision Micro Tooling from Taiwan
+        <div className="container py-14 lg:py-16">
+          <div className="max-w-3xl rounded-none border border-black/8 bg-white/84 p-7 shadow-[0_24px_50px_rgba(15,23,42,0.08)] lg:p-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/80">Procurement Note</p>
+            <p className="mt-4 text-sm leading-7 text-steel-500">
+              The current product data set covers micro end mills up to 3.0 mm with standard shank diameters below 6.0 mm. A 1/8 inch (3.175 mm) shank is treated as custom MOQ, and discontinued composite programs require manual review.
             </p>
-            <h2 className="max-w-xl font-display text-3xl leading-tight text-graphite lg:text-4xl">
-              Built for buyers who compare diameter, reach, construction, and landed cost with equal rigor.
-            </h2>
-            <p className="max-w-xl text-sm leading-7 text-steel-500">
-              ZENOK supports U.S. machining programs in medical, aerospace, and electronics with
-              micro end mills organized around clear geometry families, sourcing discipline, and quote-ready dimensional detail.
-            </p>
-          </div>
-
-          <div className="grid gap-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-steel-400">
-              Sitemap
-            </p>
-            {taderData.navigation.map((item) => (
-              <Link key={item.href} href={item.href} className="group flex items-center justify-between border-b border-black/8 py-3 text-sm text-steel-500 transition-colors duration-200 hover:text-graphite">
-                <span>{item.label}</span>
-                <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
-            ))}
-          </div>
-
-          <div className="space-y-5">
-            <div className="rounded-none border border-black/8 bg-white/80 p-6 shadow-[0_24px_50px_rgba(15,23,42,0.08)]">
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/80">
-                Procurement Note
-              </p>
-              <p className="mt-4 text-sm leading-7 text-steel-500">
-                The current product data set covers micro end mills up to 3.0 mm with standard shank diameters below 6.0 mm. A 1/8 inch (3.175 mm) shank is treated as custom MOQ, and discontinued composite programs require manual review.
-              </p>
-            </div>
-            <a
-              href={taderData.siteMeta.inquiryFormUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.26em] text-steel-400 transition-colors duration-200 hover:text-graphite"
-            >
-              Open the external inquiry workflow
-              <ExternalLink className="size-3.5" />
-            </a>
           </div>
         </div>
       </footer>

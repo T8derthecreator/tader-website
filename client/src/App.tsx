@@ -4,6 +4,7 @@ Design Philosophy Reminder (Swiss Industrial Editorial):
 - Keep navigation predictable with strong escape routes between category, application, and quote paths.
 - The top-level app should remain visually restrained so page compositions carry the brand voice.
 */
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
@@ -11,22 +12,27 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import {
   AboutPage,
-  AerospacePage,
   AluminumEndMillsPage,
   ApplicationsPage,
   BallNoseEndMillsPage,
   CarbideRodsPage,
   CornerRadiusEndMillsPage,
-  ElectronicsPage,
   FlatEndMillsPage,
   HomePage,
-  MedicalPage,
   NotFoundPage,
   ProductDetailPage,
   ProductsPage,
   QuoteRequestPage,
   TechnologyPage,
 } from "./pages/SitePages";
+
+function LegacyApplicationsRedirect() {
+  useEffect(() => {
+    window.location.replace("/applications");
+  }, []);
+
+  return null;
+}
 
 function Router() {
   return (
@@ -40,9 +46,7 @@ function Router() {
       <Route path="/aluminum-end-mills" component={AluminumEndMillsPage} />
       <Route path="/carbide-rods" component={CarbideRodsPage} />
       <Route path="/applications" component={ApplicationsPage} />
-      <Route path="/applications/medical" component={MedicalPage} />
-      <Route path="/applications/aerospace" component={AerospacePage} />
-      <Route path="/applications/electronics" component={ElectronicsPage} />
+      <Route path="/applications/:legacySlug" component={LegacyApplicationsRedirect} />
       <Route path="/technology" component={TechnologyPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/quote-request" component={QuoteRequestPage} />

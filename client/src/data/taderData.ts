@@ -50,23 +50,25 @@ export type SkuRecord = {
   construction_labels: readonly string[];
 };
 
+export const FORM_URL = "https://toolinginquiryform.netlify.app/";
+
 export const taderData = {
   "siteMeta": {
     "brand": "ZENOK",
     "company": "ZENOK",
-    "heroTitle": "Micro-Precision End Mills Built for Demanding Applications",
-    "heroSubtitle": "Taiwan-made carbide tooling for U.S. CNC shops serving medical, aerospace, and electronics programs.",
+    "heroTitle": "Taiwan Micro Cutting Tool Cost-Down Partner",
+    "heroSubtitle": "Submit your tooling specs and target price. We evaluate feasibility and respond with a cost-down proposal within 2 business days.",
     "heroImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-hero-precision-tooling-cexGHiUD3iLL8zn8jgmMrm.webp",
     "blueprintImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-technology-blueprint-GeB22kQRd5mwYcCuzMguar.webp",
     "primaryCta": {
+      "label": "Submit Cost-Down Request",
+      "href": FORM_URL
+    },
+    "secondaryCta": {
       "label": "Browse Products",
       "href": "/products"
     },
-    "secondaryCta": {
-      "label": "Review Technology",
-      "href": "/technology"
-    },
-    "inquiryFormUrl": "https://toolinginquiryform.netlify.app/",
+    "inquiryFormUrl": FORM_URL,
     "heroHighlights": [
       {
         "label": "ZENOK lines",
@@ -5621,11 +5623,12 @@ export const taderData = {
       "slug": "medical",
       "title": "Medical Machining",
       "eyebrow": "Application / Medical",
-      "description": "Micro tools for implant components, surgical devices, and miniature precision features where consistency and clean edge quality matter.",
+      "description": "Medical programs reward suppliers who can protect miniature-feature quality while lowering tool cost across repeat production.",
       "focus": [
-        "Titanium and stainless workflows",
-        "Tight tolerance miniature features",
-        "Stable surface finish for critical parts"
+        "Titanium and stainless steel workflows (Ti-6Al-4V, 316L)",
+        "Tolerances down to ±0.005 mm on miniature features",
+        "Stable surface finish Ra requirements for implant-grade parts",
+        "High consumption volume = high cost-down leverage"
       ],
       "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-medical-machining-89pKNW65wEEfmggUukooMH.webp"
     },
@@ -5633,11 +5636,12 @@ export const taderData = {
       "slug": "aerospace",
       "title": "Aerospace Machining",
       "eyebrow": "Application / Aerospace",
-      "description": "Precision cutting tools for aerospace subcontractors handling high-value materials, fine geometries, and repeatable process windows.",
+      "description": "Aerospace programs need lower landed cost without compromising qualified process windows on high-value materials.",
       "focus": [
-        "Small features on critical components",
-        "Rigidity for demanding geometries",
-        "Reliable performance in high-value part programs"
+        "High-value materials: Inconel, titanium alloys, hardened steels",
+        "Small features on structural and fluid-path components",
+        "Repeatable process windows to protect part qualification status",
+        "Per-tool cost reduction compounds across long production runs"
       ],
       "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-aerospace-machining-N5egC8RrQrLpFZVuhcC8Dg.webp"
     },
@@ -5645,11 +5649,12 @@ export const taderData = {
       "slug": "electronics",
       "title": "Electronics Manufacturing",
       "eyebrow": "Application / Electronics",
-      "description": "Micro end mills for molds, connectors, housings, and miniature precision components used across electronics and device manufacturing.",
+      "description": "Electronics tooling programs gain the most when micro-diameter consumption is high and each cost-down win repeats across many cycles.",
       "focus": [
-        "Tiny cavities and connector details",
-        "Fine geometry replication",
-        "Stable chip control in small-part machining"
+        "Micro cavities, connector molds, and housing details",
+        "Feature replication accuracy in high-cycle tooling programs",
+        "Fine geometry at 0.1–1.0 mm diameter range",
+        "Volume consumption makes cost-down proposals most impactful"
       ],
       "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-electronics-machining-j7uSMhPF9xWBScJSQ2djkx.webp"
     }
@@ -5658,17 +5663,17 @@ export const taderData = {
     {
       "id": "construction-b-vs-c",
       "title": "Construction B vs C",
-      "summary": "B uses a carbide tipped configuration and is not compatible with shrink-fit toolholders. C is full solid carbide with broader holder compatibility.",
+      "summary": "B (Composite) uses a carbide-tipped configuration on a steel shank. It is not compatible with shrink-fit toolholders and is limited to shank diameters of 6 mm and below. C (Solid Carbide) is full one-piece carbide — SS308 grade — with no shank restriction and broad holder compatibility including shrink-fit. For most cost-down proposals, B construction offers the best price-to-performance ratio within its compatible use range.",
       "points": [
-        "B construction is limited to shank diameter 4 mm and below.",
-        "C construction removes that shank restriction and suits broader setups.",
-        "Product detail pages explicitly show shrink-fit compatibility warnings when B is selected."
+        "B construction: shank ≤ 6 mm, not shrink-fit compatible",
+        "C construction: shrink-fit compatible, full-body rigidity",
+        "Cost-down proposals will specify which construction suits your holder setup and tolerance requirements"
       ]
     },
     {
       "id": "taiwan-duty",
       "title": "Taiwan 4.8% MFN Duty Advantage",
-      "summary": "Taiwan-origin tooling can offer a tariff position advantage versus higher-duty sourcing routes, helping landed cost discussions with U.S. buyers.",
+      "summary": "Taiwan-origin tooling can offer a tariff position advantage versus higher-duty sourcing routes, helping landed cost discussions with U.S. buyers. This duty advantage is factored into every cost-down proposal ZENOK submits — giving U.S. buyers a structurally lower landed cost versus China-origin alternatives.",
       "points": [
         "Home page highlights Taiwan MFN 4.8% as a commercial differentiator.",
         "Technology page frames duty advantage in procurement language, not consumer marketing language.",
@@ -5676,28 +5681,49 @@ export const taderData = {
       ]
     },
     {
+      "id": "coating-options",
+      "title": "Coating Options and Application Fit",
+      "summary": "Coating selection affects tool life, surface finish, and total cost-per-part. ZENOK offers four standard coatings matched to workpiece material.",
+      "points": [
+        "TiAlN — general purpose; stainless, alloy steel, titanium",
+        "AlTiN — high-heat applications; Inconel, hardened steel",
+        "TiN — cost-effective; aluminum, brass, soft materials",
+        "Uncoated — micro features below 0.5 mm where coating thickness affects dimensional accuracy"
+      ]
+    },
+    {
       "id": "carbide-comparison",
       "title": "Carbide Tipped vs Solid Carbide",
       "summary": "The site explains trade-offs between tipped and full solid carbide construction so buyers can match holder strategy, rigidity, and cost to application needs.",
       "points": [
-        "Solid carbide supports broader holder compatibility and full-body rigidity.",
-        "Carbide tipped construction remains viable in suitable size ranges.",
-        "Selection guidance is embedded into category and SKU detail views."
+        "Tipped construction can lower cost in selected programs.",
+        "Full solid carbide supports broader rigidity and holder options.",
+        "Selection depends on application, setup, and sourcing priorities."
+      ]
+    },
+    {
+      "id": "carbide-rod-supply-chain",
+      "title": "Carbide Rod to Finished Tool — One Supply Chain",
+      "summary": "ZENOK sources and supplies tungsten carbide rod stock directly. This vertical integration means our finished tool cost structure starts below where most competitors begin purchasing. The result: cost-down proposals that are commercially realistic, not just theoretically possible.",
+      "points": [
+        "Bar stock supply to other manufacturers is part of our business",
+        "Competitors purchasing bar stock from the same supply chain cannot structurally undercut ZENOK's finished tool pricing",
+        "Every proposal reflects actual production economics, not discounted list prices"
       ]
     }
   ],
   "aboutSections": [
     {
-      "title": "Company Positioning",
-      "body": "ZENOK presents a Taiwan-based precision tooling catalog focused on micro end mills for demanding U.S. machining applications."
+      "title": "Cost-Down Solution Partner",
+      "body": "ZENOK is positioned first as a cost-down solution partner for U.S. buyers who need micro-tooling proposals tied to target price, feasibility, and delivery speed."
     },
     {
-      "title": "Vertical Integration",
-      "body": "Disciplined process control across finished tooling supports cost control, lead-time consistency, and defensible pricing in specialized micro-tool programs."
+      "title": "Integrated Cost Basis",
+      "body": "Direct carbide-rod sourcing and finished-tool production create a commercial structure that supports realistic cost-down proposals rather than promotional pricing."
     },
     {
       "title": "Manufacturing Capability",
-      "body": "The product structure emphasizes micro diameters, long-neck geometries, and application-fit constructions for shops serving medical, aerospace, and electronics work."
+      "body": "The active range focuses on 0.1–3.0 mm micro end mills with application-fit constructions for medical, aerospace, and electronics programs where tooling consumption can justify a cost-down review."
     }
   ],
   "filters": {
