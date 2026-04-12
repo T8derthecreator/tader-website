@@ -4,7 +4,7 @@ Design Philosophy Reminder (Swiss Industrial Editorial):
 - Use asymmetrical composition, dimensional evidence, and technical labeling before marketing language.
 - Maintain high contrast, measured motion, and disciplined catalog-style hierarchy throughout.
 */
-import { type FormEvent, type ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 import { Link, useLocation, useRoute } from "wouter";
 import {
   AlertTriangle,
@@ -951,59 +951,26 @@ export function AboutPage() {
 }
 
 export function QuoteRequestPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    setIsSubmitting(true);
-    setSubmitMessage(null);
-    setSubmitError(null);
-
-    try {
-      const response = await fetch(`https://formspree.io/f/${taderData.siteMeta.formspreeId}`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Unable to submit quote request.");
-      }
-
-      form.reset();
-      setSubmitMessage("Your RFQ has been sent. The ZENOK team can now review the submitted product line, quantity, and application context.");
-    } catch {
-      setSubmitError("The form could not be submitted right now. Please try again, or email the same RFQ details directly if needed.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
   return (
     <SiteLayout>
       <SeoHead
         title="Quote Request | ZENOK"
-        description="Submit your ZENOK quote request with Formspree and reference specific product lines, model numbers, and application context."
+        description="Open the ZENOK external inquiry form and submit your product line, model number, quantity, and application context through the existing notification workflow."
         canonicalPath="/quote-request"
       />
       <PageHero
         eyebrow="Quote Request"
-        title="Send your RFQ with the product line, dimensions, and application context already defined."
-        description="The quote page is structured for engineering buyers: mention the product line, SKU or model number, required quantity, material, and holder constraints so discussion can start with the right assumptions."
+        title="Open the existing inquiry workflow with your product line, dimensions, and application context already prepared."
+        description="To keep your current notification mailbox and spreadsheet intake unchanged, the RFQ workflow now opens the dedicated external inquiry form in a new tab while this page stays as a branded reference point."
         image={taderData.siteMeta.blueprintImage}
+        primaryHref={taderData.siteMeta.inquiryFormUrl}
+        primaryLabel="Open Inquiry Form"
         secondaryHref="/products"
         secondaryLabel="Back to Catalog"
       />
       <section className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
         <div className="space-y-6 border border-black/8 bg-white/82 p-8 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
-          <h2 className="font-display text-4xl text-graphite">Information to include</h2>
+          <h2 className="font-display text-4xl text-graphite">What to prepare before opening the form</h2>
           <div className="space-y-4 text-sm leading-8 text-steel-300">
             <p>Include the SKU or model number if your selection is already narrowed.</p>
             <p>State the workpiece material, application sector, and any feature-size requirement that matters to tool choice.</p>
@@ -1016,103 +983,49 @@ export function QuoteRequestPage() {
             <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
           </div>
           <div className="border border-copper/25 bg-copper/8 p-5 text-sm leading-7 text-steel-500">
-            Use the existing Formspree workflow below so your request goes directly into the current RFQ intake channel.
+            This route now hands off to the existing external inquiry form so your current email notification and spreadsheet logging workflow can stay unchanged.
           </div>
         </div>
-        <div
-          id="formspree-embed"
-          className="border border-black/8 bg-white/88 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)]"
-        >
-          <form className="grid gap-5" onSubmit={handleSubmit}>
-            <input type="hidden" name="_subject" value="ZENOK Quote Request" />
-            <div className="grid gap-5 md:grid-cols-2">
-              <label className="grid gap-2 text-sm text-steel-200">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Name</span>
-                <Input
-                  required
-                  name="name"
-                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Procurement or engineering contact"
-                />
-              </label>
-              <label className="grid gap-2 text-sm text-steel-200">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Work Email</span>
-                <Input
-                  required
-                  type="email"
-                  name="email"
-                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="name@company.com"
-                />
-              </label>
-              <label className="grid gap-2 text-sm text-steel-200">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Company</span>
-                <Input
-                  required
-                  name="company"
-                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Company or facility name"
-                />
-              </label>
-              <label className="grid gap-2 text-sm text-steel-200">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Sector</span>
-                <Input
-                  name="sector"
-                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Medical, aerospace, electronics..."
-                />
-              </label>
-              <label className="grid gap-2 text-sm text-steel-200 md:col-span-2">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">ZENOK line / SKU / Model</span>
-                <Input
-                  name="model"
-                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Example: FEM-RG-2F-D0010"
-                />
-              </label>
-              <label className="grid gap-2 text-sm text-steel-200">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Quantity</span>
-                <Input
-                  name="quantity"
-                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Example: 50 pcs"
-                />
-              </label>
-              <label className="grid gap-2 text-sm text-steel-200">
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Holder Constraint</span>
-                <Input
-                  name="holder"
-                  className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Shrink-fit, collet, 1/8 inch custom MOQ, guidance needed"
-                />
-              </label>
+        <div className="border border-black/8 bg-white/88 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+          <div className="grid gap-6">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Current workflow</p>
+              <h2 className="mt-3 font-display text-4xl text-graphite">Continue in the dedicated multi-step inquiry form</h2>
+              <p className="mt-4 text-sm leading-7 text-steel-300">
+                The external form already matches your intake process, sends notifications to the current mailbox, and keeps responses organized in the existing spreadsheet workflow. Opening it in a new tab preserves the catalog session so buyers can compare SKUs and return without losing context.
+              </p>
             </div>
-            <label className="grid gap-2 text-sm text-steel-200">
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Application Notes</span>
-              <textarea
-                required
-                name="message"
-                rows={8}
-                className="min-h-[220px] rounded-none border border-black/10 bg-[#f8f5ef] px-3 py-3 text-graphite outline-none transition-colors placeholder:text-steel-400 focus:border-copper/60"
-                placeholder="Describe material, feature size, tolerance concerns, coating preferences, and any B vs C evaluation questions."
-              />
-            </label>
+            <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-2">
+              <div className="bg-[#f8f5ef] p-5">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 1</p>
+                <p className="mt-3 text-sm leading-7 text-steel-300">Buyer contact, company name, industry, and current tooling brand.</p>
+              </div>
+              <div className="bg-[#f8f5ef] p-5">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 2</p>
+                <p className="mt-3 text-sm leading-7 text-steel-300">Tool list, comparison basis, and dimensional references for the requested program.</p>
+              </div>
+              <div className="bg-[#f8f5ef] p-5">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 3</p>
+                <p className="mt-3 text-sm leading-7 text-steel-300">Application requirements, material, tolerance concerns, and special holder notes.</p>
+              </div>
+              <div className="bg-[#f8f5ef] p-5">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 4</p>
+                <p className="mt-3 text-sm leading-7 text-steel-300">Submission confirmation through the existing inquiry workflow already tied to your notifications.</p>
+              </div>
+            </div>
             <div className="flex flex-col gap-4 border-t border-black/8 pt-5 md:flex-row md:items-center md:justify-between">
               <div className="space-y-2 text-sm leading-6 text-steel-300">
-                <p>This form submits through Formspree using the existing intake ID <span className="font-mono text-graphite">{taderData.siteMeta.formspreeId}</span>.</p>
-                {submitMessage ? <p className="text-copper-soft">{submitMessage}</p> : null}
-                {submitError ? <p className="text-[#f4b08c]">{submitError}</p> : null}
+                <p>Destination: <span className="font-mono text-graphite">toolinginquiryform.netlify.app</span></p>
+                <p>The form opens in a new tab so the product catalog remains available in the current session.</p>
               </div>
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.25em] text-white hover:bg-copper-soft disabled:opacity-70"
-              >
-                {isSubmitting ? "Sending..." : "Submit RFQ"}
-                <ArrowRight className="ml-2 size-4" />
-              </Button>
+              <a href={taderData.siteMeta.inquiryFormUrl} target="_blank" rel="noreferrer">
+                <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.25em] text-white hover:bg-copper-soft">
+                  Launch External Form
+                  <ArrowRight className="ml-2 size-4" />
+                </Button>
+              </a>
             </div>
-          </form>
+          </div>
         </div>
       </section>
     </SiteLayout>

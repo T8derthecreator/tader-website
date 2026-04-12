@@ -66,7 +66,7 @@ export const taderData = {
       "label": "Review Technology",
       "href": "/technology"
     },
-    "formspreeId": "xbdpanvk",
+    "inquiryFormUrl": "https://toolinginquiryform.netlify.app/",
     "heroHighlights": [
       {
         "label": "ZENOK lines",

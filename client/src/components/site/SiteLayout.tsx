@@ -59,12 +59,12 @@ export function SiteLayout({ children }: SiteLayoutProps) {
           </nav>
 
           <div className="flex items-center justify-start lg:justify-end">
-            <Link href="/quote-request">
+            <a href={taderData.siteMeta.inquiryFormUrl} target="_blank" rel="noreferrer">
               <Button className="rounded-none border border-copper/50 bg-copper px-5 py-5 font-mono text-[11px] uppercase tracking-[0.25em] text-white shadow-[0_18px_40px_rgba(194,121,74,0.16)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-copper-soft">
                 Request Quote
                 <ArrowRight className="ml-2 size-4" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </header>
@@ -108,12 +108,12 @@ export function SiteLayout({ children }: SiteLayoutProps) {
               </p>
             </div>
             <a
-              href="https://www.formspree.io/"
+              href={taderData.siteMeta.inquiryFormUrl}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.26em] text-steel-400 transition-colors duration-200 hover:text-graphite"
             >
-              Form workflow powered by Formspree
+              Open the external inquiry workflow
               <ExternalLink className="size-3.5" />
             </a>
           </div>
