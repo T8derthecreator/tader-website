@@ -104,8 +104,7 @@ export function SiteLayout({ children }: SiteLayoutProps) {
                 Procurement Note
               </p>
               <p className="mt-4 text-sm leading-7 text-steel-500">
-                The current product data set covers micro end mills up to 3.0 mm. Carbide rod supply
-                capability is presented as an integration advantage and quote-based program discussion.
+                The current product data set covers micro end mills up to 3.0 mm with standard shank diameters below 6.0 mm. A 1/8 inch (3.175 mm) shank is treated as custom MOQ, and discontinued composite programs require manual review.
               </p>
             </div>
             <a

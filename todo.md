@@ -12,3 +12,15 @@
 - [ ] Define a consistent SKU scheme for flat, ball nose, corner radius, aluminum, and carbide rod product groups.
 - [ ] Update the product data module and all UI surfaces to display the new product naming and SKU conventions consistently.
 - [ ] Verify the revised naming on homepage, products page, product detail pages, and quote request form before delivery.
+
+## Navigation and Product Rule Revision
+- [ ] 將導覽與頁面中的 Request Quote 露出收斂為僅右上角保留。
+- [ ] 依新規格將 flute 篩選與資料限制為 2F、3F、4F、5F、6F。
+- [ ] 參考指定頁面，重新核對並整理僅保留 3 mm 以下的非鑽頭、非絞刀產品資料。
+- [ ] 將 1/8 inch 規則標註為客製且需達一定訂單量。
+- [ ] 維持 Construction 僅提供 B / C。
+- [ ] 移除複材鎢鋼加鎢鋼目前不生產的項目。
+- [ ] 移除或限制 shank 6 mm 以上不生產的項目。
+- [ ] 刪除鎢鋼焊接鎢鋼建議可刪除的項目。
+- [ ] 將不鏽鋼焊接鎢鋼限制在 shank 6 mm。
+- [ ] 依上述資料規則同步調整前端篩選、文案與產品詳情顯示。

@@ -59,12 +59,12 @@ export const taderData = {
     "heroImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-hero-precision-tooling-cexGHiUD3iLL8zn8jgmMrm.webp",
     "blueprintImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-technology-blueprint-GeB22kQRd5mwYcCuzMguar.webp",
     "primaryCta": {
-      "label": "Request a Quote",
-      "href": "/quote-request"
-    },
-    "secondaryCta": {
       "label": "Browse Products",
       "href": "/products"
+    },
+    "secondaryCta": {
+      "label": "Review Technology",
+      "href": "/technology"
     },
     "formspreeId": "xbdpanvk",
     "heroHighlights": [
@@ -74,7 +74,7 @@ export const taderData = {
       },
       {
         "label": "Active micro SKUs",
-        "value": "209"
+        "value": "156"
       },
       {
         "label": "Diameter range",
@@ -103,10 +103,6 @@ export const taderData = {
     {
       "label": "About",
       "href": "/about"
-    },
-    {
-      "label": "Quote Request",
-      "href": "/quote-request"
     }
   ],
   "categoryPages": [
@@ -122,7 +118,7 @@ export const taderData = {
         "ZF4",
         "ZF4-LN"
       ],
-      "skuCount": 108,
+      "skuCount": 97,
       "diameterRangeMm": [
         0.1,
         3.0
@@ -137,10 +133,9 @@ export const taderData = {
       "seriesCodes": [
         "ZB2",
         "ZB2-LS",
-        "ZB2-H",
         "ZB2-LN"
       ],
-      "skuCount": 50,
+      "skuCount": 37,
       "diameterRangeMm": [
         0.2,
         3.0
@@ -153,10 +148,9 @@ export const taderData = {
       "description": "Corner radius geometries for longer life and improved edge strength.",
       "route": "/corner-radius-end-mills",
       "seriesCodes": [
-        "ZR2",
-        "ZR2-LN"
+        "ZR2"
       ],
-      "skuCount": 35,
+      "skuCount": 6,
       "diameterRangeMm": [
         1.0,
         3.0
@@ -184,7 +178,7 @@ export const taderData = {
       "slug": "carbide-rods",
       "label": "Carbide Rods",
       "shortLabel": "Carbide Rods",
-      "description": "Integrated carbide rod capability supporting toolmaking cost control and supply consistency.",
+      "description": "Disciplined micro-tool production supporting cost control and supply consistency across standard programs.",
       "route": "/carbide-rods",
       "seriesCodes": [],
       "skuCount": 0,
@@ -226,20 +220,20 @@ export const taderData = {
       "series_slug": "zf2-ln",
       "flutes": 2,
       "construction": "B/C",
-      "sku_count": 67,
+      "sku_count": 61,
       "diameter_range_mm": [
         0.2,
-        3.0
+        2.5
       ],
       "effective_length_range_mm": [
         1.0,
-        30.0
+        25.0
       ],
       "legacy_series": "XL2",
       "line_name": "Flat End Mill · 2-Flute · Long Neck",
       "route": "/flat-end-mills",
       "intro": "2-flute long neck flat end mill product line for deep micro features where reach and clearance are critical.",
-      "skuCount": 67
+      "skuCount": 61
     },
     {
       "series": "ZF4",
@@ -272,20 +266,20 @@ export const taderData = {
       "series_slug": "zf4-ln",
       "flutes": 4,
       "construction": "B/C",
-      "sku_count": 22,
+      "sku_count": 17,
       "diameter_range_mm": [
         1.0,
-        3.0
+        2.5
       ],
       "effective_length_range_mm": [
         6.0,
-        25.0
+        20.0
       ],
       "legacy_series": "XL4",
       "line_name": "Flat End Mill · 4-Flute · Long Neck",
       "route": "/flat-end-mills",
       "intro": "4-flute long neck flat end mill product line for deep micro features where reach and clearance are critical.",
-      "skuCount": 22
+      "skuCount": 17
     },
     {
       "series": "ZR2",
@@ -309,29 +303,6 @@ export const taderData = {
       "route": "/corner-radius-end-mills",
       "intro": "2-flute regular corner radius end mill product line for core micro-machining programs and everyday high-precision features.",
       "skuCount": 6
-    },
-    {
-      "series": "ZR2-LN",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "series_slug": "zr2-ln",
-      "flutes": 2,
-      "construction": "C only",
-      "sku_count": 29,
-      "diameter_range_mm": [
-        1.0,
-        3.0
-      ],
-      "effective_length_range_mm": [
-        3.0,
-        30.0
-      ],
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "route": "/corner-radius-end-mills",
-      "intro": "2-flute long neck corner radius end mill product line for deep micro features where reach and clearance are critical.",
-      "skuCount": 29
     },
     {
       "series": "ZB2",
@@ -380,29 +351,6 @@ export const taderData = {
       "skuCount": 1
     },
     {
-      "series": "ZB2-H",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "series_slug": "zb2-h",
-      "flutes": 2,
-      "construction": "C only",
-      "sku_count": 10,
-      "diameter_range_mm": [
-        0.3,
-        3.0
-      ],
-      "effective_length_range_mm": [
-        0.6,
-        8.0
-      ],
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "route": "/ball-nose-end-mills",
-      "intro": "2-flute hardened ball nose end mill product line for hard-material programs that prioritize rigidity and edge security.",
-      "skuCount": 10
-    },
-    {
       "series": "ZB2-LN",
       "category": "Ball Nose End Mill",
       "category_slug": "ball-nose-end-mills",
@@ -410,20 +358,20 @@ export const taderData = {
       "series_slug": "zb2-ln",
       "flutes": 2,
       "construction": "B/C",
-      "sku_count": 27,
+      "sku_count": 24,
       "diameter_range_mm": [
         0.4,
-        3.0
+        2.0
       ],
       "effective_length_range_mm": [
         2.0,
-        25.0
+        20.0
       ],
       "legacy_series": "XLB2",
       "line_name": "Ball Nose End Mill · 2-Flute · Long Neck",
       "route": "/ball-nose-end-mills",
       "intro": "2-flute long neck ball nose end mill product line for deep micro features where reach and clearance are critical.",
-      "skuCount": 27
+      "skuCount": 24
     },
     {
       "series": "ZA2",
@@ -478,7 +426,7 @@ export const taderData = {
       "sub_type": "Long Shank",
       "series_slug": "za2-ls",
       "flutes": 2,
-      "construction": "C only",
+      "construction": "B/C",
       "sku_count": 4,
       "diameter_range_mm": [
         1.0,
@@ -501,7 +449,7 @@ export const taderData = {
       "sub_type": "Long Shank",
       "series_slug": "za3-ls",
       "flutes": 3,
-      "construction": "C only",
+      "construction": "B/C",
       "sku_count": 4,
       "diameter_range_mm": [
         1.0,
@@ -2995,192 +2943,6 @@ export const taderData = {
       ]
     },
     {
-      "model_no": "XL2D0300E100",
-      "series": "ZF2-LN",
-      "series_slug": "zf2-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 10.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2d0300e100",
-      "catalog_sku": "ZF2-D0300-EL1000-LN",
-      "legacy_series": "XL2",
-      "line_name": "Flat End Mill · 2-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2D0300E120",
-      "series": "ZF2-LN",
-      "series_slug": "zf2-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 12.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2d0300e120",
-      "catalog_sku": "ZF2-D0300-EL1200-LN",
-      "legacy_series": "XL2",
-      "line_name": "Flat End Mill · 2-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2D0300E160",
-      "series": "ZF2-LN",
-      "series_slug": "zf2-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 16.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2d0300e160",
-      "catalog_sku": "ZF2-D0300-EL1600-LN",
-      "legacy_series": "XL2",
-      "line_name": "Flat End Mill · 2-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2D0300E200",
-      "series": "ZF2-LN",
-      "series_slug": "zf2-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 20.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2d0300e200",
-      "catalog_sku": "ZF2-D0300-EL2000-LN",
-      "legacy_series": "XL2",
-      "line_name": "Flat End Mill · 2-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2D0300E250",
-      "series": "ZF2-LN",
-      "series_slug": "zf2-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 25.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2d0300e250",
-      "catalog_sku": "ZF2-D0300-EL2500-LN",
-      "legacy_series": "XL2",
-      "line_name": "Flat End Mill · 2-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2D0300E300",
-      "series": "ZF2-LN",
-      "series_slug": "zf2-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 30.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2d0300e300",
-      "catalog_sku": "ZF2-D0300-EL3000-LN",
-      "legacy_series": "XL2",
-      "line_name": "Flat End Mill · 2-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
       "model_no": "MS4D0100S04",
       "series": "ZF4",
       "series_slug": "zf4",
@@ -3907,161 +3669,6 @@ export const taderData = {
       ]
     },
     {
-      "model_no": "XL4D0300E100",
-      "series": "ZF4-LN",
-      "series_slug": "zf4-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 4,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 10.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl4d0300e100",
-      "catalog_sku": "ZF4-D0300-EL1000-LN",
-      "legacy_series": "XL4",
-      "line_name": "Flat End Mill · 4-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL4D0300E120",
-      "series": "ZF4-LN",
-      "series_slug": "zf4-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 4,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 12.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl4d0300e120",
-      "catalog_sku": "ZF4-D0300-EL1200-LN",
-      "legacy_series": "XL4",
-      "line_name": "Flat End Mill · 4-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL4D0300E160",
-      "series": "ZF4-LN",
-      "series_slug": "zf4-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 4,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 16.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl4d0300e160",
-      "catalog_sku": "ZF4-D0300-EL1600-LN",
-      "legacy_series": "XL4",
-      "line_name": "Flat End Mill · 4-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL4D0300E200",
-      "series": "ZF4-LN",
-      "series_slug": "zf4-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 4,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 20.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl4d0300e200",
-      "catalog_sku": "ZF4-D0300-EL2000-LN",
-      "legacy_series": "XL4",
-      "line_name": "Flat End Mill · 4-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL4D0300E250",
-      "series": "ZF4-LN",
-      "series_slug": "zf4-ln",
-      "category": "Flat End Mill",
-      "category_slug": "flat-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 4,
-      "diameter_mm": 3.0,
-      "radius_mm": null,
-      "cut_length_mm": 4.5,
-      "effective_length_mm": 25.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl4d0300e250",
-      "catalog_sku": "ZF4-D0300-EL2500-LN",
-      "legacy_series": "XL4",
-      "line_name": "Flat End Mill · 4-Flute · Long Neck",
-      "type_label": "Flat End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
       "model_no": "MS2RD0100R010",
       "series": "ZR2",
       "series_slug": "zr2",
@@ -4256,905 +3863,6 @@ export const taderData = {
       "coating": "Contact for spec",
       "construction_labels": [
         "Carbide Tipped",
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E030",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 3.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e030",
-      "catalog_sku": "ZR2-D0100-R0010-EL0300-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E040",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 4.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e040",
-      "catalog_sku": "ZR2-D0100-R0010-EL0400-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E060",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 6.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e060",
-      "catalog_sku": "ZR2-D0100-R0010-EL0600-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E080",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 8.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e080",
-      "catalog_sku": "ZR2-D0100-R0010-EL0800-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E100",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 10.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e100",
-      "catalog_sku": "ZR2-D0100-R0010-EL1000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E120",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 12.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e120",
-      "catalog_sku": "ZR2-D0100-R0010-EL1200-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E140",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 14.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e140",
-      "catalog_sku": "ZR2-D0100-R0010-EL1400-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0100R010E200",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.1,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 20.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0100r010e200",
-      "catalog_sku": "ZR2-D0100-R0010-EL2000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0150R015E040",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.15,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 4.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0150r015e040",
-      "catalog_sku": "ZR2-D0150-R0015-EL0400-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0150R015E060",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.15,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 6.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0150r015e060",
-      "catalog_sku": "ZR2-D0150-R0015-EL0600-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0150R015E080",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.15,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 8.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0150r015e080",
-      "catalog_sku": "ZR2-D0150-R0015-EL0800-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0150R015E100",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.15,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 10.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0150r015e100",
-      "catalog_sku": "ZR2-D0150-R0015-EL1000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0150R015E120",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.15,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 12.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0150r015e120",
-      "catalog_sku": "ZR2-D0150-R0015-EL1200-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0150R015E160",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.15,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 16.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0150r015e160",
-      "catalog_sku": "ZR2-D0150-R0015-EL1600-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0150R015E200",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.15,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 20.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0150r015e200",
-      "catalog_sku": "ZR2-D0150-R0015-EL2000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0200R020E060",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 6.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0200r020e060",
-      "catalog_sku": "ZR2-D0200-R0020-EL0600-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0200R020E080",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 8.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0200r020e080",
-      "catalog_sku": "ZR2-D0200-R0020-EL0800-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0200R020E100",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 10.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0200r020e100",
-      "catalog_sku": "ZR2-D0200-R0020-EL1000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0200R020E120",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 12.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0200r020e120",
-      "catalog_sku": "ZR2-D0200-R0020-EL1200-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0200R020E160",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 16.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0200r020e160",
-      "catalog_sku": "ZR2-D0200-R0020-EL1600-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0200R020E200",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 20.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0200r020e200",
-      "catalog_sku": "ZR2-D0200-R0020-EL2000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0200R020E250",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 25.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0200r020e250",
-      "catalog_sku": "ZR2-D0200-R0020-EL2500-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0300R020E080",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 8.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0300r020e080",
-      "catalog_sku": "ZR2-D0300-R0020-EL0800-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0300R020E100",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 10.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0300r020e100",
-      "catalog_sku": "ZR2-D0300-R0020-EL1000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0300R020E120",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 12.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0300r020e120",
-      "catalog_sku": "ZR2-D0300-R0020-EL1200-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0300R020E160",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 16.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0300r020e160",
-      "catalog_sku": "ZR2-D0300-R0020-EL1600-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0300R020E200",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 20.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0300r020e200",
-      "catalog_sku": "ZR2-D0300-R0020-EL2000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0300R020E250",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 25.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0300r020e250",
-      "catalog_sku": "ZR2-D0300-R0020-EL2500-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XL2RD0300R020E300",
-      "series": "ZR2-LN",
-      "series_slug": "zr2-ln",
-      "category": "Corner Radius End Mill",
-      "category_slug": "corner-radius-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 0.2,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 30.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xl2rd0300r020e300",
-      "catalog_sku": "ZR2-D0300-R0020-EL3000-LN",
-      "legacy_series": "XL2R",
-      "line_name": "Corner Radius End Mill · 2-Flute · Long Neck",
-      "type_label": "Corner Radius End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
         "Full Solid Carbide"
       ]
     },
@@ -5584,316 +4292,6 @@ export const taderData = {
       "coating": "Contact for spec",
       "construction_labels": [
         "Carbide Tipped",
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0015S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 0.3,
-      "radius_mm": 0.15,
-      "cut_length_mm": 0.3,
-      "effective_length_mm": 0.6,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0015s06",
-      "catalog_sku": "ZB2-D0030-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0020S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 0.4,
-      "radius_mm": 0.2,
-      "cut_length_mm": 0.4,
-      "effective_length_mm": 0.8,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0020s06",
-      "catalog_sku": "ZB2-D0040-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0025S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 0.5,
-      "radius_mm": 0.25,
-      "cut_length_mm": 0.5,
-      "effective_length_mm": 1.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0025s06",
-      "catalog_sku": "ZB2-D0050-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0030S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 0.6,
-      "radius_mm": 0.3,
-      "cut_length_mm": 0.6,
-      "effective_length_mm": 1.2,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0030s06",
-      "catalog_sku": "ZB2-D0060-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0040S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 0.8,
-      "radius_mm": 0.4,
-      "cut_length_mm": 0.8,
-      "effective_length_mm": 1.6,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0040s06",
-      "catalog_sku": "ZB2-D0080-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0050S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 1.0,
-      "radius_mm": 0.5,
-      "cut_length_mm": 1.0,
-      "effective_length_mm": 2.5,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0050s06",
-      "catalog_sku": "ZB2-D0100-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0075S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 1.5,
-      "radius_mm": 0.75,
-      "cut_length_mm": 1.5,
-      "effective_length_mm": 4.0,
-      "overall_length_mm": 50.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0075s06",
-      "catalog_sku": "ZB2-D0150-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0100S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 2.0,
-      "radius_mm": 1.0,
-      "cut_length_mm": 2.0,
-      "effective_length_mm": 6.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0100s06",
-      "catalog_sku": "ZB2-D0200-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0125S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 2.5,
-      "radius_mm": 1.25,
-      "cut_length_mm": 2.5,
-      "effective_length_mm": 6.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0125s06",
-      "catalog_sku": "ZB2-D0250-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "SB2PR0150S06",
-      "series": "ZB2-H",
-      "series_slug": "zb2-h",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Hardened",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 1.5,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 8.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "sb2pr0150s06",
-      "catalog_sku": "ZB2-D0300-H",
-      "legacy_series": "SB2P",
-      "line_name": "Ball Nose End Mill · 2-Flute · Hardened",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
         "Full Solid Carbide"
       ]
     },
@@ -6690,99 +5088,6 @@ export const taderData = {
       ]
     },
     {
-      "model_no": "XLB2R0150E160",
-      "series": "ZB2-LN",
-      "series_slug": "zb2-ln",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 1.5,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 16.0,
-      "overall_length_mm": 75.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xlb2r0150e160",
-      "catalog_sku": "ZB2-D0300-EL1600-LN",
-      "legacy_series": "XLB2",
-      "line_name": "Ball Nose End Mill · 2-Flute · Long Neck",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XLB2R0150E200",
-      "series": "ZB2-LN",
-      "series_slug": "zb2-ln",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 1.5,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 20.0,
-      "overall_length_mm": 75.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xlb2r0150e200",
-      "catalog_sku": "ZB2-D0300-EL2000-LN",
-      "legacy_series": "XLB2",
-      "line_name": "Ball Nose End Mill · 2-Flute · Long Neck",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
-      "model_no": "XLB2R0150E250",
-      "series": "ZB2-LN",
-      "series_slug": "zb2-ln",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Long Neck",
-      "flutes": 2,
-      "diameter_mm": 3.0,
-      "radius_mm": 1.5,
-      "cut_length_mm": 3.0,
-      "effective_length_mm": 25.0,
-      "overall_length_mm": 60.0,
-      "shank_diameter_mm": 6.0,
-      "construction_options": [
-        "C"
-      ],
-      "has_b": false,
-      "has_c": true,
-      "price_label": "Contact for Quote",
-      "amazon_warning": null,
-      "slug": "xlb2r0150e250",
-      "catalog_sku": "ZB2-D0300-EL2500-LN",
-      "legacy_series": "XLB2",
-      "line_name": "Ball Nose End Mill · 2-Flute · Long Neck",
-      "type_label": "Ball Nose End Mills",
-      "coating": "Contact for spec",
-      "construction_labels": [
-        "Full Solid Carbide"
-      ]
-    },
-    {
       "model_no": "2HAD0100S04/6",
       "series": "ZA2",
       "series_slug": "za2",
@@ -7367,7 +5672,7 @@ export const taderData = {
       "points": [
         "Home page highlights Taiwan MFN 4.8% as a commercial differentiator.",
         "Technology page frames duty advantage in procurement language, not consumer marketing language.",
-        "Messaging is positioned as a sourcing advantage alongside precision and vertical integration."
+        "Messaging is positioned as a sourcing advantage alongside precision and disciplined process control."
       ]
     },
     {
@@ -7388,7 +5693,7 @@ export const taderData = {
     },
     {
       "title": "Vertical Integration",
-      "body": "From carbide rod capability to finished tooling, vertical integration supports cost control, lead-time consistency, and defensible pricing in specialized micro-tool programs."
+      "body": "Disciplined process control across finished tooling supports cost control, lead-time consistency, and defensible pricing in specialized micro-tool programs."
     },
     {
       "title": "Manufacturing Capability",
@@ -7397,10 +5702,10 @@ export const taderData = {
   ],
   "filters": {
     "categories": [
-      "aluminum-end-mills",
+      "flat-end-mills",
       "ball-nose-end-mills",
       "corner-radius-end-mills",
-      "flat-end-mills"
+      "aluminum-end-mills"
     ],
     "flutes": [
       2,
@@ -7408,7 +5713,6 @@ export const taderData = {
       4
     ],
     "sub_types": [
-      "Hardened",
       "Long Neck",
       "Long Shank",
       "Regular"
@@ -7421,8 +5725,8 @@ export const taderData = {
     "diameter_max_mm": 3.0,
     "radius_min_mm": 0.1,
     "radius_max_mm": 1.5,
-    "effective_length_min_mm": 0.6,
-    "effective_length_max_mm": 30.0,
+    "effective_length_min_mm": 1.0,
+    "effective_length_max_mm": 25.0,
     "overall_length_values_mm": [
       50.0,
       60.0,
@@ -7430,13 +5734,19 @@ export const taderData = {
     ],
     "shank_values_mm": [
       3.0,
-      4.0,
-      6.0
+      4.0
     ]
   },
   "notes": {
     "duplicateDisplaySkuCount": 0,
     "skuSlugStrategy": "Use model_no-derived slug because display SKU is human-readable while route stability stays anchored to model numbers.",
-    "carbideRodsDatasetAvailable": false
+    "carbideRodsDatasetAvailable": false,
+    "rule_refresh": {
+      "diameter_limit_mm": 3.0,
+      "shank_limit_rule": "Remove all standard SKUs with shank diameter >= 6.0 mm; 1/8 inch is quote-only custom MOQ.",
+      "source_rows": 209,
+      "active_rows": 156,
+      "removed_rows": 53
+    }
   }
 } as const;

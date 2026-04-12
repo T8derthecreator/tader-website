@@ -55,13 +55,21 @@ const productListSchema = {
   "@type": "ItemList",
   name: "ZENOK Carbide End Mills & Cutting Tools",
   numberOfItems: taderData.skus.length,
-  itemListElement: taderData.categoryPages.map((category, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: category.label,
-    url: typeof window !== "undefined" ? `${window.location.origin}${category.route}` : category.route,
-  })),
+  itemListElement: taderData.categoryPages
+    .filter((category) => category.skuCount > 0)
+    .map((category, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: category.label,
+      url: typeof window !== "undefined" ? `${window.location.origin}${category.route}` : category.route,
+    })),
 };
+
+const STANDARD_FLUTE_OPTIONS = [2, 3, 4, 5, 6] as const;
+const STANDARD_SCOPE_NOTE = "Standard production covers tool diameters up to 3.0 mm and shank diameters below 6.0 mm. A 1/8 inch (3.175 mm) shank is handled as custom MOQ only.";
+const PROGRAM_STATUS_NOTE = "Composite carbide-to-carbide programs outside the current B/C catalog are not in standard production and should be handled as special review only.";
+
+const categoryCards = taderData.categoryPages.filter((category) => category.skuCount > 0);
 
 type CatalogViewProps = {
   categorySlug?: string;
@@ -84,8 +92,8 @@ function PageHero({
   title: string;
   description: string;
   image: string;
-  primaryHref: string;
-  primaryLabel: string;
+  primaryHref?: string;
+  primaryLabel?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
 }) {
@@ -103,12 +111,14 @@ function PageHero({
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <Link href={primaryHref}>
-              <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
-                {primaryLabel}
-                <ArrowRight className="ml-2 size-4" />
-              </Button>
-            </Link>
+            {primaryHref && primaryLabel ? (
+              <Link href={primaryHref}>
+                <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
+                  {primaryLabel}
+                  <ArrowRight className="ml-2 size-4" />
+                </Button>
+              </Link>
+            ) : null}
             {secondaryHref && secondaryLabel ? (
               <Link href={secondaryHref}>
                 <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
@@ -164,8 +174,10 @@ function CatalogFilterPanel({
   const families = categorySlug
     ? getFamiliesByCategory(categorySlug)
     : taderData.productFamilies.filter((family) => typeof family.category === "string");
-  const availableFlutes = Array.from(new Set(families.map((family) => family.flutes).filter(Boolean))) as number[];
-  const availableSubTypes = Array.from(new Set(families.map((family) => String(family.sub_type))));
+  const availableFlutes = [...STANDARD_FLUTE_OPTIONS];
+  const availableSubTypes = Array.from(
+    new Set(families.map((family) => family.sub_type).filter((value): value is string => typeof value === "string" && value.length > 0)),
+  );
   const availableSeries = families.map((family) => ({
     value: family.series,
     label: `${family.series} · ${family.line_name}`,
@@ -220,6 +232,9 @@ function CatalogFilterPanel({
             <FilterButton key={value} active={activeFlutes.includes(value)} label={`${value}F`} onClick={() => toggleFlute(value)} />
           ))}
         </div>
+        <p className="text-xs leading-6 text-steel-400">
+          The live standard catalog currently lists 2F, 3F, and 4F tools. 5F and 6F requests should be reviewed as program-specific RFQ cases.
+        </p>
       </div>
 
       <div className="space-y-3">
@@ -404,14 +419,14 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
         title={category ? category.label : "Micro Carbide End Mills & Cutting Tools"}
         description={
           category
-            ? category.description
-            : "Filter by tool type, flute count, construction, and ZENOK geometry family to reach the exact SKU geometry for your machining program."
+            ? `${category.description} Standard production is limited to shank diameters below 6.0 mm, while 1/8 inch shank requests are reviewed as custom MOQ only.`
+            : "Filter by tool type, flute count, construction, and ZENOK geometry family to reach the exact SKU geometry for your machining program. The active standard catalog is limited to shank diameters below 6.0 mm."
         }
         image={taderData.siteMeta.blueprintImage}
-        primaryHref="/quote-request"
-        primaryLabel="Request Quote"
-        secondaryHref="/products"
-        secondaryLabel="View Full Catalog"
+        primaryHref={category ? "/products" : "/technology"}
+        primaryLabel={category ? "View Full Catalog" : "Review Construction Logic"}
+        secondaryHref={category ? "/technology" : "/applications"}
+        secondaryLabel={category ? "Review Production Scope" : "Browse Applications"}
       />
 
       <section className="container space-y-12 py-14 lg:py-20">
@@ -420,6 +435,17 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
           title="Search the dimensional envelope before comparing price."
           description="The product overview is built for engineering review: filter by geometry family, scan B/C construction availability, and move directly into SKU-level dimensional tables."
         />
+
+        <div className="grid gap-4 border border-black/8 bg-[#f6f1e9] p-6 text-sm leading-7 text-steel-400 shadow-[0_20px_44px_rgba(15,23,42,0.04)] lg:grid-cols-2">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Standard production scope</p>
+            <p className="mt-3">{STANDARD_SCOPE_NOTE}</p>
+          </div>
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Program status</p>
+            <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
+          </div>
+        </div>
 
         <div className="grid gap-8 xl:grid-cols-[340px_minmax(0,1fr)]">
           <CatalogFilterPanel
@@ -447,8 +473,8 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
                 <p className="mt-3 font-display text-4xl text-graphite">{baseSkus.length}</p>
               </div>
               <div className="bg-white/88 p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Family routes</p>
-                <p className="mt-3 font-display text-4xl text-graphite">{category ? getFamiliesByCategory(category.slug).length : taderData.categoryPages.length}</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Active category routes</p>
+                <p className="mt-3 font-display text-4xl text-graphite">{category ? getFamiliesByCategory(category.slug).length : categoryCards.length}</p>
               </div>
             </div>
 
@@ -498,7 +524,7 @@ export function HomePage() {
         <SectionHeading
           eyebrow="Commercial USP"
           title="Taiwan MFN 4.8% duty advantage paired with micro-tooling specialization."
-          description="ZENOK is positioned for U.S. industrial buyers who assess both process fit and landed cost. The value proposition combines Taiwan-origin sourcing, vertical integration, and category depth in miniature carbide tooling."
+          description="ZENOK is positioned for U.S. industrial buyers who assess both process fit and landed cost. The value proposition combines Taiwan-origin sourcing, disciplined micro-tool production, and category depth in miniature carbide tooling."
         />
         <MetricStrip items={taderData.siteMeta.heroHighlights} />
       </section>
@@ -507,10 +533,10 @@ export function HomePage() {
         <SectionHeading
           eyebrow="Quick Product Entry"
           title="Start from the geometry family that matches the machining problem."
-          description="The catalog is grouped around flat, ball nose, corner radius, aluminum, and carbide rod capability so engineering teams can move from family selection to SKU-level specification without ambiguity."
+          description="The catalog is grouped around flat, ball nose, corner radius, and aluminum-specific geometries so engineering teams can move from family selection to SKU-level specification without ambiguity."
         />
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-          {taderData.categoryPages.map((category, index) => (
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {categoryCards.map((category, index) => (
             <InsightCard
               key={category.slug}
               index={`${String(index + 1).padStart(2, "0")}`}
@@ -673,15 +699,13 @@ export function ProductDetailPage() {
           </div>
 
           <div className="space-y-4 border border-black/8 bg-white/82 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
-            <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">Quote Trigger</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">Commercial Scope</p>
             <p className="text-sm leading-7 text-steel-500">
-              Ready to discuss application fit, pricing, or holder constraints for this SKU? Send the model number with your requested quantity and material context.
+              {STANDARD_SCOPE_NOTE}
             </p>
-            <Link href="/quote-request">
-              <Button className="w-full rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white hover:bg-copper-soft">
-                Request a Quote
-              </Button>
-            </Link>
+            <div className="border border-black/8 bg-[#f7f3ec] p-4 text-sm leading-7 text-steel-400">
+              1/8 inch shank requests are custom MOQ only. If this program needs non-standard shank geometry or a discontinued composite construction, note it in the RFQ form for manual review.
+            </div>
           </div>
         </div>
 
@@ -753,10 +777,10 @@ export function ApplicationsPage() {
         title="Three demanding sectors. One precision-first tooling story."
         description="Our target industries share a need for miniature features, process stability, and close dimensional communication between tooling supplier and machine shop."
         image={taderData.siteMeta.heroImage}
-        primaryHref="/quote-request"
-        primaryLabel="Discuss Application"
-        secondaryHref="/products"
-        secondaryLabel="Open Catalog"
+        primaryHref="/products"
+        primaryLabel="Open Catalog"
+        secondaryHref="/technology"
+        secondaryLabel="Review Construction Logic"
       />
       <section className="container space-y-10 py-14 lg:py-20">
         <SectionHeading
@@ -809,10 +833,10 @@ function ApplicationDetailView({ slug }: { slug: string }) {
         title={application.title}
         description={application.description}
         image={application.image}
-        primaryHref="/quote-request"
-        primaryLabel="Request Application Quote"
-        secondaryHref="/products"
-        secondaryLabel="Review Tool Catalog"
+        primaryHref="/products"
+        primaryLabel="Review Tool Catalog"
+        secondaryHref="/technology"
+        secondaryLabel="Compare Construction Logic"
       />
       <section className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
         <div className="space-y-6 border border-black/8 bg-white/82 p-8 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
@@ -860,16 +884,16 @@ export function TechnologyPage() {
         title="Construction, sourcing, and carbide strategy explained in buyer language."
         description="The technology layer translates technical distinctions into procurement implications: holder compatibility, geometry reach, and sourcing economics."
         image={taderData.siteMeta.blueprintImage}
-        primaryHref="/quote-request"
-        primaryLabel="Discuss Specs"
-        secondaryHref="/products"
-        secondaryLabel="Compare SKUs"
+        primaryHref="/products"
+        primaryLabel="Compare SKUs"
+        secondaryHref="/about"
+        secondaryLabel="Review Company Positioning"
       />
       <section className="container space-y-10 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Engineering Topics"
           title="The site makes technical trade-offs explicit instead of leaving them to email follow-up."
-          description="B vs C construction, Taiwan duty positioning, and carbide architecture are presented as decision variables for engineers and buyers evaluating micro-tooling options."
+          description="B vs C construction, Taiwan duty positioning, and holder compatibility are presented as decision variables for engineers and buyers evaluating micro-tooling options."
         />
         <div className="grid gap-5 lg:grid-cols-3">
           {taderData.technologyTopics.map((topic, index) => (
@@ -892,24 +916,24 @@ export function AboutPage() {
     <SiteLayout>
       <SeoHead
         title="About | ZENOK"
-        description="Learn about ZENOK, its vertical integration from carbide rod to finished tool, and its manufacturing capability positioning."
+        description="Learn about ZENOK, its disciplined micro-tool manufacturing capability, and its production positioning for U.S. buyers."
         canonicalPath="/about"
       />
       <PageHero
         eyebrow="About ZENOK"
-        title="A tooling story built from material control to finished micro geometry."
-        description="The brand narrative emphasizes Taiwan-based manufacturing discipline, vertical integration, and the ability to support U.S. buyers who compare tooling cost against process-critical performance."
+        title="A tooling story built around disciplined micro-tool production."
+        description="The brand narrative emphasizes Taiwan-based manufacturing discipline, stable execution in sub-3.0 mm tooling, and the ability to support U.S. buyers who compare tooling cost against process-critical performance."
         image={taderData.siteMeta.heroImage}
-        primaryHref="/quote-request"
-        primaryLabel="Start a Sourcing Discussion"
-        secondaryHref="/technology"
-        secondaryLabel="Review Technical Basis"
+        primaryHref="/technology"
+        primaryLabel="Review Technical Basis"
+        secondaryHref="/products"
+        secondaryLabel="Open Active Catalog"
       />
       <section className="container space-y-10 py-14 lg:py-20">
         <SectionHeading
           eyebrow="Company Profile"
           title="Vertical integration is positioned as both a technical and pricing moat."
-          description="The site frames ZENOK’s advantage through material-to-finished-tool control, which matters for consistency, supply reliability, and defensible cost structure in specialized micro programs."
+          description="The site frames ZENOK’s advantage through disciplined process control, which matters for consistency, supply reliability, and defensible cost structure in specialized micro programs."
         />
         <div className="grid gap-5 lg:grid-cols-3">
           {taderData.aboutSections.map((section, index) => (
@@ -919,7 +943,7 @@ export function AboutPage() {
         <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-3">
           <div className="bg-white/88 p-7"><Factory className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Manufacturing capability aligned to micro-diameter, long-neck, and application-specific carbide tooling.</p></div>
           <div className="bg-white/88 p-7"><Boxes className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Integrated product architecture spanning flat, ball nose, corner radius, and aluminum product lines.</p></div>
-          <div className="bg-white/88 p-7"><CircleDollarSign className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Pricing moat narrative supported by upstream carbide rod capability and Taiwan-origin sourcing position.</p></div>
+          <div className="bg-white/88 p-7"><CircleDollarSign className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Pricing moat narrative supported by Taiwan-origin sourcing position and disciplined micro-tool production scope.</p></div>
         </div>
       </section>
     </SiteLayout>
@@ -974,8 +998,6 @@ export function QuoteRequestPage() {
         title="Send your RFQ with the product line, dimensions, and application context already defined."
         description="The quote page is structured for engineering buyers: mention the product line, SKU or model number, required quantity, material, and holder constraints so discussion can start with the right assumptions."
         image={taderData.siteMeta.blueprintImage}
-        primaryHref="#formspree-embed"
-        primaryLabel="Open Quote Form"
         secondaryHref="/products"
         secondaryLabel="Back to Catalog"
       />
@@ -987,6 +1009,11 @@ export function QuoteRequestPage() {
             <p>State the workpiece material, application sector, and any feature-size requirement that matters to tool choice.</p>
             <p>Clarify quantity, expected timing, and whether B or C construction guidance is part of the evaluation.</p>
             <p>Call out holder constraints, especially if shrink-fit compatibility must be confirmed before quotation.</p>
+          </div>
+          <div className="border border-black/8 bg-[#f7f3ec] p-5 text-sm leading-7 text-steel-400">
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Program scope reminder</p>
+            <p className="mt-3">{STANDARD_SCOPE_NOTE}</p>
+            <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
           </div>
           <div className="border border-copper/25 bg-copper/8 p-5 text-sm leading-7 text-steel-500">
             Use the existing Formspree workflow below so your request goes directly into the current RFQ intake channel.
@@ -1056,7 +1083,7 @@ export function QuoteRequestPage() {
                 <Input
                   name="holder"
                   className="h-12 rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
-                  placeholder="Shrink-fit, collet, guidance needed"
+                  placeholder="Shrink-fit, collet, 1/8 inch custom MOQ, guidance needed"
                 />
               </label>
             </div>
