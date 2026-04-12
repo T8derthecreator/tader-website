@@ -61,7 +61,7 @@ export const taderData = {
     "heroImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-hero-precision-tooling-cexGHiUD3iLL8zn8jgmMrm.webp",
     "blueprintImage": "https://d2xsxph8kpxj0f.cloudfront.net/310519663485537359/5nc8Xoo7szVqMQNqkxLXby/tader-technology-blueprint-GeB22kQRd5mwYcCuzMguar.webp",
     "primaryCta": {
-      "label": "Submit Cost-Down Request",
+      "label": "Request a Quote",
       "href": FORM_URL
     },
     "secondaryCta": {
@@ -113,7 +113,7 @@ export const taderData = {
       "label": "Flat End Mills",
       "shortLabel": "Flat",
       "description": "Regular and long-neck micro flat end mills for general high-precision milling.",
-      "route": "/flat-end-mills",
+      "route": "/products/flat-end-mills",
       "seriesCodes": [
         "ZF2",
         "ZF2-LN",
@@ -131,7 +131,7 @@ export const taderData = {
       "label": "Ball Nose End Mills",
       "shortLabel": "Ball Nose",
       "description": "Ball nose micro tools for contouring, finishing, and 3D micro features.",
-      "route": "/ball-nose-end-mills",
+      "route": "/products/ball-nose-end-mills",
       "seriesCodes": [
         "ZB2",
         "ZB2-LS",
@@ -148,7 +148,7 @@ export const taderData = {
       "label": "Corner Radius End Mills",
       "shortLabel": "Corner Radius",
       "description": "Corner radius geometries for longer life and improved edge strength.",
-      "route": "/corner-radius-end-mills",
+      "route": "/products/corner-radius-end-mills",
       "seriesCodes": [
         "ZR2"
       ],
@@ -163,7 +163,7 @@ export const taderData = {
       "label": "Aluminum End Mills",
       "shortLabel": "Aluminum",
       "description": "Dedicated aluminum cutting product lines optimized for chip evacuation and finish.",
-      "route": "/aluminum-end-mills",
+      "route": "/products/aluminum-end-mills",
       "seriesCodes": [
         "ZA2",
         "ZA3",
@@ -210,7 +210,7 @@ export const taderData = {
       ],
       "legacy_series": "MS2",
       "line_name": "Flat End Mill · 2-Flute · Regular",
-      "route": "/flat-end-mills",
+      "route": "/products/flat-end-mills",
       "intro": "2-flute regular flat end mill product line for core micro-machining programs and everyday high-precision features.",
       "skuCount": 14
     },
@@ -233,7 +233,7 @@ export const taderData = {
       ],
       "legacy_series": "XL2",
       "line_name": "Flat End Mill · 2-Flute · Long Neck",
-      "route": "/flat-end-mills",
+      "route": "/products/flat-end-mills",
       "intro": "2-flute long neck flat end mill product line for deep micro features where reach and clearance are critical.",
       "skuCount": 61
     },
@@ -256,7 +256,7 @@ export const taderData = {
       ],
       "legacy_series": "MS4",
       "line_name": "Flat End Mill · 4-Flute · Regular",
-      "route": "/flat-end-mills",
+      "route": "/products/flat-end-mills",
       "intro": "4-flute regular flat end mill product line for core micro-machining programs and everyday high-precision features.",
       "skuCount": 5
     },
@@ -279,7 +279,7 @@ export const taderData = {
       ],
       "legacy_series": "XL4",
       "line_name": "Flat End Mill · 4-Flute · Long Neck",
-      "route": "/flat-end-mills",
+      "route": "/products/flat-end-mills",
       "intro": "4-flute long neck flat end mill product line for deep micro features where reach and clearance are critical.",
       "skuCount": 17
     },
@@ -302,7 +302,7 @@ export const taderData = {
       ],
       "legacy_series": "MS2R",
       "line_name": "Corner Radius End Mill · 2-Flute · Regular",
-      "route": "/corner-radius-end-mills",
+      "route": "/products/corner-radius-end-mills",
       "intro": "2-flute regular corner radius end mill product line for core micro-machining programs and everyday high-precision features.",
       "skuCount": 6
     },
@@ -325,7 +325,7 @@ export const taderData = {
       ],
       "legacy_series": "SB2",
       "line_name": "Ball Nose End Mill · 2-Flute · Regular",
-      "route": "/ball-nose-end-mills",
+      "route": "/products/ball-nose-end-mills",
       "intro": "2-flute regular ball nose end mill product line for core micro-machining programs and everyday high-precision features.",
       "skuCount": 12
     },
@@ -348,7 +348,7 @@ export const taderData = {
       ],
       "legacy_series": "SB2L",
       "line_name": "Ball Nose End Mill · 2-Flute · Long Shank",
-      "route": "/ball-nose-end-mills",
+      "route": "/products/ball-nose-end-mills",
       "intro": "2-flute long shank ball nose end mill product line for extended projection setups that need added reach from the holder.",
       "skuCount": 1
     },
@@ -371,7 +371,7 @@ export const taderData = {
       ],
       "legacy_series": "XLB2",
       "line_name": "Ball Nose End Mill · 2-Flute · Long Neck",
-      "route": "/ball-nose-end-mills",
+      "route": "/products/ball-nose-end-mills",
       "intro": "2-flute long neck ball nose end mill product line for deep micro features where reach and clearance are critical.",
       "skuCount": 24
     },
@@ -394,7 +394,7 @@ export const taderData = {
       ],
       "legacy_series": "2HA",
       "line_name": "Aluminum End Mill · 2-Flute · Regular",
-      "route": "/aluminum-end-mills",
+      "route": "/products/aluminum-end-mills",
       "intro": "2-flute regular aluminum end mill product line for core micro-machining programs and everyday high-precision features.",
       "skuCount": 4
     },
@@ -417,7 +417,7 @@ export const taderData = {
       ],
       "legacy_series": "3HA",
       "line_name": "Aluminum End Mill · 3-Flute · Regular",
-      "route": "/aluminum-end-mills",
+      "route": "/products/aluminum-end-mills",
       "intro": "3-flute regular aluminum end mill product line for core micro-machining programs and everyday high-precision features.",
       "skuCount": 4
     },
@@ -440,7 +440,7 @@ export const taderData = {
       ],
       "legacy_series": "2HAL",
       "line_name": "Aluminum End Mill · 2-Flute · Long Shank",
-      "route": "/aluminum-end-mills",
+      "route": "/products/aluminum-end-mills",
       "intro": "2-flute long shank aluminum end mill product line for extended projection setups that need added reach from the holder.",
       "skuCount": 4
     },
@@ -463,7 +463,7 @@ export const taderData = {
       ],
       "legacy_series": "3HAL",
       "line_name": "Aluminum End Mill · 3-Flute · Long Shank",
-      "route": "/aluminum-end-mills",
+      "route": "/products/aluminum-end-mills",
       "intro": "3-flute long shank aluminum end mill product line for extended projection setups that need added reach from the holder.",
       "skuCount": 4
     }
@@ -5703,12 +5703,12 @@ export const taderData = {
     },
     {
       "id": "carbide-rod-supply-chain",
-      "title": "Carbide Rod to Finished Tool — One Supply Chain",
-      "summary": "ZENOK sources and supplies tungsten carbide rod stock directly. This vertical integration means our finished tool cost structure starts below where most competitors begin purchasing. The result: cost-down proposals that are commercially realistic, not just theoretically possible.",
+      "title": "Vertically Integrated Supply Chain",
+      "summary": "ZENOK's finished tool cost structure starts below where most competitors begin purchasing. The result: cost-down proposals that are commercially realistic, not just theoretically possible.",
       "points": [
-        "Bar stock supply to other manufacturers is part of our business",
-        "Competitors purchasing bar stock from the same supply chain cannot structurally undercut ZENOK's finished tool pricing",
-        "Every proposal reflects actual production economics, not discounted list prices"
+        "Direct carbide sourcing supports a structurally lower finished-tool cost basis for qualified programs.",
+        "Competitors purchasing from upstream rod suppliers do not start from the same cost position.",
+        "Every proposal reflects actual production economics, not discounted list prices."
       ]
     }
   ],

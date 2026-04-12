@@ -9,7 +9,6 @@ import { useIsMobile } from "@/hooks/useMobile";
 import { Link, useLocation, useRoute } from "wouter";
 import {
   AlertTriangle,
-  ArrowRight,
   Boxes,
   Building2,
   CircleDollarSign,
@@ -24,7 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { SeoHead } from "@/components/site/SeoHead";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { DataPill, InsightCard, MetricStrip, SectionHeading } from "@/components/site/SectionPrimitives";
+import { DataPill, InsightCard, SectionHeading } from "@/components/site/SectionPrimitives";
 import { taderData, type SkuRecord } from "@/data/taderData";
 import {
   filterSkus,
@@ -71,6 +70,53 @@ const STANDARD_SCOPE_NOTE = "Standard production covers tool diameters up to 3.0
 const PROGRAM_STATUS_NOTE = "Composite carbide-to-carbide programs outside the current B/C catalog are not in standard production and should be handled as special review only.";
 
 const categoryCards = taderData.categoryPages.filter((category) => category.skuCount > 0);
+const technologyTopicIcons = [Building2, ShieldCheck, Boxes, Microscope, Factory] as const;
+const aboutTopicIcons = [CircleDollarSign, Boxes, Factory] as const;
+
+function DutyComparisonChart() {
+  const comparisonRows = [
+    {
+      label: "China origin (HTS 8207.70)",
+      subLabel: "MFN ~5% + Section 301 +25%",
+      value: 30,
+      barClassName: "bg-[#8b6f63]",
+    },
+    {
+      label: "Taiwan origin — ZENOK (HTS 8207.70)",
+      subLabel: "MFN 4.8%, no Section 301",
+      value: 4.8,
+      barClassName: "bg-copper",
+    },
+  ] as const;
+
+  return (
+    <div className="space-y-3 border border-black/8 bg-[#f8f5ef] p-4">
+      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-steel-400">
+        <span>Duty comparison</span>
+        <span>0%–35%</span>
+      </div>
+      <div className="space-y-4">
+        {comparisonRows.map((row) => (
+          <div key={row.label} className="space-y-2">
+            <div className="flex items-start justify-between gap-3 text-[12px] leading-5 text-steel-400">
+              <div>
+                <p className="font-medium text-graphite">{row.label}</p>
+                <p>{row.subLabel}</p>
+              </div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-graphite">{row.value}%</span>
+            </div>
+            <div className="h-2.5 bg-white">
+              <div className={`h-full ${row.barClassName}`} style={{ width: `${(row.value / 35) * 100}%` }} />
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[11px] leading-6 text-steel-400">
+        Duty rates as of 2026. Section 301 List 1 imposes a 25% additional duty on Chinese-origin cutting tools under HTS 8207.70, on top of the standard MFN rate. Taiwan-origin imports pay only the 4.8% MFN rate.
+      </p>
+    </div>
+  );
+}
 
 type CatalogViewProps = {
   categorySlug?: string;
@@ -84,10 +130,6 @@ function PageHero({
   title,
   description,
   image,
-  primaryHref,
-  primaryLabel,
-  secondaryHref,
-  secondaryLabel,
 }: {
   eyebrow: string;
   title: string;
@@ -97,11 +139,12 @@ function PageHero({
   primaryLabel?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  primaryStyle?: "solid" | "outline";
 }) {
   return (
     <section className="border-b border-black/8">
       <div className="container grid gap-8 py-10 lg:grid-cols-[1.2fr_0.85fr] lg:py-14">
-        <div className="flex min-h-[32rem] flex-col justify-between gap-12">
+        <div className="flex min-h-[32rem] flex-col justify-center gap-12">
           <div className="space-y-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-copper/85">{eyebrow}</p>
             <div className="space-y-6">
@@ -110,40 +153,6 @@ function PageHero({
               </h1>
               <div className="max-w-2xl text-base leading-8 text-steel-300 xl:text-lg">{description}</div>
             </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            {primaryHref && primaryLabel ? (
-              primaryHref.startsWith("http") ? (
-                <a href={primaryHref} target="_blank" rel="noreferrer">
-                  <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
-                    {primaryLabel}
-                    <ArrowRight className="ml-2 size-4" />
-                  </Button>
-                </a>
-              ) : (
-                <Link href={primaryHref}>
-                  <Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white shadow-[0_18px_36px_rgba(194,121,74,0.14)] hover:bg-copper-soft">
-                    {primaryLabel}
-                    <ArrowRight className="ml-2 size-4" />
-                  </Button>
-                </Link>
-              )
-            ) : null}
-            {secondaryHref && secondaryLabel ? (
-              secondaryHref.startsWith("http") ? (
-                <a href={secondaryHref} target="_blank" rel="noreferrer">
-                  <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
-                    {secondaryLabel}
-                  </Button>
-                </a>
-              ) : (
-                <Link href={secondaryHref}>
-                  <Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite hover:bg-[#f3efe8]">
-                    {secondaryLabel}
-                  </Button>
-                </Link>
-              )
-            ) : null}
           </div>
         </div>
 
@@ -319,7 +328,6 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
               <th className="px-4 py-3">L</th>
               <th className="px-4 py-3">d</th>
               <th className="px-4 py-3">B / C</th>
-              <th className="px-4 py-3">Detail</th>
             </tr>
           </thead>
           <tbody>
@@ -345,12 +353,6 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
                     ))}
                   </div>
                 </td>
-                <td className="px-4 py-4">
-                  <Link href={`/products/${sku.slug}`} className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-graphite transition-colors duration-200 hover:text-copper">
-                    View
-                    <ArrowRight className="size-4" />
-                  </Link>
-                </td>
               </tr>
             ))}
           </tbody>
@@ -373,8 +375,8 @@ function ProductFamilyGrid({ categorySlug }: { categorySlug?: string }) {
           index={family.series}
           title={family.line_name}
           description={`${family.intro} Diameter ${family.diameter_range_mm[0] ?? "—"} to ${family.diameter_range_mm[1] ?? "—"} mm.`}
-          href={family.route}
-          ctaLabel="Open category"
+          href={categorySlug ? undefined : family.route}
+          ctaLabel={categorySlug ? undefined : "Open category"}
         >
           <div className="grid gap-2 pt-2 text-sm text-steel-300">
             <DataPill label="Flutes" value={family.flutes ? `${family.flutes}` : "—"} />
@@ -433,85 +435,98 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
         keywords={["micro end mills", "Taiwan carbide tools", "4.8% duty", "CNC cutting tools"]}
       />
       <PageHero
-        eyebrow={category ? `Products / ${category.shortLabel}` : "Product Catalog"}
+        eyebrow={category ? `Products / ${category.label}` : "Products"}
         title={category ? category.label : "Micro Carbide End Mills & Cutting Tools"}
         description={
           category
-            ? `${category.description} Standard production is limited to shank diameters below 6.0 mm, while 1/8 inch shank requests are reviewed as custom MOQ only.`
-            : "Filter by tool type, flute count, construction, and ZENOK geometry family to reach the exact SKU geometry for your machining program. The active standard catalog is limited to shank diameters below 6.0 mm."
+            ? `${category.description} Review the active product lines below, then move into the category-specific SKU table for dimensional comparison and feasibility screening.`
+            : "Start from the geometry family that matches the machining problem. Each family card leads to a dedicated category page with product-line structure and category-only specification tables."
         }
         image={taderData.siteMeta.blueprintImage}
-        primaryHref={taderData.siteMeta.primaryCta.href}
-        primaryLabel={taderData.siteMeta.primaryCta.label}
-        secondaryHref={taderData.siteMeta.secondaryCta.href}
-        secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
 
-      <section className="container space-y-12 py-14 lg:py-20">
-        <SectionHeading
-          eyebrow="Structured Catalog"
-          title="Search the dimensional envelope before comparing price."
-          description="The product overview is built for engineering review: filter by geometry family, scan B/C construction availability, and move directly into SKU-level dimensional tables."
-        />
-
-        <div className="grid gap-4 border border-black/8 bg-[#f6f1e9] p-6 text-sm leading-7 text-steel-400 shadow-[0_20px_44px_rgba(15,23,42,0.04)] lg:grid-cols-2">
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Standard production scope</p>
-            <p className="mt-3">{STANDARD_SCOPE_NOTE}</p>
-          </div>
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Program status</p>
-            <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
-          </div>
-        </div>
-
-        <div className="grid gap-8 xl:grid-cols-[340px_minmax(0,1fr)]">
-          <CatalogFilterPanel
-            categorySlug={categorySlug}
-            search={search}
-            setSearch={setSearch}
-            activeFlutes={activeFlutes}
-            toggleFlute={(value) => toggleListValue(value, activeFlutes, setActiveFlutes)}
-            activeConstructions={activeConstructions}
-            toggleConstruction={(value) => toggleListValue(value, activeConstructions, setActiveConstructions)}
-            activeSubTypes={activeSubTypes}
-            toggleSubType={(value) => toggleListValue(value, activeSubTypes, setActiveSubTypes)}
-            activeSeries={activeSeries}
-            toggleSeries={(value) => toggleListValue(value, activeSeries, setActiveSeries)}
+      {!category ? (
+        <section className="container space-y-10 py-14 lg:py-20">
+          <SectionHeading
+            eyebrow="Geometry Families"
+            title="Select the geometry family first, then open the corresponding category page."
+            description="This overview page is intentionally simplified for buyer decision flow. Review the four active geometry families, then continue into the matching Layer 2 category page for product lines and specification tables."
           />
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {categoryCards.map((categoryCard, index) => (
+              <InsightCard
+                key={categoryCard.slug}
+                index={`${String(index + 1).padStart(2, "0")}`}
+                title={categoryCard.label}
+                description={`${categoryCard.description} ${categoryCard.skuCount} SKUs in current site data.`}
+                href={categoryCard.route}
+                ctaLabel="Open category"
+              >
+                <div className="pt-1">
+                  <DataPill label="Diameter range" value={`${categoryCard.diameterRangeMm[0] ?? "—"}–${categoryCard.diameterRangeMm[1] ?? "—"} mm`} />
+                </div>
+              </InsightCard>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <>
+          <section className="container space-y-10 py-14 lg:py-20">
+            <Link href="/products" className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400 transition-colors duration-200 hover:text-graphite">
+              <span className="h-px w-6 bg-current" />
+              Back to Products
+            </Link>
+            <SectionHeading
+              eyebrow="Product Line Access"
+              title={`Review the active ${category.label.toLowerCase()} product lines.`}
+              description="Only the product lines within this geometry family are shown here, so buyers can move from family-level selection to dimension review without cross-category noise."
+            />
+            <ProductFamilyGrid categorySlug={categorySlug} />
+          </section>
 
-          <div className="space-y-8">
-            <div className="grid gap-px border border-black/8 bg-black/8 sm:grid-cols-3">
-              <div className="bg-white/88 p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Visible SKUs</p>
-                <p className="mt-3 font-display text-4xl text-graphite">{filtered.length}</p>
+          <section className="container space-y-12 border-t border-black/8 py-14 lg:py-20">
+            <SectionHeading
+              eyebrow="Structured Catalog"
+              title={`${category.label} specification table`}
+              description="This table is filtered to the current geometry family only. Use search and line-level filters to compare dimensions, radii, overall reach, shank diameter, and B/C construction availability."
+            />
+
+            <div className="grid gap-4 border border-black/8 bg-[#f6f1e9] p-6 text-sm leading-7 text-steel-400 shadow-[0_20px_44px_rgba(15,23,42,0.04)] lg:grid-cols-2">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Standard production scope</p>
+                <p className="mt-3">{STANDARD_SCOPE_NOTE}</p>
               </div>
-              <div className="bg-white/88 p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Base category count</p>
-                <p className="mt-3 font-display text-4xl text-graphite">{baseSkus.length}</p>
-              </div>
-              <div className="bg-white/88 p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Active category routes</p>
-                <p className="mt-3 font-display text-4xl text-graphite">{category ? getFamiliesByCategory(category.slug).length : categoryCards.length}</p>
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Program status</p>
+                <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
               </div>
             </div>
 
-            <CatalogTable items={filtered.slice(0, 120)} />
-            {filtered.length > 120 ? (
-              <p className="text-sm text-steel-400">Showing first 120 filtered SKUs for scanning speed. Narrow the filter set to isolate a tighter comparison list.</p>
-            ) : null}
-          </div>
-        </div>
-      </section>
+            <div className="grid gap-8 xl:grid-cols-[340px_minmax(0,1fr)]">
+              <CatalogFilterPanel
+                categorySlug={categorySlug}
+                search={search}
+                setSearch={setSearch}
+                activeFlutes={activeFlutes}
+                toggleFlute={(value) => toggleListValue(value, activeFlutes, setActiveFlutes)}
+                activeConstructions={activeConstructions}
+                toggleConstruction={(value) => toggleListValue(value, activeConstructions, setActiveConstructions)}
+                activeSubTypes={activeSubTypes}
+                toggleSubType={(value) => toggleListValue(value, activeSubTypes, setActiveSubTypes)}
+                activeSeries={activeSeries}
+                toggleSeries={(value) => toggleListValue(value, activeSeries, setActiveSeries)}
+              />
 
-      <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
-        <SectionHeading
-          eyebrow="Product Line Access"
-          title="Navigate by product line once the geometry path is already known."
-          description="Each product line card summarizes flute count, construction options, and size envelope so buyers can move quickly between regular, long-neck, hardened, and aluminum-specific configurations."
-        />
-        <ProductFamilyGrid categorySlug={categorySlug} />
-      </section>
+              <div className="space-y-8">
+                <CatalogTable items={filtered.slice(0, 120)} />
+                {filtered.length > 120 ? (
+                  <p className="text-sm text-steel-400">Showing first 120 filtered SKUs for scanning speed. Narrow the filter set to isolate a tighter comparison list.</p>
+                ) : null}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
     </SiteLayout>
   );
 }
@@ -542,6 +557,7 @@ export function HomePage() {
         image={taderData.siteMeta.heroImage}
         primaryHref={taderData.siteMeta.primaryCta.href}
         primaryLabel={taderData.siteMeta.primaryCta.label}
+        primaryStyle="outline"
         secondaryHref={taderData.siteMeta.secondaryCta.href}
         secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
@@ -552,7 +568,6 @@ export function HomePage() {
           title="Taiwan MFN 4.8% duty advantage paired with cost-down proposal discipline."
           description="ZENOK is positioned for U.S. industrial buyers who need a cost-down partner, not another undifferentiated product catalog. Every page now supports one workflow: submit specs, set a target price, and receive a feasibility-backed proposal within 2 business days."
         />
-        <MetricStrip items={taderData.siteMeta.heroHighlights} />
       </section>
 
       <section className="container space-y-10 border-t border-black/8 py-14 lg:py-20">
@@ -593,6 +608,8 @@ export function HomePage() {
               index={`${String(index + 1).padStart(2, "0")}`}
               title={category.label}
               description={`${category.description} ${category.skuCount} SKUs in current site data.`}
+              href={category.route}
+              ctaLabel="Open category"
             >
               <div className="pt-1">
                 <DataPill label="Diameter range" value={`${category.diameterRangeMm[0] ?? "—"}–${category.diameterRangeMm[1] ?? "—"} mm`} />
@@ -784,7 +801,7 @@ export function ProductDetailPage() {
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="mt-1 size-5 text-copper-soft" />
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper-soft">Amazon-style Warning</p>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper-soft">Important Notice</p>
                     <p className="mt-3 text-sm leading-7">
                       B-type construction is <strong>not compatible with shrink-fit</strong> toolholders. Confirm holder strategy before ordering.
                     </p>
@@ -823,6 +840,7 @@ export function ApplicationsPage() {
         image={taderData.siteMeta.heroImage}
         primaryHref={taderData.siteMeta.inquiryFormUrl}
         primaryLabel={taderData.siteMeta.primaryCta.label}
+        primaryStyle="outline"
         secondaryHref={taderData.siteMeta.secondaryCta.href}
         secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
@@ -832,25 +850,21 @@ export function ApplicationsPage() {
           title="Evaluate cost-down potential by machining environment."
           description="Medical, aerospace, and electronics programs each carry different risk tolerances and tooling consumption patterns. ZENOK's cost-down evaluation starts from your production context — material, feature size, tolerance, and current spend — not from a generic catalog selection."
         />
-        <p className="max-w-4xl text-base leading-8 text-steel-400">
-          Medical, aerospace, and electronics programs each carry different risk tolerances and tooling consumption patterns. ZENOK's cost-down evaluation starts from your production context — material, feature size, tolerance, and current spend — not from a generic catalog selection.
-        </p>
         <div className="grid gap-5 lg:grid-cols-3">
           {taderData.applications.map((application, index) => (
-            <InsightCard
-              key={application.slug}
-              index={`0${index + 1}`}
-              title={application.title}
-              description={application.description}
-              href={taderData.siteMeta.inquiryFormUrl}
-              ctaLabel="Submit Cost-Down Request →"
-            >
-              <div className="space-y-3 pt-2 text-sm leading-7 text-steel-300">
-                {application.focus.map((point) => (
-                  <p key={point}>• {point}</p>
-                ))}
+            <article key={application.slug} className="overflow-hidden border border-black/8 bg-white/90 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
+              <img src={application.image} alt={application.title} className="aspect-[4/3] w-full object-cover" />
+              <div className="space-y-4 p-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/80">0{index + 1}</p>
+                <h3 className="font-display text-3xl text-graphite">{application.title}</h3>
+                <p className="text-sm leading-7 text-steel-300">{application.description}</p>
+                <div className="space-y-3 pt-2 text-sm leading-7 text-steel-300">
+                  {application.focus.map((point) => (
+                    <p key={point}>• {point}</p>
+                  ))}
+                </div>
               </div>
-            </InsightCard>
+            </article>
           ))}
         </div>
       </section>
@@ -888,7 +902,8 @@ export function TechnologyPage() {
         description={<p>Understanding B vs C construction, coating selection, and Taiwan sourcing economics is how ZENOK builds proposals that are technically sound and cost-competitive.</p>}
         image={taderData.siteMeta.blueprintImage}
         primaryHref={taderData.siteMeta.inquiryFormUrl}
-        primaryLabel="Submit Your Specs for a Cost-Down Proposal →"
+        primaryLabel={taderData.siteMeta.primaryCta.label}
+        primaryStyle="outline"
         secondaryHref={taderData.siteMeta.secondaryCta.href}
         secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
@@ -899,15 +914,26 @@ export function TechnologyPage() {
           description="B vs C construction, Taiwan duty positioning, coating selection, and carbide supply-chain economics are framed as decision variables buyers can use before opening the form."
         />
         <div className="grid gap-5 lg:grid-cols-3">
-          {taderData.technologyTopics.map((topic, index) => (
-            <InsightCard key={topic.id} index={`0${index + 1}`} title={topic.title} description={topic.summary}>
-              <div className="space-y-3 pt-2 text-sm leading-7 text-steel-300">
-                {topic.points.map((point) => (
-                  <p key={point}>• {point}</p>
-                ))}
-              </div>
-            </InsightCard>
-          ))}
+          {taderData.technologyTopics.map((topic, index) => {
+            const Icon = technologyTopicIcons[index] ?? Building2;
+
+            return (
+              <article key={topic.id} className="space-y-5 border border-black/8 bg-white/90 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
+                <Icon className="size-9 text-copper-soft" strokeWidth={1.8} />
+                <div className="space-y-3">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">0{index + 1}</p>
+                  <h3 className="font-display text-3xl text-graphite">{topic.title}</h3>
+                  <p className="text-sm leading-7 text-steel-300">{topic.summary}</p>
+                </div>
+                {index === 1 ? <DutyComparisonChart /> : null}
+                <div className="space-y-3 pt-1 text-sm leading-7 text-steel-300">
+                  {topic.points.map((point) => (
+                    <p key={point}>• {point}</p>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
     </SiteLayout>
@@ -929,6 +955,7 @@ export function AboutPage() {
         image={taderData.siteMeta.heroImage}
         primaryHref={taderData.siteMeta.inquiryFormUrl}
         primaryLabel={taderData.siteMeta.primaryCta.label}
+        primaryStyle="outline"
         secondaryHref={taderData.siteMeta.secondaryCta.href}
         secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />
@@ -939,9 +966,20 @@ export function AboutPage() {
           description="The site frames ZENOK's advantage through disciplined process control, carbide supply access, and manufacturing scope that supports realistic pricing on specialized micro programs."
         />
         <div className="grid gap-5 lg:grid-cols-3">
-          {taderData.aboutSections.map((section, index) => (
-            <InsightCard key={section.title} index={`0${index + 1}`} title={section.title} description={section.body} />
-          ))}
+          {taderData.aboutSections.map((section, index) => {
+            const Icon = aboutTopicIcons[index] ?? Factory;
+
+            return (
+              <article key={section.title} className="space-y-5 border border-black/8 bg-white/90 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
+                <Icon className="size-9 text-copper-soft" strokeWidth={1.8} />
+                <div className="space-y-3">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">0{index + 1}</p>
+                  <h3 className="font-display text-3xl text-graphite">{section.title}</h3>
+                  <p className="text-sm leading-7 text-steel-300">{section.body}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
         <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-3">
           <div className="bg-white/88 p-7"><Factory className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Manufacturing capability aligned to micro-diameter, long-neck, and application-specific carbide tooling.</p></div>
@@ -957,17 +995,18 @@ export function QuoteRequestPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Submit Cost-Down Request | ZENOK"
+        title="Request a Quote | ZENOK"
         description="Submit your tooling specs, target price, and production context through the external inquiry form. ZENOK evaluates feasibility and responds with a cost-down proposal within 2 business days."
         canonicalPath="/quote-request"
       />
       <PageHero
-        eyebrow="Cost-Down Request"
+        eyebrow="Request a Quote"
         title="Submit your specs and target price through the existing inquiry workflow."
         description={<p>This branded handoff keeps your current email notification and spreadsheet intake unchanged while guiding buyers into the dedicated external form for cost-down review.</p>}
         image={taderData.siteMeta.blueprintImage}
         primaryHref={taderData.siteMeta.inquiryFormUrl}
         primaryLabel={taderData.siteMeta.primaryCta.label}
+        primaryStyle="outline"
         secondaryHref={taderData.siteMeta.secondaryCta.href}
         secondaryLabel={taderData.siteMeta.secondaryCta.label}
       />

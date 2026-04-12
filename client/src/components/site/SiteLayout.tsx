@@ -88,7 +88,13 @@ export function SiteLayout({ children }: SiteLayoutProps) {
             ))}
           </nav>
 
-          <div className="hidden md:block" />
+          <div className="hidden justify-end md:flex">
+            <Button asChild className="rounded-none border border-copper bg-copper px-5 font-mono text-[11px] uppercase tracking-[0.22em] text-white shadow-none transition-colors duration-200 hover:bg-[#9d5a33] hover:text-white">
+              <a href={taderData.siteMeta.inquiryFormUrl} target="_blank" rel="noopener noreferrer">
+                {taderData.siteMeta.primaryCta.label}
+              </a>
+            </Button>
+          </div>
 
           <div className="flex items-center md:hidden">
             <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
@@ -105,6 +111,13 @@ export function SiteLayout({ children }: SiteLayoutProps) {
                     <SheetDescription className="max-w-md text-sm leading-7 text-steel-400">
                       Review product scope, application fit, and technical logic before opening the cost-down request workflow.
                     </SheetDescription>
+                  </div>
+                  <div className="border-b border-black/8 pb-6">
+                    <Button asChild className="w-full rounded-none border border-copper bg-copper px-5 font-mono text-[11px] uppercase tracking-[0.22em] text-white shadow-none transition-colors duration-200 hover:bg-[#9d5a33] hover:text-white">
+                      <a href={taderData.siteMeta.inquiryFormUrl} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+                        {taderData.siteMeta.primaryCta.label}
+                      </a>
+                    </Button>
                   </div>
                   <nav className="grid gap-4">
                     {taderData.navigation.map((item) => (
@@ -125,7 +138,7 @@ export function SiteLayout({ children }: SiteLayoutProps) {
           <div className="max-w-3xl rounded-none border border-black/8 bg-white/84 p-7 shadow-[0_24px_50px_rgba(15,23,42,0.08)] lg:p-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/80">Procurement Note</p>
             <p className="mt-4 text-sm leading-7 text-steel-500">
-              The current product data set covers micro end mills up to 3.0 mm with standard shank diameters below 6.0 mm. A 1/8 inch (3.175 mm) shank is treated as custom MOQ, and discontinued composite programs require manual review.
+              When your requirements go beyond the standard catalog, ZENOK offers custom tooling solutions built around your application. Provide your machining context, critical dimensions, and target pricing through the quote form for a feasibility assessment.
             </p>
           </div>
         </div>
