@@ -535,26 +535,20 @@ function CalculatorSection() {
 
               <div className="my-8 space-y-3 border-y border-line py-6">
                 <div className="flex justify-between text-sm">
-                  <span className="text-steel">ZENOK landed / unit</span>
-                  <span className="font-[var(--font-mono)] text-graphite">
-                    ${math.landedZenok.toFixed(2)}
-                  </span>
-                </div>
-                <div className="flex justify-between text-sm">
                   <span className="text-steel">Your current / unit</span>
                   <span className="font-[var(--font-mono)] text-graphite">
                     ${curPrice.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-steel">Per-unit savings</span>
+                  <span className="text-steel">Typical cost-down</span>
                   <span className="font-[var(--font-mono)] font-semibold text-blue">
-                    ${math.perUnitSave.toFixed(2)}
+                    {math.perUnitSave > 0 ? `≈ ${math.pct.toFixed(0)}% per unit` : "—"}
                   </span>
                 </div>
                 <div className="flex justify-between border-t border-line pt-3 text-base">
                   <span className="font-semibold text-graphite">
-                    Annual (12 mo × volume)
+                    Annual savings (12 mo × volume)
                   </span>
                   <span className="font-[var(--font-mono)] font-semibold text-graphite">
                     ${Math.round(math.annual).toLocaleString()}
@@ -563,8 +557,8 @@ function CalculatorSection() {
               </div>
 
               <p className="text-xs leading-6 text-steel">
-                <strong className="text-graphite-soft">Based on:</strong>{" "}
-                published ZENOK factory pricing + ~16% logistics &amp; MFN landed adjustment (estimate, ±8%). Final quote depends on specification, volume tier, and coating.
+                <strong className="text-graphite-soft">Rough estimate only.</strong>{" "}
+                Actual savings depend on tooling specification, volume tier, coating requirements, and shipping terms. Does not include applicable duties beyond MFN rate, freight surcharges, or state/local taxes. Submit specs for formal quote.
               </p>
 
               <a
@@ -574,7 +568,7 @@ function CalculatorSection() {
                 className="btn-primary mt-auto w-full justify-center pt-4"
                 style={{ marginTop: "24px" }}
               >
-                <span>Lock In This Pricing · Request Formal Quote</span>
+                <span>Get Exact Numbers</span>
                 <span className="ar">→</span>
               </a>
             </div>
