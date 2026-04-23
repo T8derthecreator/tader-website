@@ -336,3 +336,22 @@ button { font-family: inherit; }
   background: var(--blue);
   color: #fff;
 }
+
+/* Legacy page container — Tailwind v3 default .container behavior.
+   Tailwind v4 drops this by default, so restore it for old SitePages.tsx
+   pages that use <section className="container ...">. Our new pages use
+   .container-wrap which is defined above. */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+@media (max-width: 960px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

@@ -111,16 +111,18 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
                 />
               </Link>
               {openDropdown === link.label && (
-                <div className="absolute left-0 top-full min-w-[200px] border border-line bg-white shadow-[var(--shadow)] z-50 pt-0 mt-3 flex flex-col">
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="border-b border-line-soft px-4 py-3 font-[var(--font-mono)] text-[12px] tracking-[0.06em] text-steel transition-colors hover:bg-blue-pale hover:text-blue last:border-b-0"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
+                <div className="absolute left-0 top-full min-w-[200px] z-50 pt-3">
+                  <div className="border border-line bg-white shadow-[var(--shadow)] flex flex-col">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="border-b border-line-soft px-4 py-3 font-[var(--font-mono)] text-[12px] tracking-[0.06em] text-steel transition-colors hover:bg-blue-pale hover:text-blue last:border-b-0"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
