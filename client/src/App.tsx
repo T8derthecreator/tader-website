@@ -18,13 +18,14 @@ import {
   CarbideRodsPage,
   CornerRadiusEndMillsPage,
   FlatEndMillsPage,
-  HomePage,
   NotFoundPage,
   ProductDetailPage,
   ProductsPage,
   QuoteRequestPage,
   TechnologyPage,
 } from "./pages/SitePages";
+import HomePage from "./pages/HomePage";
+import WhyZenokPage from "./pages/WhyZenokPage";
 
 function LegacyApplicationsRedirect() {
   useEffect(() => {
@@ -76,6 +77,7 @@ function Router() {
       <Route path="/applications" component={ApplicationsPage} />
       <Route path="/applications/:legacySlug" component={LegacyApplicationsRedirect} />
       <Route path="/technology" component={TechnologyPage} />
+      <Route path="/why-zenok" component={WhyZenokPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/quote-request" component={QuoteRequestPage} />
       <Route path="/404" component={NotFoundPage} />

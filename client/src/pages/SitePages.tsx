@@ -85,12 +85,12 @@ function DutyComparisonChart() {
       label: "Taiwan origin — ZENOK (HTS 8207.70)",
       subLabel: "MFN 4.8%, no Section 301",
       value: 4.8,
-      barClassName: "bg-copper",
+      barClassName: "bg-cobalt",
     },
   ] as const;
 
   return (
-    <div className="space-y-3 border border-black/8 bg-[#f8f5ef] p-4">
+    <div className="space-y-3 border border-black/8 bg-[#f6f7fb] p-4">
       <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-steel-400">
         <span>Duty comparison</span>
         <span>0%–35%</span>
@@ -146,7 +146,7 @@ function PageHero({
       <div className="container grid gap-8 py-10 lg:grid-cols-[1.2fr_0.85fr] lg:py-14">
         <div className="flex min-h-[32rem] flex-col justify-center gap-12">
           <div className="space-y-8">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-copper/85">{eyebrow}</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-cobalt/85">{eyebrow}</p>
             <div className="space-y-6">
               <h1 className="max-w-4xl font-display text-5xl leading-[0.92] text-graphite sm:text-6xl xl:text-7xl">
                 {title}
@@ -161,7 +161,7 @@ function PageHero({
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,18,0.08),rgba(11,15,18,0.72))]" />
           <div className="absolute inset-x-0 bottom-0 grid gap-4 border-t border-black/8 bg-black/30 p-6 backdrop-blur-sm sm:grid-cols-2">
             {taderData.siteMeta.heroHighlights.map((item) => (
-              <div key={item.label} className="border-l border-copper/60 pl-4">
+              <div key={item.label} className="border-l border-cobalt/60 pl-4">
                 <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-steel-300">{item.label}</p>
                 <p className="mt-2 font-display text-2xl text-white">{item.value}</p>
               </div>
@@ -224,8 +224,8 @@ function CatalogFilterPanel({
       onClick={onClick}
       className={`rounded-none border px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors ${
         active
-          ? "border-copper bg-copper text-white"
-          : "border-black/10 bg-white/84 text-steel-500 hover:border-copper/40 hover:text-graphite"
+          ? "border-cobalt bg-cobalt text-white"
+          : "border-black/10 bg-white/84 text-steel-500 hover:border-cobalt/40 hover:text-graphite"
       }`}
     >
       {label}
@@ -236,7 +236,7 @@ function CatalogFilterPanel({
     <aside className="space-y-8 border border-black/8 bg-white/82 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
       <div className="flex items-center justify-between border-b border-black/8 pb-4">
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">Filter Catalog</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-cobalt/80">Filter Catalog</p>
           <p className="mt-2 text-sm text-steel-500">By flute count, construction, configuration, or ZENOK line code.</p>
         </div>
         <Filter className="size-4 text-steel-400" />
@@ -248,7 +248,7 @@ function CatalogFilterPanel({
           value={search}
           onChange={(event) => setSearch(event.target.value)}
           placeholder="Search ZENOK SKU, model no., or family code"
-          className="rounded-none border-black/10 bg-[#f8f5ef] text-graphite placeholder:text-steel-400"
+          className="rounded-none border-black/10 bg-[#f6f7fb] text-graphite placeholder:text-steel-400"
         />
       </div>
 
@@ -317,7 +317,7 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
     <div className="overflow-hidden border border-black/8 bg-white/82 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
       <div className="overflow-x-auto">
         <table className="min-w-full border-collapse text-left text-sm text-steel-500">
-          <thead className="bg-[#f3efe8] font-mono text-[11px] uppercase tracking-[0.18em] text-steel-400">
+          <thead className="bg-[#eef1f7] font-mono text-[11px] uppercase tracking-[0.18em] text-steel-400">
             <tr>
               <th className="px-4 py-3">Product family</th>
               <th className="px-4 py-3">SKU</th>
@@ -346,7 +346,7 @@ function CatalogTable({ items }: { items: SkuRecord[] }) {
                     {sku.construction_options.map((option) => (
                       <Badge
                         key={option}
-                        className="rounded-none border border-copper/30 bg-copper/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-copper"
+                        className="rounded-none border border-cobalt/30 bg-cobalt/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-cobalt"
                       >
                         {option}
                       </Badge>
@@ -493,11 +493,11 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
 
             <div className="grid gap-4 border border-black/8 bg-[#f6f1e9] p-6 text-sm leading-7 text-steel-400 shadow-[0_20px_44px_rgba(15,23,42,0.04)] lg:grid-cols-2">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Standard production scope</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cobalt/80">Standard production scope</p>
                 <p className="mt-3">{STANDARD_SCOPE_NOTE}</p>
               </div>
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Program status</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cobalt/80">Program status</p>
                 <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
               </div>
             </div>
@@ -531,7 +531,7 @@ function CatalogView({ categorySlug, pageTitle, pageDescription, canonicalPath }
   );
 }
 
-export function HomePage() {
+export function HomePageLegacy() {
   const isMobile = useIsMobile();
 
   return (
@@ -578,17 +578,17 @@ export function HomePage() {
         />
         <div className="grid gap-px border border-black/8 bg-black/8 lg:grid-cols-3">
           <div className="bg-white/92 p-7 lg:p-8">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Step 1</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/82">Step 1</p>
             <h3 className="mt-4 font-display text-3xl text-graphite">Share Your Specs</h3>
             <p className="mt-4 text-sm leading-7 text-steel-400">Submit tool type, dimensions, current price, and monthly volume.</p>
           </div>
-          <div className="bg-[#f8f5ef] p-7 lg:p-8">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Step 2</p>
+          <div className="bg-[#f6f7fb] p-7 lg:p-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/82">Step 2</p>
             <h3 className="mt-4 font-display text-3xl text-graphite">We Evaluate Feasibility</h3>
             <p className="mt-4 text-sm leading-7 text-steel-400">Our engineering team reviews against our Taiwan carbide production.</p>
           </div>
           <div className="bg-white/92 p-7 lg:p-8">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Step 3</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/82">Step 3</p>
             <h3 className="mt-4 font-display text-3xl text-graphite">Receive Cost-Down Proposal</h3>
             <p className="mt-4 text-sm leading-7 text-steel-400">You get a written proposal within 2 business days — no obligation.</p>
           </div>
@@ -631,7 +631,7 @@ export function HomePage() {
               <img src={application.image} alt={application.title} className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,18,0.08),rgba(11,15,18,0.82))]" />
               <div className="absolute inset-x-0 bottom-0 space-y-4 p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/80">0{index + 1}</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/80">0{index + 1}</p>
                 <h3 className="font-display text-3xl text-white">{application.title}</h3>
                 <p className="text-sm leading-7 text-steel-200">{application.description}</p>
               </div>
@@ -643,7 +643,7 @@ export function HomePage() {
       <section className="container space-y-10 border-t border-black/8 py-14 lg:py-24">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="space-y-6">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">Technology Focus</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/82">Technology Focus</p>
             <h2 className="font-display text-4xl leading-tight text-graphite lg:text-5xl">
               Construction logic, coating fit, and supply-chain economics made explicit.
             </h2>
@@ -736,7 +736,7 @@ export function ProductDetailPage() {
         <div className="grid gap-8 border-b border-black/8 pb-10 lg:grid-cols-[1fr_360px]">
           <div className="space-y-7">
             <div className="space-y-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">SKU Detail / {sku.type_label}</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/82">SKU Detail / {sku.type_label}</p>
               <h1 className="font-display text-5xl leading-[0.94] text-graphite lg:text-6xl">
                 {sku.diameter_mm} mm {sku.type_label}
               </h1>
@@ -745,7 +745,7 @@ export function ProductDetailPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Badge className="rounded-none border border-copper/30 bg-copper/10 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-copper">
+              <Badge className="rounded-none border border-cobalt/30 bg-cobalt/10 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-cobalt">
                 SKU {sku.catalog_sku}
               </Badge>
               <Badge className="rounded-none border border-black/8 bg-[#f5f1ea] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500">
@@ -760,7 +760,7 @@ export function ProductDetailPage() {
           </div>
 
           <div className="space-y-4 border border-black/8 bg-white/82 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
-            <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-copper/80">Commercial Scope</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-cobalt/80">Commercial Scope</p>
             <p className="text-sm leading-7 text-steel-500">
               {STANDARD_SCOPE_NOTE}
             </p>
@@ -799,9 +799,9 @@ export function ProductDetailPage() {
             {sku.has_b ? (
               <div className="border border-[#6f4d38] bg-[#221712] p-6 text-[#f1d7c6]">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="mt-1 size-5 text-copper-soft" />
+                  <AlertTriangle className="mt-1 size-5 text-cobalt-soft" />
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper-soft">Important Notice</p>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cobalt-soft">Important Notice</p>
                     <p className="mt-3 text-sm leading-7">
                       B-type construction is <strong>not compatible with shrink-fit</strong> toolholders. Confirm holder strategy before ordering.
                     </p>
@@ -855,7 +855,7 @@ export function ApplicationsPage() {
             <article key={application.slug} className="overflow-hidden border border-black/8 bg-white/90 shadow-[0_20px_44px_rgba(15,23,42,0.08)]">
               <img src={application.image} alt={application.title} className="aspect-[4/3] w-full object-cover" />
               <div className="space-y-4 p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/80">0{index + 1}</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/80">0{index + 1}</p>
                 <h3 className="font-display text-3xl text-graphite">{application.title}</h3>
                 <p className="text-sm leading-7 text-steel-300">{application.description}</p>
                 <div className="space-y-3 pt-2 text-sm leading-7 text-steel-300">
@@ -919,9 +919,9 @@ export function TechnologyPage() {
 
             return (
               <article key={topic.id} className="space-y-5 border border-black/8 bg-white/90 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
-                <Icon className="size-9 text-copper-soft" strokeWidth={1.8} />
+                <Icon className="size-9 text-cobalt-soft" strokeWidth={1.8} />
                 <div className="space-y-3">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">0{index + 1}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cobalt/80">0{index + 1}</p>
                   <h3 className="font-display text-3xl text-graphite">{topic.title}</h3>
                   <p className="text-sm leading-7 text-steel-300">{topic.summary}</p>
                 </div>
@@ -971,9 +971,9 @@ export function AboutPage() {
 
             return (
               <article key={section.title} className="space-y-5 border border-black/8 bg-white/90 p-6 shadow-[0_20px_44px_rgba(15,23,42,0.06)]">
-                <Icon className="size-9 text-copper-soft" strokeWidth={1.8} />
+                <Icon className="size-9 text-cobalt-soft" strokeWidth={1.8} />
                 <div className="space-y-3">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">0{index + 1}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cobalt/80">0{index + 1}</p>
                   <h3 className="font-display text-3xl text-graphite">{section.title}</h3>
                   <p className="text-sm leading-7 text-steel-300">{section.body}</p>
                 </div>
@@ -982,9 +982,9 @@ export function AboutPage() {
           })}
         </div>
         <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-3">
-          <div className="bg-white/88 p-7"><Factory className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Manufacturing capability aligned to micro-diameter, long-neck, and application-specific carbide tooling.</p></div>
-          <div className="bg-white/88 p-7"><Boxes className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Integrated product architecture spanning flat, ball nose, corner radius, and aluminum product lines.</p></div>
-          <div className="bg-white/88 p-7"><CircleDollarSign className="size-7 text-copper-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Pricing moat narrative supported by Taiwan-origin sourcing position and disciplined micro-tool production scope.</p></div>
+          <div className="bg-white/88 p-7"><Factory className="size-7 text-cobalt-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Manufacturing capability aligned to micro-diameter, long-neck, and application-specific carbide tooling.</p></div>
+          <div className="bg-white/88 p-7"><Boxes className="size-7 text-cobalt-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Integrated product architecture spanning flat, ball nose, corner radius, and aluminum product lines.</p></div>
+          <div className="bg-white/88 p-7"><CircleDollarSign className="size-7 text-cobalt-soft" /><p className="mt-4 text-sm leading-7 text-steel-300">Pricing moat narrative supported by Taiwan-origin sourcing position and disciplined micro-tool production scope.</p></div>
         </div>
       </section>
     </SiteLayout>
@@ -1020,37 +1020,37 @@ export function QuoteRequestPage() {
             <p>Call out holder constraints, especially if shrink-fit compatibility must be confirmed before proposal.</p>
           </div>
           <div className="border border-black/8 bg-[#f7f3ec] p-5 text-sm leading-7 text-steel-400">
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Program scope reminder</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cobalt/80">Program scope reminder</p>
             <p className="mt-3">{STANDARD_SCOPE_NOTE}</p>
             <p className="mt-3">{PROGRAM_STATUS_NOTE}</p>
           </div>
-          <div className="border border-copper/25 bg-copper/8 p-5 text-sm leading-7 text-steel-500">
+          <div className="border border-cobalt/25 bg-cobalt/8 p-5 text-sm leading-7 text-steel-500">
             This route hands off to the existing external inquiry form so your current email notification and spreadsheet logging workflow can stay unchanged while buyers submit specs and target price in one place.
           </div>
         </div>
         <div className="border border-black/8 bg-white/88 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
           <div className="grid gap-6">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper/80">Current workflow</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-cobalt/80">Current workflow</p>
               <h2 className="mt-3 font-display text-4xl text-graphite">Continue in the dedicated multi-step inquiry form</h2>
               <p className="mt-4 text-sm leading-7 text-steel-300">
                 The external form already matches your intake process, sends notifications to the current mailbox, and keeps responses organized in the existing spreadsheet workflow. Opening it in a new tab preserves the catalog session so buyers can compare SKUs, add target price, and return without losing context.
               </p>
             </div>
             <div className="grid gap-px border border-black/8 bg-black/8 md:grid-cols-2">
-              <div className="bg-[#f8f5ef] p-5">
+              <div className="bg-[#f6f7fb] p-5">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 1</p>
                 <p className="mt-3 text-sm leading-7 text-steel-300">Buyer contact, company name, industry, and current tooling brand.</p>
               </div>
-              <div className="bg-[#f8f5ef] p-5">
+              <div className="bg-[#f6f7fb] p-5">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 2</p>
                 <p className="mt-3 text-sm leading-7 text-steel-300">Tool list, comparison basis, and dimensional references for the requested program.</p>
               </div>
-              <div className="bg-[#f8f5ef] p-5">
+              <div className="bg-[#f6f7fb] p-5">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 3</p>
                 <p className="mt-3 text-sm leading-7 text-steel-300">Application requirements, material, tolerance concerns, and special holder notes.</p>
               </div>
-              <div className="bg-[#f8f5ef] p-5">
+              <div className="bg-[#f6f7fb] p-5">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-steel-400">Step 4</p>
                 <p className="mt-3 text-sm leading-7 text-steel-300">Submission confirmation through the existing inquiry workflow already tied to your notifications.</p>
               </div>
@@ -1076,11 +1076,11 @@ export function NotFoundPage() {
     <SiteLayout>
       <SeoHead title="404 | ZENOK" description="Page not found." canonicalPath="/404" noIndex />
       <section className="container space-y-8 py-24 lg:py-32">
-        <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-copper/82">404 / Route Missing</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cobalt/82">404 / Route Missing</p>
         <h1 className="font-display text-5xl text-graphite lg:text-7xl">The requested page is outside the current tooling map.</h1>
         <p className="max-w-2xl text-base leading-8 text-steel-500">The route <span className="font-mono text-graphite">{location}</span> is not available in the current ZENOK site structure.</p>
         <div className="flex flex-wrap gap-4">
-          <Link href="/"><Button className="rounded-none border border-copper/50 bg-copper px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white">Return Home</Button></Link>
+          <Link href="/"><Button className="rounded-none border border-cobalt/50 bg-cobalt px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white">Return Home</Button></Link>
           <Link href="/products"><Button variant="outline" className="rounded-none border-black/12 bg-white/72 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.24em] text-graphite">Open Products</Button></Link>
         </div>
       </section>
