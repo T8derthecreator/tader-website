@@ -1,15 +1,13 @@
 /*
-  /products — main products entry page.
-  Sections: Page Hero → By Geometry (4 cards) → SKU Catalog (filterable) → CTA
-  (Construction Types and Coatings are NOT standalone sections per user decision;
-  brief explanation appears inline on category pages via ConstructionLegend.)
+  /products — main products entry page (v2).
+  Structure: Page Hero → By Geometry (4 cards) → Full Catalog CTA card → Final CTA
+  The big filterable SKU table now lives at /products/catalog (separate page).
 */
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SeoHead } from "@/components/site/SeoHead";
-import { SkuFilterableTable, type SkuTableRow } from "@/components/site/ProductComponents";
 import { useReveal } from "@/hooks/useReveal";
 import { taderData } from "@/data/taderData";
 
@@ -31,8 +29,6 @@ function Reveal({
     </div>
   );
 }
-
-/* ---------- Geometry cards (4 of them) ---------- */
 
 const GEOM_CARDS = [
   {
@@ -93,39 +89,6 @@ const GEOM_CARDS = [
   },
 ];
 
-/* ---------- Build SKU rows from taderData.skus ---------- */
-
-function buildSkuRows(): SkuTableRow[] {
-  const skus = (taderData.skus ?? []) as unknown as Array<{
-    model_no: string;
-    series: string;
-    category: string;
-    category_slug: string;
-    type_label?: string;
-    sub_type?: string;
-    diameter_mm: number | null;
-    cut_length_mm: number | null;
-    overall_length_mm: number | null;
-    shank_diameter_mm: number | null;
-    construction_options: string[];
-    slug?: string;
-  }>;
-  return skus.map((s) => ({
-    model_no: s.model_no,
-    series: s.series,
-    geometry: s.sub_type ? `${s.category} · ${s.sub_type}` : s.category,
-    diameter_mm: s.diameter_mm,
-    cut_length_mm: s.cut_length_mm,
-    overall_length_mm: s.overall_length_mm,
-    shank_diameter_mm: s.shank_diameter_mm,
-    construction_options: s.construction_options ?? [],
-    category_slug: s.category_slug,
-    slug: s.slug,
-  }));
-}
-
-/* ---------- Page ---------- */
-
 const productsSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -139,8 +102,7 @@ export default function ProductsPage() {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
-  const skuRows = buildSkuRows();
-  const totalSkuCount = skuRows.length;
+  const totalSkuCount = (taderData.skus ?? []).length;
 
   return (
     <SiteLayout>
@@ -173,7 +135,7 @@ export default function ProductsPage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 max-w-xl text-[17px] leading-[1.7] text-graphite-soft">
-              Four geometry families cover the full catalog. Custom work beyond the catalog is available at MOQ 200 — contact us with specs.
+              Four geometry families cover the full catalog. Pick one to see available sizes, construction types, and coatings — or jump straight into the full SKU catalog.
             </p>
           </Reveal>
         </div>
@@ -242,12 +204,12 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* SKU Catalog */}
-      <section id="catalog" className="relative border-t border-line bg-bg-2 py-20 lg:py-28">
+      {/* Full Catalog callout */}
+      <section className="relative border-t border-line bg-bg-2 py-20 lg:py-28">
         <div className="container-wrap">
           <Reveal>
             <div className="sec-eyebrow">
-              SKU Catalog
+              Full SKU Catalog
               <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
                 [ 02 ]
               </span>
@@ -255,31 +217,65 @@ export default function ProductsPage() {
           </Reveal>
 
           <Reveal delay={100}>
-            <h2
-              className="max-w-4xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-              style={{ fontSize: "clamp(34px, 4.5vw, 60px)" }}
-            >
-              Browse by spec.
-              <br />
-              <span className="serif-italic font-normal text-graphite-soft">
-                What engineers actually want to see.
-              </span>
-            </h2>
-          </Reveal>
+            <Link href="/products/catalog">
+              <div className="group mt-10 grid gap-8 border border-line bg-panel p-10 transition-all duration-300 hover:border-blue hover:shadow-[var(--shadow-blue)] lg:grid-cols-[1.3fr_1fr] lg:gap-14 lg:p-14">
+                {/* Left: prose */}
+                <div>
+                  <div className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
+                    /products/catalog →
+                  </div>
+                  <h2
+                    className="mt-5 font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
+                    style={{ fontSize: "clamp(32px, 4vw, 56px)" }}
+                  >
+                    All {totalSkuCount} SKUs.
+                    <br />
+                    <span className="serif-italic font-normal text-graphite-soft">
+                      One searchable table.
+                    </span>
+                  </h2>
+                  <p className="mt-6 max-w-xl text-[17px] leading-[1.7] text-graphite-soft">
+                    Filter by geometry, search by model number, diameter, or construction. Quote request on every row.
+                  </p>
+                  <div className="mt-8 inline-flex items-center gap-3 font-[var(--font-mono)] text-[13px] font-semibold uppercase tracking-[0.15em] text-blue">
+                    Browse Full Catalog
+                    <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </div>
+                </div>
 
-          <Reveal delay={200}>
-            <p className="mt-6 max-w-3xl text-[17px] leading-[1.8] text-graphite-soft">
-              Filter by geometry, search by model or diameter. Click <strong className="text-graphite">Quote →</strong> on any row to request that exact configuration.
-            </p>
-          </Reveal>
-
-          <Reveal delay={300}>
-            <div className="mt-10">
-              <SkuFilterableTable
-                skus={skuRows}
-                totalLabel={`${totalSkuCount} total in catalog`}
-              />
-            </div>
+                {/* Right: table-style visual */}
+                <div className="hidden lg:block">
+                  <div className="border border-line bg-bg-2">
+                    <div className="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.6fr] gap-3 border-b border-line bg-panel-2 p-3 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-steel">
+                      <div>Model No.</div><div>Series</div><div className="text-right">Ø</div><div className="text-center">B/C</div>
+                    </div>
+                    {[
+                      { m: "MS2D0010S04", s: "ZF2", d: "0.1" },
+                      { m: "MS2D0100S04", s: "ZF2", d: "1.0" },
+                      { m: "XL2D0030E010", s: "ZF2-LN", d: "0.3" },
+                      { m: "MB2R005D0010", s: "ZB2", d: "1.0" },
+                      { m: "MR2D0030R005", s: "ZR2", d: "3.0" },
+                    ].map((r, i) => (
+                      <div
+                        key={i}
+                        className="grid grid-cols-[1.2fr_0.8fr_0.6fr_0.6fr] gap-3 border-b border-line-soft p-3 font-[var(--font-mono)] text-[11px] last:border-b-0"
+                      >
+                        <div className="font-semibold text-graphite">{r.m}</div>
+                        <div className="text-steel">{r.s}</div>
+                        <div className="text-right tabular-nums text-graphite">{r.d}</div>
+                        <div className="text-center">
+                          <span className="inline-flex items-center border border-line px-1 py-0.5 text-[9px] font-bold text-graphite">B</span>{" "}
+                          <span className="inline-flex items-center border border-blue bg-blue px-1 py-0.5 text-[9px] font-bold text-white">C</span>
+                        </div>
+                      </div>
+                    ))}
+                    <div className="p-3 text-center font-[var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-blue">
+                      + {totalSkuCount - 5} more SKUs →
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </Reveal>
         </div>
       </section>

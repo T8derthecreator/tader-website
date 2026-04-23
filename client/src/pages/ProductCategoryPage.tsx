@@ -3,8 +3,11 @@
   /products/flat-end-mills, /products/ball-nose-end-mills,
   /products/corner-radius-end-mills, /products/aluminum-end-mills
 
-  Structure: CategoryNav → Page Hero → Product Family cards → SKU Table (filtered)
-           → ConstructionLegend (inline B/S/C brief) → CTA
+  Structure: CategoryNav → Page Hero → Product Family cards
+           → ConstructionLegend (brief B/S/C) → CoatingOptions (brief 4 coatings)
+           → CTA to full catalog + CTA
+
+  (The big filterable SKU table is at /products/catalog, not here.)
 */
 import { useEffect, useMemo } from "react";
 import { Link } from "wouter";
@@ -14,8 +17,7 @@ import { SeoHead } from "@/components/site/SeoHead";
 import {
   ProductCategoryNav,
   ConstructionLegend,
-  SkuFilterableTable,
-  type SkuTableRow,
+  CoatingOptions,
 } from "@/components/site/ProductComponents";
 import { useReveal } from "@/hooks/useReveal";
 import { taderData } from "@/data/taderData";
@@ -63,20 +65,6 @@ type ProductFamily = {
   intro: string;
 };
 
-type Sku = {
-  model_no: string;
-  series: string;
-  category: string;
-  category_slug: string;
-  sub_type?: string | null;
-  diameter_mm: number | null;
-  cut_length_mm: number | null;
-  overall_length_mm: number | null;
-  shank_diameter_mm: number | null;
-  construction_options: string[];
-  slug?: string;
-};
-
 function formatRange(range: readonly [number | null, number | null] | undefined) {
   if (!range) return "—";
   const [a, b] = range;
@@ -99,24 +87,6 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
   const families = useMemo(() => {
     const all = (taderData.productFamilies ?? []) as unknown as ProductFamily[];
     return all.filter((f) => f.category_slug === categorySlug);
-  }, [categorySlug]);
-
-  const skuRows = useMemo<SkuTableRow[]>(() => {
-    const all = (taderData.skus ?? []) as unknown as Sku[];
-    return all
-      .filter((s) => s.category_slug === categorySlug)
-      .map((s) => ({
-        model_no: s.model_no,
-        series: s.series,
-        geometry: s.sub_type ? `${s.category} · ${s.sub_type}` : s.category,
-        diameter_mm: s.diameter_mm,
-        cut_length_mm: s.cut_length_mm,
-        overall_length_mm: s.overall_length_mm,
-        shank_diameter_mm: s.shank_diameter_mm,
-        construction_options: s.construction_options ?? [],
-        category_slug: s.category_slug,
-        slug: s.slug,
-      }));
   }, [categorySlug]);
 
   if (!categoryMeta) {
@@ -274,40 +244,38 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
         </div>
       </section>
 
-      {/* SKU Catalog (filtered to this category) */}
-      <section className="relative border-t border-line bg-bg-2 py-20 lg:py-24">
+      {/* Coating options (brief reference) */}
+      <section className="relative border-t border-line bg-bg py-14 lg:py-16">
         <div className="container-wrap">
           <Reveal>
-            <div className="sec-eyebrow">
-              Structured Catalog
-              <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-                [ 02 ]
-              </span>
-            </div>
+            <CoatingOptions />
           </Reveal>
-          <Reveal delay={100}>
-            <h2
-              className="max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-              style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
-            >
-              {categoryMeta.label} · {categoryMeta.skuCount} SKUs
-            </h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mt-6 max-w-2xl text-[16px] leading-[1.7] text-graphite-soft">
-              Search by model number or diameter. Click <strong className="text-graphite">Quote →</strong> on any row.
-            </p>
-          </Reveal>
+        </div>
+      </section>
 
-          <Reveal delay={300}>
-            <div className="mt-10">
-              <SkuFilterableTable
-                skus={skuRows}
-                initialCategory={categorySlug}
-                showCategoryTabs={false}
-                totalLabel={`${skuRows.length} in ${categoryMeta.label}`}
-              />
-            </div>
+      {/* Full catalog link */}
+      <section className="relative border-t border-line bg-bg-2 py-16 lg:py-20">
+        <div className="container-wrap">
+          <Reveal>
+            <Link href="/products/catalog">
+              <div className="group flex flex-col items-start justify-between gap-6 border border-line bg-panel p-8 transition-all duration-300 hover:border-blue hover:shadow-[var(--shadow-blue)] md:flex-row md:items-center md:gap-10 lg:p-10">
+                <div>
+                  <div className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
+                    Browse All SKUs
+                  </div>
+                  <h3 className="mt-3 font-[var(--font-display)] text-2xl font-bold text-graphite lg:text-3xl">
+                    See every {categoryMeta.label.toLowerCase()} model in the full catalog.
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-[1.6] text-graphite-soft">
+                    All {categoryMeta.skuCount} {categoryMeta.label.toLowerCase()} SKUs in one searchable table — plus the other geometry families.
+                  </p>
+                </div>
+                <div className="inline-flex items-center gap-3 whitespace-nowrap font-[var(--font-mono)] text-[13px] font-semibold uppercase tracking-[0.15em] text-blue">
+                  Open Catalog
+                  <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
           </Reveal>
         </div>
       </section>

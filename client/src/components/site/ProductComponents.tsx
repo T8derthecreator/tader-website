@@ -113,6 +113,128 @@ export function ConstructionLegend() {
   );
 }
 
+/* ---------- CoatingOptions (inline brief coating reference) ---------- */
+
+export function CoatingOptions() {
+  const COATINGS = [
+    {
+      tag: "COAT / 01",
+      name: "Uncoated",
+      hardness: "HRC 62",
+      bestFor: "Al, Cu, soft alloys",
+      cost: "Base",
+    },
+    {
+      tag: "COAT / 02",
+      name: "TiAlN",
+      hardness: "HV 3200",
+      bestFor: "Steel, Ti, Ni",
+      cost: "+18%",
+    },
+    {
+      tag: "COAT / 03",
+      name: "Platinum TiAlN",
+      hardness: "HV 3500",
+      bestFor: "Inconel, hardened",
+      cost: "+32%",
+    },
+    {
+      tag: "COAT / 04",
+      name: "DLC",
+      hardness: "HV 5000",
+      bestFor: "Aluminum, CFRP",
+      cost: "+28%",
+    },
+  ];
+
+  return (
+    <div className="border border-line bg-panel p-6 lg:p-8">
+      <div className="mb-4 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
+        Available Coatings — Quick Reference
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {COATINGS.map((c) => (
+          <div key={c.name} className="border border-line-soft bg-panel-2 p-4">
+            <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel">
+              {c.tag}
+            </div>
+            <div className="mt-2 font-[var(--font-display)] text-lg font-bold text-graphite">
+              {c.name}
+            </div>
+            <div className="mt-3 space-y-1.5 border-t border-line-soft pt-3 font-[var(--font-mono)] text-[11px]">
+              <div className="flex justify-between">
+                <span className="text-steel">Hardness</span>
+                <span className="text-graphite">{c.hardness}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-steel">Best for</span>
+                <span className="text-graphite">{c.bestFor}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-steel">Cost</span>
+                <span className="font-semibold text-blue">{c.cost}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-[12px] leading-[1.6] text-steel">
+        Coating selection depends on workpiece material and program thermal envelope. Submit specs for optimal recommendation.
+      </p>
+    </div>
+  );
+}
+
+/* ---------- CoatingOptions (inline brief reference, mirrors ConstructionLegend) ---------- */
+
+export function CoatingOptions() {
+  return (
+    <div className="border border-line bg-panel p-6 lg:p-8">
+      <div className="mb-4 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
+        Coating Options — Match to Your Workpiece
+      </div>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 01</div>
+          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-graphite">Uncoated</div>
+          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
+            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HRC 62</span></div>
+            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Al · Cu · soft</span></div>
+            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">Base</span></div>
+          </div>
+        </div>
+        <div>
+          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 02</div>
+          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-graphite">TiAlN</div>
+          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
+            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HV 3200</span></div>
+            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Steel · Ti · Ni</span></div>
+            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">+18%</span></div>
+          </div>
+        </div>
+        <div>
+          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 03</div>
+          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-blue">Platinum TiAlN</div>
+          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
+            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HV 3500</span></div>
+            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Inconel · hard</span></div>
+            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">+32%</span></div>
+          </div>
+        </div>
+        <div>
+          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 04</div>
+          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-graphite">DLC</div>
+          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
+            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HV 5000</span></div>
+            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Al · CFRP</span></div>
+            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">+28%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------- SkuFilterableTable ---------- */
 
 export type SkuTableRow = {

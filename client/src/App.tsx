@@ -20,6 +20,7 @@ import {
 import HomePage from "./pages/HomePage";
 import WhyZenokPage from "./pages/WhyZenokPage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductsCatalogPage from "./pages/ProductsCatalogPage";
 import {
   FlatEndMillsPage,
   BallNoseEndMillsPage,
@@ -66,6 +67,7 @@ function Router() {
     <Switch>
       <Route path="/" component={HomePage} />
       <Route path="/products" component={ProductsPage} />
+      <Route path="/products/catalog" component={ProductsCatalogPage} />
       <Route path="/products/flat-end-mills" component={FlatEndMillsPage} />
       <Route path="/products/ball-nose-end-mills" component={BallNoseEndMillsPage} />
       <Route path="/products/corner-radius-end-mills" component={CornerRadiusEndMillsPage} />
