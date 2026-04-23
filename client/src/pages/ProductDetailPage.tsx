@@ -12,6 +12,7 @@ import { SeoHead } from "@/components/site/SeoHead";
 import {
   ProductCategoryNav,
   ConstructionLegend,
+  CoatingOptions,
 } from "@/components/site/ProductComponents";
 import { useReveal } from "@/hooks/useReveal";
 import { taderData } from "@/data/taderData";
@@ -227,11 +228,14 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Construction legend (inline) */}
+      {/* Construction + Coatings (inline reference, side-by-side) */}
       <section className="relative py-14 lg:py-16">
         <div className="container-wrap">
           <Reveal>
-            <ConstructionLegend />
+            <div className="grid gap-5 lg:grid-cols-2">
+              <ConstructionLegend />
+              <CoatingOptions />
+            </div>
           </Reveal>
         </div>
       </section>

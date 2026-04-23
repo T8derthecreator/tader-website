@@ -76,36 +76,73 @@ export function ProductCategoryNav({
 
 export function ConstructionLegend() {
   return (
-    <div className="border border-line bg-panel p-6 lg:p-8">
-      <div className="mb-4 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-        Construction Types — Quick Reference
+    <div className="h-full border border-line bg-panel">
+      <div className="border-b border-line bg-panel-2 px-6 py-4">
+        <div className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
+          Construction Types
+        </div>
+        <div className="mt-1 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">
+          Pick what your production needs
+        </div>
       </div>
-      <div className="grid gap-5 md:grid-cols-3">
-        <div>
-          <div className="flex items-baseline gap-2">
-            <span className="font-[var(--font-display)] text-2xl font-bold text-blue">B</span>
-            <span className="font-semibold text-graphite">Composite</span>
+
+      {/* B — Composite */}
+      <div className="flex items-start gap-4 border-b border-line-soft px-6 py-5">
+        <div className="flex size-14 flex-none items-center justify-center border-2 border-graphite bg-panel-2 font-[var(--font-display)] text-2xl font-black text-graphite">
+          B
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-2">
+            <div className="font-[var(--font-display)] text-base font-bold text-graphite">
+              Composite
+            </div>
+            <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-steel">
+              Lowest cost
+            </div>
           </div>
-          <p className="mt-2 text-[13px] leading-[1.6] text-graphite-soft">
-            SS shank + carbide tip. Lowest cost. <strong className="text-graphite">Shank ≤ 6 mm. Not shrink-fit compatible.</strong>
+          <p className="mt-1 text-[13px] leading-[1.55] text-graphite-soft">
+            SS shank + carbide tip. <strong className="text-graphite">Shank ≤ 6mm.</strong> Not shrink-fit compatible.
           </p>
         </div>
-        <div>
-          <div className="flex items-baseline gap-2">
-            <span className="font-[var(--font-display)] text-2xl font-bold text-blue">C</span>
-            <span className="font-semibold text-graphite">Solid Carbide SS308</span>
+      </div>
+
+      {/* C — Solid Carbide (PREMIUM — blue accent) */}
+      <div className="relative flex items-start gap-4 border-b border-line-soft bg-blue-pale px-6 py-5">
+        <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-blue" />
+        <div className="flex size-14 flex-none items-center justify-center border-2 border-blue bg-blue font-[var(--font-display)] text-2xl font-black text-white">
+          C
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-2">
+            <div className="font-[var(--font-display)] text-base font-bold text-graphite">
+              Solid Carbide SS308
+            </div>
+            <div className="font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.1em] text-blue">
+              ★ Shrink-fit
+            </div>
           </div>
-          <p className="mt-2 text-[13px] leading-[1.6] text-graphite-soft">
-            One-piece full carbide. Highest precision. <strong className="text-graphite">Shrink-fit compatible.</strong>
+          <p className="mt-1 text-[13px] leading-[1.55] text-graphite-soft">
+            One-piece full carbide. <strong className="text-graphite">Highest precision.</strong> Shrink-fit toolholder compatible.
           </p>
         </div>
-        <div>
-          <div className="flex items-baseline gap-2">
-            <span className="font-[var(--font-display)] text-2xl font-bold text-blue">S</span>
-            <span className="font-semibold text-graphite">New Brazing</span>
+      </div>
+
+      {/* S — New Brazing */}
+      <div className="flex items-start gap-4 px-6 py-5">
+        <div className="flex size-14 flex-none items-center justify-center border-2 border-steel bg-panel font-[var(--font-display)] text-2xl font-black text-graphite-soft">
+          S
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-2">
+            <div className="font-[var(--font-display)] text-base font-bold text-graphite">
+              New Brazing
+            </div>
+            <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-steel">
+              On request
+            </div>
           </div>
-          <p className="mt-2 text-[13px] leading-[1.6] text-graphite-soft">
-            Carbide-to-carbide brazed. Middle ground. <strong className="text-graphite">Produced on request.</strong>
+          <p className="mt-1 text-[13px] leading-[1.55] text-graphite-soft">
+            Carbide-to-carbide brazed joint. <strong className="text-graphite">Middle ground</strong> between composite and solid.
           </p>
         </div>
       </div>
@@ -117,70 +154,81 @@ export function ConstructionLegend() {
 
 export function CoatingOptions() {
   const COATINGS = [
-    {
-      tag: "COAT / 01",
-      name: "Uncoated",
-      hardness: "HRC 62",
-      bestFor: "Al, Cu, soft alloys",
-      cost: "Base",
-    },
-    {
-      tag: "COAT / 02",
-      name: "TiAlN",
-      hardness: "HV 3200",
-      bestFor: "Steel, Ti, Ni",
-      cost: "+18%",
-    },
-    {
-      tag: "COAT / 03",
-      name: "Platinum TiAlN",
-      hardness: "HV 3500",
-      bestFor: "Inconel, hardened",
-      cost: "+32%",
-    },
-    {
-      tag: "COAT / 04",
-      name: "DLC",
-      hardness: "HV 5000",
-      bestFor: "Aluminum, CFRP",
-      cost: "+28%",
-    },
+    { num: "01", name: "Uncoated", hardness: "HRC 62", bestFor: "Al · Cu · soft", cost: "Base", featured: false },
+    { num: "02", name: "TiAlN", hardness: "HV 3200", bestFor: "Steel · Ti · Ni", cost: "+18%", featured: false },
+    { num: "03", name: "Platinum TiAlN", hardness: "HV 3500", bestFor: "Inconel · hardened", cost: "+32%", featured: true },
+    { num: "04", name: "DLC", hardness: "HV 5000", bestFor: "Aluminum · CFRP", cost: "+28%", featured: false },
   ];
 
   return (
-    <div className="border border-line bg-panel p-6 lg:p-8">
-      <div className="mb-4 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-        Available Coatings — Quick Reference
+    <div className="h-full border border-line bg-panel">
+      <div className="border-b border-line bg-panel-2 px-6 py-4">
+        <div className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
+          Available Coatings
+        </div>
+        <div className="mt-1 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">
+          Match to your workpiece material
+        </div>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {COATINGS.map((c) => (
-          <div key={c.name} className="border border-line-soft bg-panel-2 p-4">
-            <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel">
-              {c.tag}
+
+      {COATINGS.map((c, idx) => {
+        const isFeatured = c.featured;
+        const isLast = idx === COATINGS.length - 1;
+        return (
+          <div
+            key={c.name}
+            className={`relative flex items-start gap-4 px-6 py-4 ${
+              !isLast ? "border-b border-line-soft" : ""
+            } ${isFeatured ? "bg-blue-pale" : idx % 2 === 1 ? "bg-panel-2" : ""}`}
+          >
+            {isFeatured && <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-blue" />}
+
+            {/* Left: number badge */}
+            <div
+              className={`flex size-12 flex-none items-center justify-center border-2 font-[var(--font-mono)] text-[11px] font-bold ${
+                isFeatured ? "border-blue bg-blue text-white" : "border-line bg-panel text-steel"
+              }`}
+            >
+              {c.num}
             </div>
-            <div className="mt-2 font-[var(--font-display)] text-lg font-bold text-graphite">
-              {c.name}
-            </div>
-            <div className="mt-3 space-y-1.5 border-t border-line-soft pt-3 font-[var(--font-mono)] text-[11px]">
-              <div className="flex justify-between">
-                <span className="text-steel">Hardness</span>
-                <span className="text-graphite">{c.hardness}</span>
+
+            {/* Right: content */}
+            <div className="min-w-0 flex-1">
+              <div className="flex items-baseline justify-between gap-2">
+                <div
+                  className={`font-[var(--font-display)] text-base font-bold ${
+                    isFeatured ? "text-blue" : "text-graphite"
+                  }`}
+                >
+                  {c.name}
+                  {isFeatured && (
+                    <span className="ml-2 font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.1em]">
+                      ★ premium
+                    </span>
+                  )}
+                </div>
+                <div
+                  className={`whitespace-nowrap font-[var(--font-mono)] text-[11px] font-semibold tabular-nums ${
+                    isFeatured ? "text-blue" : "text-graphite"
+                  }`}
+                >
+                  {c.cost}
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span className="text-steel">Best for</span>
-                <span className="text-graphite">{c.bestFor}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-steel">Cost</span>
-                <span className="font-semibold text-blue">{c.cost}</span>
+              <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 font-[var(--font-mono)] text-[11px]">
+                <span>
+                  <span className="text-steel">Hardness · </span>
+                  <span className="text-graphite">{c.hardness}</span>
+                </span>
+                <span>
+                  <span className="text-steel">Best for · </span>
+                  <span className="text-graphite">{c.bestFor}</span>
+                </span>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-      <p className="mt-4 text-[12px] leading-[1.6] text-steel">
-        Coating selection depends on workpiece material and program thermal envelope. Submit specs for optimal recommendation.
-      </p>
+        );
+      })}
     </div>
   );
 }

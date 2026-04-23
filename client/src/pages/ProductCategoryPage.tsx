@@ -235,20 +235,35 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
         </section>
       )}
 
-      {/* Inline Construction Legend (brief B/S/C reference) */}
-      <section className="relative border-t border-line bg-bg py-14 lg:py-16">
+      {/* Reference panel: Construction + Coatings side-by-side */}
+      <section className="relative border-t border-line bg-bg py-16 lg:py-20">
         <div className="container-wrap">
           <Reveal>
-            <ConstructionLegend />
+            <div className="sec-eyebrow">
+              Reference
+              <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
+                [ 02 ]
+              </span>
+            </div>
           </Reveal>
-        </div>
-      </section>
+          <Reveal delay={100}>
+            <h2
+              className="mb-10 max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
+              style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}
+            >
+              Construction and coating options.
+              <br />
+              <span className="serif-italic font-normal text-graphite-soft">
+                Available across this family.
+              </span>
+            </h2>
+          </Reveal>
 
-      {/* Coating options (brief reference) */}
-      <section className="relative border-t border-line bg-bg py-14 lg:py-16">
-        <div className="container-wrap">
-          <Reveal>
-            <CoatingOptions />
+          <Reveal delay={200}>
+            <div className="grid gap-5 lg:grid-cols-2">
+              <ConstructionLegend />
+              <CoatingOptions />
+            </div>
           </Reveal>
         </div>
       </section>
