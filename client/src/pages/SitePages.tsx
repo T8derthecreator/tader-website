@@ -660,7 +660,7 @@ export function HomePageLegacy() {
   );
 }
 
-export function ProductsPage() {
+function ProductsPageLegacy() {
   return (
     <CatalogView
       pageTitle="Carbide End Mills & Cutting Tools | ZENOK"
@@ -684,27 +684,27 @@ function CategoryCatalogPage({ categorySlug }: { categorySlug: string }) {
   );
 }
 
-export function FlatEndMillsPage() {
+function FlatEndMillsPageLegacy() {
   return <CategoryCatalogPage categorySlug="flat-end-mills" />;
 }
 
-export function BallNoseEndMillsPage() {
+function BallNoseEndMillsPageLegacy() {
   return <CategoryCatalogPage categorySlug="ball-nose-end-mills" />;
 }
 
-export function CornerRadiusEndMillsPage() {
+function CornerRadiusEndMillsPageLegacy() {
   return <CategoryCatalogPage categorySlug="corner-radius-end-mills" />;
 }
 
-export function AluminumEndMillsPage() {
+function AluminumEndMillsPageLegacy() {
   return <CategoryCatalogPage categorySlug="aluminum-end-mills" />;
 }
 
-export function CarbideRodsPage() {
+function CarbideRodsPageLegacy() {
   return <CategoryCatalogPage categorySlug="carbide-rods" />;
 }
 
-export function ProductDetailPage() {
+function ProductDetailPageLegacy() {
   const [, params] = useRoute("/products/:slug");
   const slug = params?.slug ?? "";
   const sku = getSkuBySlug(slug);

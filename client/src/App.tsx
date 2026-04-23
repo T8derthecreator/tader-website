@@ -12,20 +12,22 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import {
   AboutPage,
-  AluminumEndMillsPage,
   ApplicationsPage,
-  BallNoseEndMillsPage,
-  CarbideRodsPage,
-  CornerRadiusEndMillsPage,
-  FlatEndMillsPage,
   NotFoundPage,
-  ProductDetailPage,
-  ProductsPage,
   QuoteRequestPage,
   TechnologyPage,
 } from "./pages/SitePages";
 import HomePage from "./pages/HomePage";
 import WhyZenokPage from "./pages/WhyZenokPage";
+import ProductsPage from "./pages/ProductsPage";
+import {
+  FlatEndMillsPage,
+  BallNoseEndMillsPage,
+  CornerRadiusEndMillsPage,
+  AluminumEndMillsPage,
+} from "./pages/ProductCategoryPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import CarbideRodsPage from "./pages/CarbideRodsPage";
 
 function LegacyApplicationsRedirect() {
   useEffect(() => {
