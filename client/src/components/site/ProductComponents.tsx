@@ -185,56 +185,6 @@ export function CoatingOptions() {
   );
 }
 
-/* ---------- CoatingOptions (inline brief reference, mirrors ConstructionLegend) ---------- */
-
-export function CoatingOptions() {
-  return (
-    <div className="border border-line bg-panel p-6 lg:p-8">
-      <div className="mb-4 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-        Coating Options — Match to Your Workpiece
-      </div>
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 01</div>
-          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-graphite">Uncoated</div>
-          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
-            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HRC 62</span></div>
-            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Al · Cu · soft</span></div>
-            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">Base</span></div>
-          </div>
-        </div>
-        <div>
-          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 02</div>
-          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-graphite">TiAlN</div>
-          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
-            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HV 3200</span></div>
-            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Steel · Ti · Ni</span></div>
-            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">+18%</span></div>
-          </div>
-        </div>
-        <div>
-          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 03</div>
-          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-blue">Platinum TiAlN</div>
-          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
-            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HV 3500</span></div>
-            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Inconel · hard</span></div>
-            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">+32%</span></div>
-          </div>
-        </div>
-        <div>
-          <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">COAT / 04</div>
-          <div className="mt-1 font-[var(--font-display)] text-lg font-bold text-graphite">DLC</div>
-          <div className="mt-3 space-y-1.5 font-[var(--font-mono)] text-[11px]">
-            <div className="flex justify-between"><span className="text-steel">Hardness</span><span className="text-graphite">HV 5000</span></div>
-            <div className="flex justify-between"><span className="text-steel">Best for</span><span className="text-graphite">Al · CFRP</span></div>
-            <div className="flex justify-between"><span className="text-steel">Cost</span><span className="text-graphite">+28%</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /* ---------- SkuFilterableTable ---------- */
 
 export type SkuTableRow = {
