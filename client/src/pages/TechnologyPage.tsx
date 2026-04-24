@@ -141,39 +141,126 @@ export default function TechnologyPage() {
               </div>
             </Reveal>
 
-            {/* Process stages diagram — NO pricing */}
+            {/* Process pipeline — no numbers, visual flow with arrows */}
             <Reveal delay={150}>
-              <div className="space-y-2 lg:sticky lg:top-28">
+              <div className="relative lg:sticky lg:top-28">
+                {/* Ambient glow behind pipeline */}
+                <div className="pointer-events-none absolute -inset-10 -z-10 bg-gradient-to-b from-blue/5 via-transparent to-blue/10 blur-3xl" />
+
                 {[
-                  { step: "01", label: "W powder + Co binder", stage: "Raw material" },
-                  { step: "02", label: "Pressed + HIP sintered", stage: "Densification" },
-                  { step: "03", label: "Bar stock (ground h6)", stage: "Substrate" },
-                  { step: "04", label: "Finished tool (ground + coated)", stage: "Finished product", highlight: true },
-                ].map((s) => (
-                  <div
-                    key={s.step}
-                    className={`relative flex items-center gap-4 border p-4 ${
-                      s.highlight ? "border-blue bg-blue-pale" : "border-line bg-panel"
-                    }`}
-                  >
-                    <div
-                      className={`flex size-12 flex-none items-center justify-center border-2 font-[var(--font-mono)] text-xs font-bold ${
-                        s.highlight ? "border-blue bg-blue text-white" : "border-line bg-panel-2 text-steel"
-                      }`}
-                    >
-                      {s.step}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="font-[var(--font-display)] text-base font-bold text-graphite">
-                        {s.label}
+                  {
+                    stage: "Raw material",
+                    label: "Tungsten powder + Cobalt binder",
+                    svg: (
+                      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <circle cx="12" cy="16" r="2.5" />
+                        <circle cx="20" cy="14" r="2" />
+                        <circle cx="28" cy="17" r="2.5" />
+                        <circle cx="16" cy="22" r="2" />
+                        <circle cx="24" cy="22" r="2" />
+                        <path d="M 6 28 L 34 28" strokeLinecap="round" />
+                      </g>
+                    ),
+                  },
+                  {
+                    stage: "Densification",
+                    label: "Pressed + HIP sintered",
+                    svg: (
+                      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <rect x="10" y="10" width="20" height="20" rx="1" />
+                        <path d="M 14 14 L 14 26 M 20 14 L 20 26 M 26 14 L 26 26" strokeDasharray="2 2" opacity="0.6" />
+                        <path d="M 6 6 L 10 10 M 34 6 L 30 10 M 6 34 L 10 30 M 34 34 L 30 30" strokeLinecap="round" />
+                      </g>
+                    ),
+                  },
+                  {
+                    stage: "Substrate",
+                    label: "Bar stock ground to h6 tolerance",
+                    svg: (
+                      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <rect x="8" y="17" width="24" height="6" rx="0.5" />
+                        <ellipse cx="8" cy="20" rx="1.2" ry="3" />
+                        <ellipse cx="32" cy="20" rx="1.2" ry="3" />
+                        <path d="M 12 26 L 12 30 M 20 26 L 20 30 M 28 26 L 28 30" opacity="0.4" />
+                      </g>
+                    ),
+                  },
+                  {
+                    stage: "Finished product",
+                    label: "Ground geometry + PVD coating",
+                    highlight: true,
+                    svg: (
+                      <g fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <rect x="17" y="6" width="6" height="22" />
+                        <rect x="18" y="28" width="4" height="6" fill="currentColor" opacity="0.25" />
+                        <path d="M 17 28 L 23 28" strokeWidth="2" />
+                        <path d="M 13 10 L 15 14 M 25 10 L 27 14 M 13 22 L 15 26 M 25 22 L 27 26" strokeLinecap="round" opacity="0.5" />
+                      </g>
+                    ),
+                  },
+                ].map((s, i, arr) => {
+                  const isHighlight = s.highlight;
+                  const isLast = i === arr.length - 1;
+                  return (
+                    <div key={s.stage} className="relative">
+                      <div
+                        className={`relative flex items-center gap-5 border p-5 transition-all ${
+                          isHighlight
+                            ? "border-blue bg-gradient-to-r from-blue-pale to-panel shadow-[var(--shadow-blue)]"
+                            : "border-line bg-panel"
+                        }`}
+                      >
+                        {/* Left: icon */}
+                        <div
+                          className={`flex size-14 flex-none items-center justify-center border-2 ${
+                            isHighlight
+                              ? "border-blue bg-blue text-white"
+                              : "border-line bg-panel-2 text-blue"
+                          }`}
+                        >
+                          <svg width="40" height="40" viewBox="0 0 40 40">{s.svg}</svg>
+                        </div>
+
+                        {/* Middle: labels */}
+                        <div className="min-w-0 flex-1">
+                          <div className="font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.15em] text-blue">
+                            {s.stage}
+                          </div>
+                          <div
+                            className={`mt-1 font-[var(--font-display)] text-base font-bold leading-tight ${
+                              isHighlight ? "text-graphite" : "text-graphite"
+                            }`}
+                          >
+                            {s.label}
+                          </div>
+                        </div>
+
+                        {/* Right: check mark */}
+                        <div
+                          className={`flex size-8 flex-none items-center justify-center rounded-full ${
+                            isHighlight ? "bg-blue text-white" : "border border-line-strong text-steel"
+                          }`}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="3 7 6 10 11 4" />
+                          </svg>
+                        </div>
                       </div>
-                      <div className="mt-1 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-steel">
-                        {s.stage} · ZENOK controls this
-                      </div>
+
+                      {/* Connector arrow between stages */}
+                      {!isLast && (
+                        <div className="flex justify-center py-2">
+                          <svg width="20" height="24" viewBox="0 0 20 24" className="text-blue/60">
+                            <path d="M 10 2 L 10 18 M 4 14 L 10 20 L 16 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
-                <div className="mt-3 text-center font-[var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-steel">
+                  );
+                })}
+
+                <div className="mt-5 flex items-center justify-center gap-2 border-t border-line-soft pt-4 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-steel">
+                  <span className="size-1.5 rounded-full bg-blue animate-pulse" />
                   All four stages under ZENOK's roof
                 </div>
               </div>

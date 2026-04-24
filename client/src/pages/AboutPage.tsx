@@ -28,10 +28,10 @@ function Reveal({
 }
 
 function Counter({ to, decimals = 0 }: { to: number; decimals?: number }) {
-  const { ref, value } = useCountUp(to, decimals, 1500);
+  const { ref, display } = useCountUp(to, decimals, 1500);
   return (
     <span ref={ref} className="tabular-nums">
-      {decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString()}
+      {display}
     </span>
   );
 }
