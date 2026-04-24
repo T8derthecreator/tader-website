@@ -228,147 +228,121 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Construction + Coatings: LEFT margin | Center heading | RIGHT margin */}
-      <section className="relative py-14 lg:py-20">
+      {/* SKU Spec Sheet with LEFT sidebar (Construction + Coatings) */}
+      <section className="relative border-t border-line bg-bg-2 py-20 lg:py-24">
         <div className="mx-auto max-w-[1920px] px-4 lg:px-8 xl:px-12">
           <div className="grid gap-8
-                          lg:grid-cols-[minmax(260px,1fr)_minmax(420px,1.4fr)_minmax(260px,1fr)]
-                          lg:gap-6 xl:gap-10 2xl:gap-16">
-            {/* LEFT: Construction */}
-            <div className="order-2 lg:order-1">
+                          lg:grid-cols-[minmax(280px,320px)_1fr]
+                          lg:gap-10 xl:gap-14 2xl:gap-16">
+            {/* LEFT sidebar — Construction + Coatings */}
+            <aside className="order-2 space-y-5 lg:order-1">
               <Reveal>
                 <ConstructionLegend />
               </Reveal>
-            </div>
-
-            {/* CENTER: heading */}
-            <div className="order-1 flex items-center justify-center lg:order-2">
-              <div className="max-w-lg text-center lg:text-left">
-                <Reveal>
-                  <h2
-                    className="font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-                    style={{ fontSize: "clamp(24px, 2.8vw, 36px)" }}
-                  >
-                    Available for this series.
-                    <br />
-                    <span className="serif-italic font-normal text-graphite-soft">
-                      Match to your material.
-                    </span>
-                  </h2>
-                </Reveal>
-                <Reveal delay={150}>
-                  <p className="mt-5 text-[14px] leading-[1.65] text-graphite-soft">
-                    This series supports the construction types and coatings listed either side. Refer to the spec sheet below for which specific combinations are available per SKU.
-                  </p>
-                </Reveal>
-              </div>
-            </div>
-
-            {/* RIGHT: Coatings */}
-            <div className="order-3">
               <Reveal delay={100}>
                 <CoatingOptions />
               </Reveal>
+            </aside>
+
+            {/* RIGHT main — spec sheet */}
+            <div className="order-1 lg:order-2">
+              <Reveal>
+                <div className="sec-eyebrow">
+                  Spec Sheet
+                  <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
+                    [ 01 ]
+                  </span>
+                </div>
+              </Reveal>
+              <Reveal delay={100}>
+                <h2
+                  className="max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
+                  style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
+                >
+                  {skus.length} SKUs in this series.
+                  <br />
+                  <span className="serif-italic font-normal text-graphite-soft">
+                    All dimensions in mm.
+                  </span>
+                </h2>
+              </Reveal>
+
+              <Reveal delay={250}>
+                <div className="mt-10 overflow-x-auto border border-line bg-panel">
+                  <table className="w-full border-collapse">
+                    <thead className="bg-panel-2">
+                      <tr className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel">
+                        <th className="whitespace-nowrap p-3 text-left">Model No.</th>
+                        <th className="whitespace-nowrap p-3 text-right">Ø (D)</th>
+                        <th className="whitespace-nowrap p-3 text-right">Cut (l)</th>
+                        <th className="whitespace-nowrap p-3 text-right">OAL (L)</th>
+                        <th className="whitespace-nowrap p-3 text-right">Shank (d)</th>
+                        <th className="whitespace-nowrap p-3 text-center">Construction</th>
+                        <th className="whitespace-nowrap p-3"></th>
+                      </tr>
+                    </thead>
+                    <tbody className="font-[var(--font-mono)] text-xs">
+                      {skus.map((s) => (
+                        <tr
+                          key={s.model_no}
+                          className="border-t border-line-soft transition-colors hover:bg-panel-2"
+                        >
+                          <td className="p-3 font-semibold text-graphite">{s.model_no}</td>
+                          <td className="p-3 text-right tabular-nums text-graphite">
+                            {s.diameter_mm ?? "—"}
+                          </td>
+                          <td className="p-3 text-right tabular-nums text-steel">
+                            {s.cut_length_mm ?? "—"}
+                          </td>
+                          <td className="p-3 text-right tabular-nums text-steel">
+                            {s.overall_length_mm ?? "—"}
+                          </td>
+                          <td className="p-3 text-right tabular-nums text-steel">
+                            {s.shank_diameter_mm ?? "—"}
+                          </td>
+                          <td className="p-3 text-center">
+                            <div className="flex flex-wrap items-center justify-center gap-1">
+                              {s.construction_options.map((opt) => (
+                                <span
+                                  key={opt}
+                                  className={`inline-flex items-center justify-center border px-1.5 py-0.5 text-[10px] font-bold ${
+                                    opt === "C"
+                                      ? "border-blue bg-blue text-white"
+                                      : "border-line bg-white text-graphite"
+                                  }`}
+                                >
+                                  {opt}
+                                </span>
+                              ))}
+                            </div>
+                          </td>
+                          <td className="p-3 text-right">
+                            <a
+                              href={INQUIRY_URL}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 font-semibold text-blue hover:underline"
+                            >
+                              Quote →
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Reveal>
+
+              <Reveal delay={350}>
+                <p className="mt-6 text-xs text-steel">
+                  <strong className="text-graphite-soft">Column legend:</strong> D = diameter, l = cut length, L = overall length, d = shank diameter. All in millimeters. Refer to the reference panels {" "}
+                  <span className="hidden lg:inline">on the left</span>
+                  <span className="lg:hidden">above</span>{" "}
+                  for construction and coating options.
+                </p>
+              </Reveal>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* SKU Spec Sheet (TOPGREEN-style table) */}
-      <section className="relative border-t border-line bg-bg-2 py-20 lg:py-24">
-        <div className="container-wrap">
-          <Reveal>
-            <div className="sec-eyebrow">
-              Spec Sheet
-              <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-                [ 01 ]
-              </span>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2
-              className="max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-              style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
-            >
-              {skus.length} SKUs in this series.
-              <br />
-              <span className="serif-italic font-normal text-graphite-soft">
-                All dimensions in mm.
-              </span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={250}>
-            <div className="mt-10 overflow-x-auto border border-line bg-panel">
-              <table className="w-full border-collapse">
-                <thead className="bg-panel-2">
-                  <tr className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel">
-                    <th className="whitespace-nowrap p-3 text-left">Model No.</th>
-                    <th className="whitespace-nowrap p-3 text-right">Ø (D)</th>
-                    <th className="whitespace-nowrap p-3 text-right">Cut (l)</th>
-                    <th className="whitespace-nowrap p-3 text-right">OAL (L)</th>
-                    <th className="whitespace-nowrap p-3 text-right">Shank (d)</th>
-                    <th className="whitespace-nowrap p-3 text-center">Construction</th>
-                    <th className="whitespace-nowrap p-3"></th>
-                  </tr>
-                </thead>
-                <tbody className="font-[var(--font-mono)] text-xs">
-                  {skus.map((s) => (
-                    <tr
-                      key={s.model_no}
-                      className="border-t border-line-soft transition-colors hover:bg-panel-2"
-                    >
-                      <td className="p-3 font-semibold text-graphite">{s.model_no}</td>
-                      <td className="p-3 text-right tabular-nums text-graphite">
-                        {s.diameter_mm ?? "—"}
-                      </td>
-                      <td className="p-3 text-right tabular-nums text-steel">
-                        {s.cut_length_mm ?? "—"}
-                      </td>
-                      <td className="p-3 text-right tabular-nums text-steel">
-                        {s.overall_length_mm ?? "—"}
-                      </td>
-                      <td className="p-3 text-right tabular-nums text-steel">
-                        {s.shank_diameter_mm ?? "—"}
-                      </td>
-                      <td className="p-3 text-center">
-                        <div className="flex flex-wrap items-center justify-center gap-1">
-                          {s.construction_options.map((opt) => (
-                            <span
-                              key={opt}
-                              className={`inline-flex items-center justify-center border px-1.5 py-0.5 text-[10px] font-bold ${
-                                opt === "C"
-                                  ? "border-blue bg-blue text-white"
-                                  : "border-line bg-white text-graphite"
-                              }`}
-                            >
-                              {opt}
-                            </span>
-                          ))}
-                        </div>
-                      </td>
-                      <td className="p-3 text-right">
-                        <a
-                          href={INQUIRY_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 font-semibold text-blue hover:underline"
-                        >
-                          Quote →
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Reveal>
-
-          <Reveal delay={350}>
-            <p className="mt-6 text-xs text-steel">
-              <strong className="text-graphite-soft">Column legend:</strong> D = diameter, l = cut length, L = overall length, d = shank diameter. All in millimeters.
-            </p>
-          </Reveal>
         </div>
       </section>
 

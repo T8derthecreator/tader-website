@@ -166,130 +166,94 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
         </div>
       </section>
 
-      {/* Product family cards */}
+      {/* Product family cards with LEFT sidebar (Construction + Coatings) */}
       {families.length > 0 && (
         <section className="relative py-20 lg:py-24">
-          <div className="container-wrap">
-            <Reveal>
-              <div className="sec-eyebrow">
-                Product Lines
-                <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-                  [ 01 ]
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <h2
-                className="max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-                style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
-              >
-                Review the active {categoryMeta.shortLabel?.toLowerCase() ?? categoryMeta.label.toLowerCase()} product lines.
-              </h2>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="mt-6 max-w-2xl text-[16px] leading-[1.7] text-graphite-soft">
-                Only the product lines within this geometry family are shown here, so buyers can move from family-level selection to dimension review without cross-category noise.
-              </p>
-            </Reveal>
-
-            <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {families.map((f, i) => (
-                <Reveal key={f.series} delay={i * 80}>
-                  <Link href={`/products/${f.series_slug}`}>
-                    <div className="group h-full border border-line bg-panel p-7 transition-all duration-300 hover:-translate-y-1 hover:border-blue hover:shadow-[var(--shadow-blue)]">
-                      <div className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-steel">
-                        {f.series}
-                      </div>
-                      <div className="mt-4 font-[var(--font-display)] text-xl font-bold leading-snug text-graphite">
-                        {f.line_name}
-                      </div>
-                      <p className="mt-3 text-sm leading-[1.7] text-graphite-soft">{f.intro}</p>
-                      <div className="mt-6 space-y-2 border-t border-line pt-4 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.1em]">
-                        <div className="flex justify-between">
-                          <span className="text-steel">Flutes</span>
-                          <span className="text-graphite">{f.flutes ?? "—"}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-steel">Construction</span>
-                          <span className="text-graphite">{f.construction ?? "—"}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-steel">Ø range</span>
-                          <span className="text-graphite">{formatRange(f.diameter_range_mm)}</span>
-                        </div>
-                        <div className="flex items-center justify-between border-t border-line pt-2">
-                          <span className="text-steel">SKUs</span>
-                          <span className="font-semibold text-blue">{f.sku_count}</span>
-                        </div>
-                      </div>
-                      <div className="mt-5 flex items-center gap-2 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-blue transition-transform duration-200 group-hover:translate-x-1">
-                        View spec sheet
-                        <ArrowRight className="size-3" />
-                      </div>
-                    </div>
-                  </Link>
+          <div className="mx-auto max-w-[1920px] px-4 lg:px-8 xl:px-12">
+            <div className="grid gap-8
+                            lg:grid-cols-[minmax(280px,320px)_1fr]
+                            lg:gap-10 xl:gap-14 2xl:gap-16">
+              {/* LEFT sidebar — Construction + Coatings reference */}
+              <aside className="order-2 space-y-5 lg:order-1">
+                <Reveal>
+                  <ConstructionLegend />
                 </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+                <Reveal delay={100}>
+                  <CoatingOptions />
+                </Reveal>
+              </aside>
 
-      {/* Reference panel: Construction (LEFT margin) | Heading (center) | Coatings (RIGHT margin) */}
-      <section className="relative border-t border-line bg-bg py-16 lg:py-20">
-        <div className="mx-auto max-w-[1920px] px-4 lg:px-8 xl:px-12">
-          <div className="grid gap-8
-                          lg:grid-cols-[minmax(260px,1fr)_minmax(420px,1.4fr)_minmax(260px,1fr)]
-                          lg:gap-6 xl:gap-10 2xl:gap-16">
-            {/* LEFT sidebar: Construction Types */}
-            <div className="order-2 lg:order-1">
-              <Reveal>
-                <ConstructionLegend />
-              </Reveal>
-            </div>
-
-            {/* CENTER: eyebrow + heading */}
-            <div className="order-1 flex items-center justify-center lg:order-2">
-              <div className="max-w-lg text-center lg:text-left">
+              {/* RIGHT main — heading + family cards */}
+              <div className="order-1 lg:order-2">
                 <Reveal>
                   <div className="sec-eyebrow">
-                    Reference
+                    Product Lines
                     <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-                      [ 02 ]
+                      [ 01 ]
                     </span>
                   </div>
                 </Reveal>
                 <Reveal delay={100}>
                   <h2
-                    className="mt-6 font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-                    style={{ fontSize: "clamp(26px, 3vw, 42px)" }}
+                    className="max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
+                    style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
                   >
-                    Construction and
-                    <br />
-                    coating options.
-                    <br />
-                    <span className="serif-italic font-normal text-graphite-soft">
-                      Available across this family.
-                    </span>
+                    Review the active {categoryMeta.shortLabel?.toLowerCase() ?? categoryMeta.label.toLowerCase()} product lines.
                   </h2>
                 </Reveal>
                 <Reveal delay={200}>
-                  <p className="mt-6 text-[15px] leading-[1.7] text-graphite-soft">
-                    Every product line in this geometry family supports these construction types and coatings. Pick the combination that matches your workpiece material, precision tier, and budget.
+                  <p className="mt-6 max-w-2xl text-[16px] leading-[1.7] text-graphite-soft">
+                    Only the product lines within this geometry family are shown here, so buyers can move from family-level selection to dimension review without cross-category noise. Use the reference {" "}
+                    <span className="lg:inline hidden">on the left</span>
+                    <span className="lg:hidden">above</span>{" "}
+                    to compare available constructions and coatings.
                   </p>
                 </Reveal>
+
+                <div className="mt-12 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
+                  {families.map((f, i) => (
+                    <Reveal key={f.series} delay={i * 80}>
+                      <Link href={`/products/${f.series_slug}`}>
+                        <div className="group h-full border border-line bg-panel p-7 transition-all duration-300 hover:-translate-y-1 hover:border-blue hover:shadow-[var(--shadow-blue)]">
+                          <div className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-steel">
+                            {f.series}
+                          </div>
+                          <div className="mt-4 font-[var(--font-display)] text-xl font-bold leading-snug text-graphite">
+                            {f.line_name}
+                          </div>
+                          <p className="mt-3 text-sm leading-[1.7] text-graphite-soft">{f.intro}</p>
+                          <div className="mt-6 space-y-2 border-t border-line pt-4 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.1em]">
+                            <div className="flex justify-between">
+                              <span className="text-steel">Flutes</span>
+                              <span className="text-graphite">{f.flutes ?? "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-steel">Construction</span>
+                              <span className="text-graphite">{f.construction ?? "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-steel">Ø range</span>
+                              <span className="text-graphite">{formatRange(f.diameter_range_mm)}</span>
+                            </div>
+                            <div className="flex items-center justify-between border-t border-line pt-2">
+                              <span className="text-steel">SKUs</span>
+                              <span className="font-semibold text-blue">{f.sku_count}</span>
+                            </div>
+                          </div>
+                          <div className="mt-5 flex items-center gap-2 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-blue transition-transform duration-200 group-hover:translate-x-1">
+                            View spec sheet
+                            <ArrowRight className="size-3" />
+                          </div>
+                        </div>
+                      </Link>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
             </div>
-
-            {/* RIGHT sidebar: Available Coatings */}
-            <div className="order-3">
-              <Reveal delay={100}>
-                <CoatingOptions />
-              </Reveal>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Full catalog link */}
       <section className="relative border-t border-line bg-bg-2 py-16 lg:py-20">
