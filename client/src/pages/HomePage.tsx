@@ -10,6 +10,7 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SeoHead } from "@/components/site/SeoHead";
+import InteractiveToolVisual from "@/components/site/InteractiveToolVisual";
 import { useReveal, useCountUp } from "@/hooks/useReveal";
 
 const INQUIRY_URL = "https://toolinginquiryform.netlify.app/";
@@ -160,91 +161,9 @@ function HeroSection() {
             </Reveal>
           </div>
 
-          {/* Right: technical visual */}
+          {/* Right: technical visual — 3D interactive tool (Three.js) */}
           <Reveal delay={150}>
-            <div className="relative mx-auto aspect-square w-full max-w-[500px] overflow-hidden border border-line bg-gradient-to-br from-panel to-panel-2 shadow-[var(--shadow-lg)]">
-              {/* Corner brackets */}
-              <div className="absolute left-0 top-0 size-6 border-l-[1.5px] border-t-[1.5px] border-blue" />
-              <div className="absolute right-0 top-0 size-6 border-r-[1.5px] border-t-[1.5px] border-blue" />
-              <div className="absolute bottom-0 left-0 size-6 border-b-[1.5px] border-l-[1.5px] border-blue" />
-              <div className="absolute bottom-0 right-0 size-6 border-b-[1.5px] border-r-[1.5px] border-blue" />
-
-              {/* Tick labels */}
-              <div className="absolute left-5 top-5 font-[var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-steel">
-                [ TOOL · 0042 ]
-              </div>
-              <div className="absolute right-5 top-5 font-[var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-steel">
-                Ø 3.000 MM
-              </div>
-              <div className="absolute bottom-5 left-5 font-[var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-steel">
-                MAT · SS308
-              </div>
-              <div className="absolute bottom-5 right-5 font-[var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-steel">
-                COAT · TIALN
-              </div>
-
-              {/* Main concentric tool */}
-              <svg
-                className="absolute inset-0 m-auto"
-                width="280"
-                height="280"
-                viewBox="0 0 260 260"
-              >
-                <defs>
-                  <radialGradient id="heroGrad" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25" />
-                    <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-                <circle cx="130" cy="130" r="100" fill="url(#heroGrad)" />
-                <g fill="none" stroke="#2563eb" strokeWidth="1.2">
-                  <circle
-                    cx="130"
-                    cy="130"
-                    r="100"
-                    strokeDasharray="2 4"
-                    opacity="0.4"
-                  >
-                    <animateTransform
-                      attributeName="transform"
-                      type="rotate"
-                      from="0 130 130"
-                      to="360 130 130"
-                      dur="60s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle cx="130" cy="130" r="75" opacity="0.6" />
-                  <circle cx="130" cy="130" r="50" />
-                  <path
-                    d="M 130 80 L 155 130 L 130 180 L 105 130 Z"
-                    fill="rgba(37,99,235,0.15)"
-                  />
-                  <path
-                    d="M 80 130 L 130 105 L 180 130 L 130 155 Z"
-                    fill="rgba(8,145,178,0.12)"
-                  />
-                  <circle cx="130" cy="130" r="8" fill="#2563eb" />
-                  <g strokeWidth="0.8">
-                    <line x1="130" y1="20" x2="130" y2="30" />
-                    <line x1="130" y1="230" x2="130" y2="240" />
-                    <line x1="20" y1="130" x2="30" y2="130" />
-                    <line x1="230" y1="130" x2="240" y2="130" />
-                  </g>
-                </g>
-              </svg>
-
-              {/* Spec tags */}
-              <div className="absolute right-4 top-16 border border-blue/40 bg-white/95 px-2 py-1 font-[var(--font-mono)] text-[9px] text-blue">
-                Ø 0.3 · R0.15 BN
-              </div>
-              <div className="absolute bottom-20 left-4 border border-blue/40 bg-white/95 px-2 py-1 font-[var(--font-mono)] text-[9px] text-blue">
-                2F · 50 OAL
-              </div>
-              <div className="absolute bottom-14 right-10 border border-blue/40 bg-white/95 px-2 py-1 font-[var(--font-mono)] text-[9px] text-blue">
-                HRC 62 · TiAlN
-              </div>
-            </div>
+            <InteractiveToolVisual />
           </Reveal>
         </div>
       </div>
