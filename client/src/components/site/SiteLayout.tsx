@@ -67,12 +67,14 @@ function ProgressBar() {
 
 function Brand() {
   return (
-    <Link href="/" className="flex items-center gap-3 font-[var(--font-display)] font-bold text-[15px] tracking-[0.03em] text-white">
+    <Link href="/" className="flex items-center gap-3 font-[var(--font-display)] font-bold text-[15px] tracking-[0.03em]" style={{ color: "#ffffff" }}>
       <span
-        className="grid size-[30px] place-items-center font-black text-[14px] text-white shadow-[0_4px_12px_rgba(59,130,246,0.6)]"
+        className="grid size-[30px] place-items-center font-black text-[14px]"
         style={{
-          background: "#3b82f6",
+          background: "#60a5fa",
+          color: "#ffffff",
           clipPath: "polygon(15% 0, 100% 0, 85% 100%, 0 100%)",
+          boxShadow: "0 4px 16px rgba(96,165,250,0.7), 0 0 0 1px rgba(255,255,255,0.2) inset",
         }}
       >
         Z
@@ -123,10 +125,15 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
                         <Link
                           key={child.href}
                           href={child.href}
+                          style={
+                            featured
+                              ? { backgroundColor: "#eff6ff", color: "#1d4ed8" }
+                              : { backgroundColor: "#ffffff", color: "#0a1628" }
+                          }
                           className={`border-b px-4 py-3 font-[var(--font-mono)] text-[12px] tracking-[0.06em] transition-colors last:border-b-0 ${
                             featured
-                              ? "border-line border-b-2 bg-blue-pale font-semibold text-blue hover:bg-blue hover:text-white"
-                              : "border-line-soft text-graphite hover:bg-blue-pale hover:text-blue"
+                              ? "border-line border-b-2 font-semibold hover:bg-blue hover:text-white"
+                              : "border-line-soft hover:bg-blue-pale hover:text-blue"
                           }`}
                         >
                           {featured ? `→ ${child.label}` : child.label}
@@ -307,7 +314,7 @@ function SiteFooter() {
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="relative min-h-screen bg-bg">
+    <div className="relative min-h-screen" style={{ backgroundColor: "#d8dee6" }}>
       <div className="bp-bg" aria-hidden="true" />
       <ProgressBar />
       <TopMarquee />

@@ -1,13 +1,13 @@
 /*
-  /about — ZENOK company story, mission, values, timeline, certifications.
-  Structure: Page Hero → Intro (prose + stats frame) → Mission quote →
-             6 Values grid → Timeline → Certifications → Final CTA
+  /about — ZENOK company story, mission, values, certifications.
+  Structure: Page Hero → Intro (prose + IdentityMark) → Mission quote →
+             6 Values grid → Certifications → Final CTA
 */
 import { useEffect } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SeoHead } from "@/components/site/SeoHead";
 import IdentityMark from "@/components/site/IdentityMark";
-import { useReveal, useCountUp } from "@/hooks/useReveal";
+import { useReveal } from "@/hooks/useReveal";
 
 const INQUIRY_URL = "https://toolinginquiryform.netlify.app/";
 
@@ -28,15 +28,6 @@ function Reveal({
   );
 }
 
-function Counter({ to, decimals = 0 }: { to: number; decimals?: number }) {
-  const { ref, display } = useCountUp(to, decimals, 1500);
-  return (
-    <span ref={ref} className="tabular-nums">
-      {display}
-    </span>
-  );
-}
-
 const VALUES = [
   { num: "01", title: "Arithmetic over marketing", body: "Every cost-down claim we make is backed by a written proposal with real landed numbers. We don't use the word \"savings\" without showing the math." },
   { num: "02", title: "Vertical integration as moat", body: "Owning the substrate supply chain isn't a logistics advantage — it's a pricing floor our competitors structurally cannot break through." },
@@ -44,14 +35,6 @@ const VALUES = [
   { num: "04", title: "48-hour commitment", body: "A written proposal with landed pricing, lead time, and sample plan — within 48 hours of receiving your spec. Not an estimate. A commitment." },
   { num: "05", title: "Samples before volume", body: "We provide free evaluation samples for qualified programs. You don't commit to volume until you've run our tools in production. That's the correct order of operations." },
   { num: "06", title: "Trade-law transparency", body: "We publish our HTS classification (8207.70), duty rate (4.8% MFN), and origin documentation. No surprises at customs. No duty reclassification risk." },
-];
-
-const TIMELINE = [
-  { year: "2019", title: "Founded in Taiwan", body: "ZENOK established in Taichung, Taiwan — the center of precision machining manufacturing in Asia. Initial focus on carbide substrate supply to regional tool manufacturers." },
-  { year: "2020", title: "First finished tool line launched", body: "Leveraging existing bar stock supply chain, ZENOK launched its first finished end mill product line — flat and ball nose geometries in composite (B) and solid carbide (C) construction." },
-  { year: "2021", title: "US market entry · Section 301 advantage recognized", body: "As China Section 301 tariffs compounded, ZENOK's Taiwan origin became a structural pricing advantage. First US aerospace and medical customers qualified on ZENOK tooling." },
-  { year: "2023", title: "ISO 9001 certification · 100+ SKU catalog", body: "Achieved ISO 9001:2015 certification across all product lines. Catalog expanded to 100+ active SKUs covering flat, ball nose, corner radius, and aluminum-spec geometries." },
-  { year: "2026", title: "156 SKUs · 48-hour proposal guarantee", body: "ZENOK now operates 156 active SKUs with a formal 48-hour proposal guarantee for all new programs. Custom geometry programs available at MOQ 200." },
 ];
 
 const CERTS = [
@@ -215,52 +198,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="relative border-t border-line bg-bg-2 py-20 lg:py-28">
-        <div className="container-wrap">
-          <Reveal>
-            <div className="sec-eyebrow">
-              Company History
-              <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-                [ 02 ]
-              </span>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2
-              className="max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-              style={{ fontSize: "clamp(34px, 4.5vw, 60px)" }}
-            >
-              From bar stock
-              <br />
-              to <span className="serif-italic font-normal text-graphite-soft">finished tool.</span>
-            </h2>
-          </Reveal>
-
-          <div className="mt-14 relative pl-10">
-            {/* Vertical track */}
-            <span className="pointer-events-none absolute bottom-0 left-0 top-0 w-px bg-gradient-to-b from-blue via-blue to-transparent" />
-            {TIMELINE.map((item, i) => (
-              <Reveal key={item.year} delay={i * 80}>
-                <div className="relative mb-14 pl-10 last:mb-0">
-                  {/* Dot */}
-                  <span className="absolute -left-[5px] top-2 size-[11px] rounded-full bg-blue ring-4 ring-bg-2" />
-                  <div className="font-[var(--font-display)] text-2xl font-black text-blue tracking-[-0.02em]">
-                    {item.year}
-                  </div>
-                  <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-graphite">
-                    {item.title}
-                  </div>
-                  <p className="mt-3 max-w-2xl text-[15px] leading-[1.75] text-graphite-soft">
-                    {item.body}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Certifications */}
       <section className="relative border-t border-line py-20 lg:py-28">
         <div className="container-wrap">
@@ -268,7 +205,7 @@ export default function AboutPage() {
             <div className="sec-eyebrow">
               Certifications & Standards
               <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-                [ 03 ]
+                [ 02 ]
               </span>
             </div>
           </Reveal>
