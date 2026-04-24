@@ -34,8 +34,8 @@
 
 /* Plain CSS variables for advanced components */
 :root {
-  --bg: #f4f5f7;
-  --bg-2: #e9edf2;
+  --bg: #e8ebf0;
+  --bg-2: #dde1e8;
   --panel: #ffffff;
   --panel-2: #f8fafc;
   --line: #e2e8f0;
