@@ -132,7 +132,7 @@ export default function TechnologyPage() {
                     Most tool manufacturers buy carbide rod stock from upstream suppliers, then machine it into finished tools. ZENOK <strong className="text-graphite">synthesizes the carbide and grinds the finished tool in the same facility</strong> — which means we control substrate quality, grain structure, and finished-geometry tolerance as one continuous process.
                   </p>
                   <p>
-                    This is why our competitors' finished tools land at $6.50–$9.00 per unit while ZENOK lands at $4.05–$5.50. They're paying our margin on the rod stock, then adding theirs on top. We just skip that step.
+                    This vertical integration is how we offer structural cost-down to US customers without compromising on substrate grade or process qualification. Our competitors buy the substrate we manufacture — they cannot structurally undercut a supplier that skips the intermediary tiers.
                   </p>
                   <p>
                     It's also why we can run custom programs at MOQ 200 — the rod stock for a custom diameter is <em className="serif-italic text-graphite">already in our inventory</em> as bar stock supply for other customers.
@@ -141,15 +141,15 @@ export default function TechnologyPage() {
               </div>
             </Reveal>
 
-            {/* Process diagram */}
+            {/* Process stages diagram — NO pricing */}
             <Reveal delay={150}>
               <div className="space-y-2 lg:sticky lg:top-28">
                 {[
-                  { step: "01", label: "W powder + Co binder", cost: "$0.40" },
-                  { step: "02", label: "Pressed + HIP sintered", cost: "$1.20" },
-                  { step: "03", label: "Bar stock (ground h6)", cost: "$3.50" },
-                  { step: "04", label: "Finished tool (ground + coated)", cost: "$4.05", highlight: true },
-                ].map((s, i) => (
+                  { step: "01", label: "W powder + Co binder", stage: "Raw material" },
+                  { step: "02", label: "Pressed + HIP sintered", stage: "Densification" },
+                  { step: "03", label: "Bar stock (ground h6)", stage: "Substrate" },
+                  { step: "04", label: "Finished tool (ground + coated)", stage: "Finished product", highlight: true },
+                ].map((s) => (
                   <div
                     key={s.step}
                     className={`relative flex items-center gap-4 border p-4 ${
@@ -168,20 +168,13 @@ export default function TechnologyPage() {
                         {s.label}
                       </div>
                       <div className="mt-1 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-steel">
-                        Process step · ZENOK controls this
+                        {s.stage} · ZENOK controls this
                       </div>
-                    </div>
-                    <div
-                      className={`font-[var(--font-mono)] text-sm font-bold tabular-nums ${
-                        s.highlight ? "text-blue" : "text-graphite"
-                      }`}
-                    >
-                      {s.cost}
                     </div>
                   </div>
                 ))}
                 <div className="mt-3 text-center font-[var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-steel">
-                  Cost accrual per piece · 3mm flat end mill (B) reference
+                  All four stages under ZENOK's roof
                 </div>
               </div>
             </Reveal>

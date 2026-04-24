@@ -28,7 +28,7 @@ function Reveal({
 }
 
 function Counter({ to, decimals = 0 }: { to: number; decimals?: number }) {
-  const { ref, value } = useCountUp(to, 1500);
+  const { ref, value } = useCountUp(to, decimals, 1500);
   return (
     <span ref={ref} className="tabular-nums">
       {decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString()}
@@ -119,7 +119,7 @@ export default function AboutPage() {
                   ZENOK manufactures precision carbide micro cutting tools at our facility in Taiwan and supplies them factory-direct to CNC shops across the United States — primarily in aerospace, medical device, and electronics manufacturing.
                 </p>
                 <p>
-                  What separates us structurally isn't just quality or price. It's that <strong className="text-graphite">we sell the raw carbide bar stock to other tool manufacturers</strong> — the same bar stock our finished tools are made from. After their machining overhead, coating, packaging, and distributor margin, their finished tool lands at $6.50–$9.00 per unit. We manufacture at the same material cost and ship direct. The math doesn't leave room for competitors to undercut us.
+                  What separates us structurally isn't just quality or price. It's that <strong className="text-graphite">we sell the raw carbide bar stock to other tool manufacturers</strong> — the same bar stock our finished tools are made from. After their machining overhead, coating, packaging, and distributor margin, their finished tool lands at full-stack distributor pricing. We manufacture at factory-direct cost and ship direct. The math doesn't leave room for downstream competitors to undercut us.
                 </p>
                 <p>
                   Add Taiwan's <strong className="text-graphite">4.8% MFN general duty</strong> versus China's compounding Section 301 surcharges, and the cost-down case builds before we even discuss geometry, substrate, or coating.

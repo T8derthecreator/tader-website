@@ -352,7 +352,7 @@ function TariffMoatSection() {
                 </span>
               </h4>
               <p className="mt-4 text-[14px] leading-[1.75] text-graphite-soft">
-                ZENOK sells carbide bar stock to other tool manufacturers while simultaneously selling finished tools under our own brand. After their machining, depreciation, labor, and overhead, their finished tool cost lands at $6.50–$9.00. They can't structurally undercut us. That's not marketing — that's arithmetic.
+                ZENOK sells carbide bar stock to other tool manufacturers while simultaneously selling finished tools under our own brand. After their machining, depreciation, labor, and overhead, their finished tool cost carries the full distributor-tier stack. They can't structurally undercut us. That's not marketing — that's arithmetic.
               </p>
               <Link
                 href="/why-zenok"

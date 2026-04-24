@@ -121,63 +121,59 @@ export default function CarbideRodsPage() {
             <Reveal delay={150}>
               <div className="space-y-6 text-[16px] leading-[1.75] text-graphite-soft">
                 <p>
-                  When a US tool distributor buys finished micro end mills from another Asian manufacturer, they pay roughly <strong className="text-graphite">$6.50–$9.00 per piece</strong>. That manufacturer built the tool from carbide rod stock they purchased — often from ZENOK — at around{" "}
-                  <strong className="text-graphite">$3.50 per piece equivalent.</strong>
+                  A US tool distributor buying finished micro end mills from another Asian manufacturer is purchasing through a chain that includes substrate cost, machining overhead, coating, packaging, and margin at multiple tiers. <strong className="text-graphite">The carbide rod in that finished tool was often manufactured by ZENOK</strong> — we supply substrate to many of the Asian tool factories that serve the US distributor market.
                 </p>
                 <p>
-                  Their $3.00–$5.50 gross is consumed by machining, depreciation, labor, overhead, sales. After all that, they ship a finished tool at $6.50+.
-                </p>
-                <p>
-                  ZENOK skips the distributor tier entirely. We sell finished tools at Taiwan factory pricing, direct to US CNC shops. The competitor can't structurally match that — <strong className="text-graphite">not because they're worse at machining, but because their cost floor sits above our price ceiling.</strong>
+                  ZENOK skips the distributor tier entirely. We sell finished tools at Taiwan factory pricing, direct to US CNC shops. The downstream competitor can't structurally match that — <strong className="text-graphite">not because they're worse at machining, but because their cost floor sits above our ceiling.</strong>
                 </p>
                 <p>
                   <em className="serif-italic text-graphite">
                     Selling them the rod openly is the demonstration.
                   </em>{" "}
-                  We're not afraid of the math — we built the business around it.
+                  We're not afraid of the arithmetic — we built the business around it.
                 </p>
               </div>
             </Reveal>
 
-            {/* Visual: cost stack comparison */}
+            {/* Visual: structural position (no specific $) */}
             <Reveal delay={250}>
               <div className="border border-line bg-panel p-8 lg:p-10">
                 <div className="mb-6 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-                  Cost Stack · Per Finished Tool
+                  Structural Cost Position
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-7">
                   <div>
                     <div className="mb-2 flex items-baseline justify-between">
                       <span className="font-semibold text-graphite">Competitor route</span>
-                      <span className="font-[var(--font-mono)] font-bold text-graphite">
-                        $6.50 – $9.00
+                      <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-steel">
+                        Full stack
                       </span>
                     </div>
                     <div className="h-3 overflow-hidden border border-line bg-bg-2">
                       <div className="h-full w-full bg-graphite" />
                     </div>
                     <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">
-                      <span>$3.50 rod</span>
+                      <span>ZENOK rod</span>
                       <span>+ machining</span>
                       <span>+ depreciation</span>
                       <span>+ overhead</span>
-                      <span>+ margin</span>
+                      <span>+ distributor margin</span>
                     </div>
                   </div>
 
                   <div>
                     <div className="mb-2 flex items-baseline justify-between">
                       <span className="font-semibold text-graphite">ZENOK direct</span>
-                      <span className="font-[var(--font-mono)] font-bold text-blue">
-                        $4.05 – $5.50
+                      <span className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.1em] text-blue">
+                        Factory-direct
                       </span>
                     </div>
                     <div className="h-3 overflow-hidden border border-blue/50 bg-bg-2">
                       <div className="h-full w-[55%] bg-blue" />
                     </div>
                     <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">
-                      <span>Factory → port</span>
+                      <span>Taiwan factory</span>
                       <span>+ MFN 4.8%</span>
                       <span>+ logistics</span>
                     </div>
