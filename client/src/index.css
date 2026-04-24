@@ -153,8 +153,8 @@ button { font-family: inherit; }
   left: 0;
   right: 0;
   height: 30px;
-  background: var(--blue-pale);
-  color: var(--blue);
+  background: #0a1628;
+  color: rgba(255, 255, 255, 0.85);
   z-index: 150;
   overflow: hidden;
   display: flex;
@@ -175,7 +175,7 @@ button { font-family: inherit; }
 }
 .zk-marquee-track span::before {
   content: "●";
-  color: var(--blue);
+  color: var(--cyan);
   margin-right: 20px;
   font-size: 8px;
   vertical-align: middle;
@@ -264,8 +264,8 @@ button { font-family: inherit; }
 }
 
 .pill-cta {
-  border: 1px solid var(--blue);
-  color: var(--blue);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
   padding: 10px 20px;
   font-size: 11px;
   font-family: var(--font-mono);

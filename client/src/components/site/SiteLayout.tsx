@@ -67,9 +67,9 @@ function ProgressBar() {
 
 function Brand() {
   return (
-    <Link href="/" className="flex items-center gap-3 font-[var(--font-display)] font-bold text-[15px] tracking-[0.03em] text-graphite">
+    <Link href="/" className="flex items-center gap-3 font-[var(--font-display)] font-bold text-[15px] tracking-[0.03em] text-white">
       <span
-        className="grid size-[30px] place-items-center font-black text-[14px] text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)]"
+        className="grid size-[30px] place-items-center font-black text-[14px] text-white shadow-[0_4px_12px_rgba(37,99,235,0.5)]"
         style={{
           background: "var(--blue)",
           clipPath: "polygon(15% 0, 100% 0, 85% 100%, 0 100%)",
@@ -86,7 +86,7 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <div className="hidden md:flex items-center gap-8 text-sm font-medium text-steel">
+    <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
       {NAV_LINKS.map((link) => {
         const isActive = currentPath === link.href || (link.children && link.children.some((c) => currentPath === c.href));
         if (link.children) {
@@ -99,14 +99,14 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
             >
               <Link
                 href={link.href}
-                className={`relative inline-flex items-center gap-1 py-1 transition-colors hover:text-blue ${
-                  isActive ? "text-blue" : ""
+                className={`relative inline-flex items-center gap-1 py-1 transition-colors hover:text-white ${
+                  isActive ? "text-white" : ""
                 }`}
               >
                 {link.label}
                 <ChevronDown className="size-3" />
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-blue transition-[width] duration-300 ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-cyan-400 transition-[width] duration-300 ${
                     isActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
@@ -140,13 +140,13 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
           <Link
             key={link.href}
             href={link.href}
-            className={`relative py-1 transition-colors hover:text-blue ${
-              currentPath === link.href ? "text-blue" : ""
+            className={`relative py-1 transition-colors hover:text-white ${
+              currentPath === link.href ? "text-white" : ""
             }`}
           >
             {link.label}
             {currentPath === link.href && (
-              <span className="absolute bottom-0 left-0 h-0.5 w-full bg-blue" />
+              <span className="absolute bottom-0 left-0 h-0.5 w-full bg-cyan-400" />
             )}
           </Link>
         );
@@ -238,8 +238,8 @@ function SiteNav() {
   return (
     <>
       <nav
-        className="fixed left-0 right-0 top-0 z-[100] border-b border-line-soft backdrop-blur-md md:top-[30px]"
-        style={{ background: "rgba(250, 251, 252, 0.88)" }}
+        className="fixed left-0 right-0 top-0 z-[100] border-b border-white/10 backdrop-blur-md md:top-[30px]"
+        style={{ background: "rgba(10, 22, 40, 0.95)" }}
       >
         <div className="mx-auto flex max-w-[1440px] items-center gap-10 px-5 py-3 md:px-10 md:py-4">
           <Brand />
@@ -256,7 +256,7 @@ function SiteNav() {
             <button
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
-              className="size-10 grid place-items-center text-graphite md:hidden"
+              className="size-10 grid place-items-center text-white md:hidden"
             >
               <Menu className="size-6" />
             </button>
