@@ -11,11 +11,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import {
-  AboutPage,
-  ApplicationsPage,
   NotFoundPage,
-  QuoteRequestPage,
-  TechnologyPage,
 } from "./pages/SitePages";
 import HomePage from "./pages/HomePage";
 import WhyZenokPage from "./pages/WhyZenokPage";
@@ -29,10 +25,19 @@ import {
 } from "./pages/ProductCategoryPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CarbideRodsPage from "./pages/CarbideRodsPage";
+import AboutPage from "./pages/AboutPage";
+import IndustriesPage from "./pages/IndustriesPage";
+import {
+  AerospacePage,
+  MedicalPage,
+  ElectronicsPage,
+} from "./pages/IndustryDetailPage";
+import TechnologyPage from "./pages/TechnologyPage";
+import QuoteRequestPage from "./pages/QuoteRequestPage";
 
 function LegacyApplicationsRedirect() {
   useEffect(() => {
-    window.location.replace("/applications");
+    window.location.replace("/industries");
   }, []);
 
   return null;
@@ -78,7 +83,11 @@ function Router() {
       <Route path="/corner-radius-end-mills" component={LegacyCornerRadiusEndMillsRedirect} />
       <Route path="/aluminum-end-mills" component={LegacyAluminumEndMillsRedirect} />
       <Route path="/carbide-rods" component={CarbideRodsPage} />
-      <Route path="/applications" component={ApplicationsPage} />
+      <Route path="/industries" component={IndustriesPage} />
+      <Route path="/industries/aerospace" component={AerospacePage} />
+      <Route path="/industries/medical" component={MedicalPage} />
+      <Route path="/industries/electronics" component={ElectronicsPage} />
+      <Route path="/applications" component={IndustriesPage} />
       <Route path="/applications/:legacySlug" component={LegacyApplicationsRedirect} />
       <Route path="/technology" component={TechnologyPage} />
       <Route path="/why-zenok" component={WhyZenokPage} />

@@ -825,7 +825,7 @@ function ProductDetailPageLegacy() {
   );
 }
 
-export function ApplicationsPage() {
+function ApplicationsPageLegacy() {
   return (
     <SiteLayout>
       <SeoHead
@@ -888,7 +888,7 @@ export function ElectronicsPage() {
   return <ApplicationDetailView />;
 }
 
-export function TechnologyPage() {
+function TechnologyPageLegacy() {
   return (
     <SiteLayout>
       <SeoHead
@@ -940,7 +940,7 @@ export function TechnologyPage() {
   );
 }
 
-export function AboutPage() {
+function AboutPageLegacy() {
   return (
     <SiteLayout>
       <SeoHead
@@ -991,7 +991,7 @@ export function AboutPage() {
   );
 }
 
-export function QuoteRequestPage() {
+function QuoteRequestPageLegacy() {
   return (
     <SiteLayout>
       <SeoHead

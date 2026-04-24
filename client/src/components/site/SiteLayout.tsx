@@ -33,7 +33,7 @@ const NAV_LINKS = [
     ],
   },
   { label: "Why ZENOK", href: "/why-zenok" },
-  { label: "Industries", href: "/applications" },
+  { label: "Industries", href: "/industries" },
   { label: "Technology", href: "/technology" },
   { label: "About", href: "/about" },
 ];
