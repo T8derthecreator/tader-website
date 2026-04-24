@@ -71,10 +71,10 @@ function Brand() {
       <span
         className="grid size-[30px] place-items-center font-black text-[14px]"
         style={{
-          background: "#60a5fa",
+          background: "#2563eb",
           color: "#ffffff",
           clipPath: "polygon(15% 0, 100% 0, 85% 100%, 0 100%)",
-          boxShadow: "0 4px 16px rgba(96,165,250,0.7), 0 0 0 1px rgba(255,255,255,0.2) inset",
+          boxShadow: "0 4px 14px rgba(37,99,235,0.6), 0 0 0 1px rgba(255,255,255,0.15) inset",
         }}
       >
         Z

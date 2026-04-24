@@ -412,8 +412,19 @@ export default function IdentityMark() {
           viewBox="0 0 400 400"
         />
 
-        {/* HUD — white card with blue accent */}
+        {/* HUD — white card with blue accent.
+            Shrinks on mobile via CSS below so it doesn't cover the carving animation. */}
+        <style>{`
+          @media (max-width: 640px) {
+            .zenok-id-hud {
+              transform: scale(0.62);
+              transform-origin: top left;
+              opacity: 0.92;
+            }
+          }
+        `}</style>
         <div
+          className="zenok-id-hud"
           style={{
             position: 'absolute',
             top: 10,
