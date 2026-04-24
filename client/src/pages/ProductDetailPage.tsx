@@ -228,15 +228,49 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      {/* Construction + Coatings (inline reference, side-by-side) */}
-      <section className="relative py-14 lg:py-16">
-        <div className="container-wrap">
-          <Reveal>
-            <div className="grid gap-5 lg:grid-cols-2">
-              <ConstructionLegend />
-              <CoatingOptions />
+      {/* Construction + Coatings: LEFT margin | Center heading | RIGHT margin */}
+      <section className="relative py-14 lg:py-20">
+        <div className="mx-auto max-w-[1920px] px-4 lg:px-8 xl:px-12">
+          <div className="grid gap-8
+                          lg:grid-cols-[minmax(260px,1fr)_minmax(420px,1.4fr)_minmax(260px,1fr)]
+                          lg:gap-6 xl:gap-10 2xl:gap-16">
+            {/* LEFT: Construction */}
+            <div className="order-2 lg:order-1">
+              <Reveal>
+                <ConstructionLegend />
+              </Reveal>
             </div>
-          </Reveal>
+
+            {/* CENTER: heading */}
+            <div className="order-1 flex items-center justify-center lg:order-2">
+              <div className="max-w-lg text-center lg:text-left">
+                <Reveal>
+                  <h2
+                    className="font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
+                    style={{ fontSize: "clamp(24px, 2.8vw, 36px)" }}
+                  >
+                    Available for this series.
+                    <br />
+                    <span className="serif-italic font-normal text-graphite-soft">
+                      Match to your material.
+                    </span>
+                  </h2>
+                </Reveal>
+                <Reveal delay={150}>
+                  <p className="mt-5 text-[14px] leading-[1.65] text-graphite-soft">
+                    This series supports the construction types and coatings listed either side. Refer to the spec sheet below for which specific combinations are available per SKU.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+
+            {/* RIGHT: Coatings */}
+            <div className="order-3">
+              <Reveal delay={100}>
+                <CoatingOptions />
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

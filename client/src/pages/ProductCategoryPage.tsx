@@ -235,36 +235,59 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
         </section>
       )}
 
-      {/* Reference panel: Construction + Coatings side-by-side */}
+      {/* Reference panel: Construction (LEFT margin) | Heading (center) | Coatings (RIGHT margin) */}
       <section className="relative border-t border-line bg-bg py-16 lg:py-20">
-        <div className="container-wrap">
-          <Reveal>
-            <div className="sec-eyebrow">
-              Reference
-              <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-                [ 02 ]
-              </span>
+        <div className="mx-auto max-w-[1920px] px-4 lg:px-8 xl:px-12">
+          <div className="grid gap-8
+                          lg:grid-cols-[minmax(260px,1fr)_minmax(420px,1.4fr)_minmax(260px,1fr)]
+                          lg:gap-6 xl:gap-10 2xl:gap-16">
+            {/* LEFT sidebar: Construction Types */}
+            <div className="order-2 lg:order-1">
+              <Reveal>
+                <ConstructionLegend />
+              </Reveal>
             </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2
-              className="mb-10 max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-              style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}
-            >
-              Construction and coating options.
-              <br />
-              <span className="serif-italic font-normal text-graphite-soft">
-                Available across this family.
-              </span>
-            </h2>
-          </Reveal>
 
-          <Reveal delay={200}>
-            <div className="grid gap-5 lg:grid-cols-2">
-              <ConstructionLegend />
-              <CoatingOptions />
+            {/* CENTER: eyebrow + heading */}
+            <div className="order-1 flex items-center justify-center lg:order-2">
+              <div className="max-w-lg text-center lg:text-left">
+                <Reveal>
+                  <div className="sec-eyebrow">
+                    Reference
+                    <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
+                      [ 02 ]
+                    </span>
+                  </div>
+                </Reveal>
+                <Reveal delay={100}>
+                  <h2
+                    className="mt-6 font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
+                    style={{ fontSize: "clamp(26px, 3vw, 42px)" }}
+                  >
+                    Construction and
+                    <br />
+                    coating options.
+                    <br />
+                    <span className="serif-italic font-normal text-graphite-soft">
+                      Available across this family.
+                    </span>
+                  </h2>
+                </Reveal>
+                <Reveal delay={200}>
+                  <p className="mt-6 text-[15px] leading-[1.7] text-graphite-soft">
+                    Every product line in this geometry family supports these construction types and coatings. Pick the combination that matches your workpiece material, precision tier, and budget.
+                  </p>
+                </Reveal>
+              </div>
             </div>
-          </Reveal>
+
+            {/* RIGHT sidebar: Available Coatings */}
+            <div className="order-3">
+              <Reveal delay={100}>
+                <CoatingOptions />
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
