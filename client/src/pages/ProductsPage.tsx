@@ -1,7 +1,7 @@
 /*
-  /products — main products entry page (v2).
-  Structure: Page Hero → By Geometry (4 cards) → Full Catalog CTA card → Final CTA
-  The big filterable SKU table now lives at /products/catalog (separate page).
+  /products — main products entry page (v3).
+  Structure: By Product Type (4 cards) → Full Catalog CTA card → Final CTA
+  Page hero removed per user request; big filterable SKU table lives at /products/catalog.
 */
 import { useEffect } from "react";
 import { Link } from "wouter";
@@ -114,39 +114,12 @@ export default function ProductsPage() {
         keywords={["carbide end mills", "micro tooling catalog", "Taiwan tools", "ZENOK products"]}
       />
 
-      {/* Page hero */}
-      <section className="relative border-b border-line pt-20 pb-20 lg:pt-28 lg:pb-24">
-        <div className="container-wrap">
-          <Reveal>
-            <div className="mb-6 inline-flex items-center gap-3 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.25em] text-blue">
-              <span className="h-px w-8 bg-blue" />
-              Products
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h1
-              className="max-w-4xl font-[var(--font-display)] font-black tracking-[-0.04em] text-graphite leading-[0.92]"
-              style={{ fontSize: "clamp(44px, 6vw, 88px)" }}
-            >
-              {totalSkuCount} SKUs.
-              <br />
-              <span className="text-blue">Start from geometry.</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mt-8 max-w-xl text-[17px] leading-[1.7] text-graphite-soft">
-              Four geometry families cover the full catalog. Pick one to see available sizes, construction types, and coatings — or jump straight into the full SKU catalog.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* By Geometry */}
-      <section id="geometry" className="relative py-20 lg:py-28">
+      {/* By Product Type */}
+      <section id="geometry" className="relative pt-20 pb-20 lg:pt-28 lg:pb-28">
         <div className="container-wrap">
           <Reveal>
             <div className="sec-eyebrow">
-              By Geometry
+              By Product Type
               <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
                 [ 01 ]
               </span>
@@ -158,10 +131,8 @@ export default function ProductsPage() {
               className="max-w-4xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
               style={{ fontSize: "clamp(34px, 4.5vw, 60px)" }}
             >
-              Four families.
-              <br />
               <span className="serif-italic font-normal text-graphite-soft">
-                Pick the geometry, we'll handle the rest.
+                Pick your edge, we'll handle the rest.
               </span>
             </h2>
           </Reveal>

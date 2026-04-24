@@ -69,9 +69,9 @@ function Brand() {
   return (
     <Link href="/" className="flex items-center gap-3 font-[var(--font-display)] font-bold text-[15px] tracking-[0.03em] text-white">
       <span
-        className="grid size-[30px] place-items-center font-black text-[14px] text-white shadow-[0_4px_12px_rgba(37,99,235,0.5)]"
+        className="grid size-[30px] place-items-center font-black text-[14px] text-white shadow-[0_4px_12px_rgba(59,130,246,0.6)]"
         style={{
-          background: "var(--blue)",
+          background: "#3b82f6",
           clipPath: "polygon(15% 0, 100% 0, 85% 100%, 0 100%)",
         }}
       >
@@ -113,7 +113,10 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
               </Link>
               {openDropdown === link.label && (
                 <div className="absolute left-0 top-full min-w-[220px] z-50 pt-3">
-                  <div className="border border-line bg-white shadow-[var(--shadow)] flex flex-col">
+                  <div
+                    className="border border-line shadow-[var(--shadow)] flex flex-col"
+                    style={{ backgroundColor: "#ffffff" }}
+                  >
                     {link.children.map((child) => {
                       const featured = "isFeatured" in child && child.isFeatured;
                       return (
@@ -123,7 +126,7 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
                           className={`border-b px-4 py-3 font-[var(--font-mono)] text-[12px] tracking-[0.06em] transition-colors last:border-b-0 ${
                             featured
                               ? "border-line border-b-2 bg-blue-pale font-semibold text-blue hover:bg-blue hover:text-white"
-                              : "border-line-soft text-steel hover:bg-blue-pale hover:text-blue"
+                              : "border-line-soft text-graphite hover:bg-blue-pale hover:text-blue"
                           }`}
                         >
                           {featured ? `→ ${child.label}` : child.label}

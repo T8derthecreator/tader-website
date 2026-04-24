@@ -6,6 +6,7 @@
 import { useEffect } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SeoHead } from "@/components/site/SeoHead";
+import IdentityMark from "@/components/site/IdentityMark";
 import { useReveal, useCountUp } from "@/hooks/useReveal";
 
 const INQUIRY_URL = "https://toolinginquiryform.netlify.app/";
@@ -132,46 +133,8 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={150}>
-              <div className="relative border border-line bg-gradient-to-br from-panel to-panel-2 p-10 shadow-[var(--shadow)] lg:sticky lg:top-28">
-                {/* Corner accents */}
-                <span className="absolute -left-px -top-px size-5 border-l-2 border-t-2 border-blue" />
-                <span className="absolute -right-px -top-px size-5 border-r-2 border-t-2 border-blue" />
-                <span className="absolute -bottom-px -left-px size-5 border-b-2 border-l-2 border-blue" />
-                <span className="absolute -bottom-px -right-px size-5 border-b-2 border-r-2 border-blue" />
-
-                <div className="mb-6 font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">
-                  Company Snapshot · 2026
-                </div>
-
-                <div className="space-y-6">
-                  {[
-                    { num: <Counter to={2019} />, suffix: "", label: "Year Founded · Taiwan" },
-                    { num: <Counter to={156} />, suffix: "SKU", label: "Active Product Lines" },
-                    { num: <Counter to={4.8} decimals={1} />, suffix: "%", label: "MFN Duty (HTS 8207.70)" },
-                    { num: <Counter to={48} />, suffix: "hr", label: "Proposal Turnaround Guarantee" },
-                    { num: <Counter to={3} />, suffix: "", label: "Industries Served (Primary)" },
-                  ].map((stat, i) => (
-                    <div
-                      key={i}
-                      className="border-b border-line-soft pb-6 last:border-b-0 last:pb-0"
-                    >
-                      <div
-                        className="font-[var(--font-display)] font-black tracking-[-0.03em] text-graphite leading-none"
-                        style={{ fontSize: "clamp(36px, 4vw, 48px)" }}
-                      >
-                        {stat.num}
-                        {stat.suffix && (
-                          <span className="ml-1 text-[0.5em] font-semibold text-blue">
-                            {stat.suffix}
-                          </span>
-                        )}
-                      </div>
-                      <div className="mt-2 font-[var(--font-mono)] text-[11px] font-medium uppercase tracking-[0.12em] text-steel">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="lg:sticky lg:top-28">
+                <IdentityMark />
               </div>
             </Reveal>
           </div>
