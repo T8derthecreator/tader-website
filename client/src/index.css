@@ -26,10 +26,10 @@
   --color-cyan: #0891b2;
   --color-cyan-deep: #0e7490;
 
-  --font-display: "Unbounded", system-ui, sans-serif;
+  --font-display: "IBM Plex Sans", system-ui, sans-serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-serif: "IBM Plex Sans", system-ui, sans-serif;
 }
 
 /* Plain CSS variables for advanced components */
