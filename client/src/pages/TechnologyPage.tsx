@@ -135,7 +135,7 @@ export default function TechnologyPage() {
                     This vertical integration is how we offer structural cost-down to US customers without compromising on substrate grade or process qualification.
                   </p>
                   <p>
-                    It's also why we can run custom programs at MOQ 200 — the rod stock for a custom diameter is <em className="serif-italic text-graphite">already in our inventory</em> as bar stock supply for other customers.
+                    It's also why we can run custom programs at MOQ 200 — the rod stock for a custom diameter is already in our inventory.
                   </p>
                 </div>
               </div>

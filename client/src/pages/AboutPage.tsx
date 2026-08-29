@@ -144,7 +144,7 @@ export default function AboutPage() {
                   "
                 </blockquote>
                 <p className="mt-8 max-w-xl text-[16px] leading-[1.75] text-graphite-soft">
-                  We exist to give precision manufacturers a better option than accepting distributor pricing on tools that come from the same factories we sell bar stock to. Every dollar saved on tooling drops directly to margin. That's the mission — and it's why we put the arithmetic in writing on every proposal.
+                  We exist to give precision manufacturers a better option than distributor pricing. Every dollar saved on tooling drops directly to margin. That's the mission — and it's why we put the arithmetic in writing on every proposal.
                 </p>
               </div>
             </Reveal>

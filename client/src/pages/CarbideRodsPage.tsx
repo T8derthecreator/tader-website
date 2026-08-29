@@ -121,7 +121,7 @@ export default function CarbideRodsPage() {
             <Reveal delay={150}>
               <div className="space-y-6 text-[16px] leading-[1.75] text-graphite-soft">
                 <p>
-                  A US tool distributor buying finished micro end mills from another Asian manufacturer is purchasing through a chain that includes substrate cost, machining overhead, coating, packaging, and margin at multiple tiers. <strong className="text-graphite">The carbide rod in that finished tool was often manufactured by ZENOK</strong> — we supply substrate to many of the Asian tool factories that serve the US distributor market.
+                  Finished micro end mills sold through distribution carry substrate cost, machining overhead, coating, packaging, and margin at multiple tiers. <strong className="text-graphite">We start at the substrate and ship the finished tool</strong> — the tiers in between don't exist in our cost structure.
                 </p>
                 <p>
                   ZENOK skips the distributor tier entirely. We sell finished tools at Taiwan factory pricing, direct to US CNC shops. The downstream competitor can't structurally match that — <strong className="text-graphite">not because they're worse at machining, but because their cost floor sits above our ceiling.</strong>
