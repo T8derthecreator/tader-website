@@ -115,7 +115,7 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
         title={`${categoryMeta.label} — ZENOK Taiwan | ${categoryMeta.skuCount} SKUs`}
         description={
           categoryMeta.description ??
-          `ZENOK ${categoryMeta.label} — ${categoryMeta.skuCount} SKUs in current catalog, diameter ${formatRange(categoryMeta.diameterRangeMm)}. Taiwan-made carbide micro tools at 4.8% MFN duty.`
+          `ZENOK ${categoryMeta.label} — ${categoryMeta.skuCount} SKUs in current catalog, diameter ${formatRange(categoryMeta.diameterRangeMm)}. Taiwan-made carbide micro tools.`
         }
         canonicalPath={categoryMeta.route}
         schema={categorySchema}

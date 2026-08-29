@@ -1,6 +1,6 @@
 /*
-  Why ZENOK page — the moat argument in depth.
-  Sections: Page hero → Tariff detail → Moat card → Big stats band
+  Why ZENOK page — the vertical integration case in depth.
+  Sections: Page hero → Vertical integration → Big stats band
           → Value cards (48hr/Factory Direct/ISO 9001) → Process 4-step → CTA
 */
 import { useEffect } from "react";
@@ -77,7 +77,7 @@ function PageHero() {
         </Reveal>
         <Reveal delay={200}>
           <p className="mt-8 max-w-xl text-[17px] leading-[1.7] text-graphite-soft">
-            Taiwan origin. Factory-direct pricing. Bar stock supply to our own competitors. Before you evaluate a single dimension, the cost-down case is already built.
+            Taiwan origin. Factory-direct pricing. Before you evaluate a single dimension, the cost-down case is already built.
           </p>
         </Reveal>
       </div>
@@ -85,15 +85,33 @@ function PageHero() {
   );
 }
 
-/* ---------- Tariff detail ---------- */
+/* ---------- Vertical integration ---------- */
 
-function TariffDetail() {
+const INTEGRATION_POINTS = [
+  {
+    n: "01",
+    title: "Cost structure",
+    desc: "No supplier margin between raw material and finished tool. Our floor price is our own material cost.",
+  },
+  {
+    n: "02",
+    title: "Grade control",
+    desc: "We select and control the carbide grade for the application instead of working with whatever the rod supplier had in stock.",
+  },
+  {
+    n: "03",
+    title: "Lead time",
+    desc: "Material availability is not a variable we have to wait on. Rod inventory and grinding capacity sit under the same roof.",
+  },
+];
+
+function VerticalIntegration() {
   return (
     <section className="relative py-20 lg:py-28">
       <div className="container-wrap">
         <Reveal>
           <div className="sec-eyebrow">
-            The Tariff Advantage
+            Vertical Integration
             <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
               [ 01 ]
             </span>
@@ -103,94 +121,46 @@ function TariffDetail() {
         <Reveal delay={100}>
           <h2 className="max-w-4xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
               style={{ fontSize: "clamp(34px, 4.5vw, 60px)" }}>
-            Section 301–exempt.
-            <br />
-            Priced to dismantle your China spend{" "}
-            <span className="text-blue">by 20%+</span>.
+            We start where most tool brands buy.
           </h2>
         </Reveal>
 
         <Reveal delay={200}>
           <p className="mt-6 max-w-3xl text-[17px] leading-[1.8] text-graphite-soft">
-            HTS 8207.70 cutting tools from Taiwan face only the 4.8% MFN general duty. The same tools from China stack the MFN duty plus Section 301 — often 25% or higher. Before quality, before coating,{" "}
-            <em className="serif-italic text-graphite">
-              that's where the cost-down starts.
-            </em>
+            Most micro tool brands purchase finished carbide rod and machine it. We produce the rod stock ourselves, then grind the tool. One facility, one process chain, one point of accountability.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {/* Taiwan */}
-          <Reveal>
-            <div className="h-full border-2 border-blue bg-panel-2 p-8 lg:p-10">
-              <div className="mb-4 flex items-center justify-between font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em]">
-                <span className="text-graphite">
-                  🇹🇼 <strong>TAIWAN</strong> — MFN General
-                </span>
-                <span className="text-steel">HTS 8207.70</span>
-              </div>
-              <div className="font-[var(--font-display)] text-[80px] font-black leading-none tracking-[-0.03em] text-blue lg:text-[100px]">
-                <CountUp to={4.8} decimals={1} />
-                <span className="ml-2 text-[0.35em] font-bold text-blue/70">%</span>
-              </div>
-              <p className="mt-6 text-[14px] leading-[1.75] text-graphite-soft">
-                No Section 301 surcharge. No retaliatory bracket. Just the baseline MFN duty that any WTO member incurs — the same rate the US applies to Germany, Japan, Korea.
-              </p>
-              <div className="mt-6 h-2 overflow-hidden bg-line">
-                <div className="h-full w-[10%] bg-blue" />
-              </div>
-            </div>
-          </Reveal>
-
-          {/* China */}
-          <Reveal delay={150}>
-            <div className="h-full border border-line bg-panel p-8 lg:p-10">
-              <div className="mb-4 flex items-center justify-between font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em]">
-                <span className="text-graphite">
-                  🇨🇳 <strong>CHINA</strong> — MFN + 301
-                </span>
-                <span className="text-steel">+ Section 301</span>
-              </div>
-              <div className="font-[var(--font-display)] text-[80px] font-black leading-none tracking-[-0.03em] text-graphite lg:text-[100px]">
-                <CountUp to={25} />
-                <span className="ml-2 text-[0.35em] font-bold text-steel-faint">%+</span>
-              </div>
-              <p className="mt-6 text-[14px] leading-[1.75] text-graphite-soft">
-                4.8% MFN plus 25% Section 301 surcharge compounds. Additional bracket categories may push total duty higher still — before any USD freight volatility.
-              </p>
-              <div className="mt-6 h-2 overflow-hidden bg-line">
-                <div className="h-full w-[60%] bg-graphite" />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* Moat card — with blue gradient accent stripe */}
         <Reveal delay={250}>
-          <div className="relative mt-10 overflow-hidden border border-line bg-panel p-8 shadow-[var(--shadow)] md:p-10">
-            <div
-              aria-hidden="true"
-              className="absolute bottom-0 left-0 top-0 w-1"
-              style={{ background: "linear-gradient(180deg, var(--blue), var(--cyan))" }}
-            />
-            <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-center md:gap-10">
-              <div className="relative grid size-[100px] place-items-center border-[1.5px] border-blue bg-blue-pale font-[var(--font-display)] text-[44px] font-black text-blue">
-                ◈
-              </div>
-              <div>
-                <h4 className="font-[var(--font-display)] text-xl font-bold leading-snug text-graphite lg:text-2xl">
-                  The structural moat: we supply bar stock{" "}
-                  <span className="serif-italic font-normal text-blue">
-                    to our own competitors.
-                  </span>
-                </h4>
-                <p className="mt-4 max-w-[720px] text-[15px] leading-[1.8] text-graphite-soft">
-                  ZENOK sells carbide bar stock to other tool manufacturers while simultaneously selling finished tools under our own brand. After their machining, depreciation, labor, and overhead, their finished tool cost carries the full distributor-tier stack. They can't structurally undercut us. That's not marketing — that's arithmetic.
+          <p className="mt-4 max-w-3xl text-[17px] leading-[1.8] text-graphite-soft">
+            That changes three things you can measure:
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
+          {INTEGRATION_POINTS.map((v, i) => (
+            <Reveal key={v.title} delay={300 + i * 120}>
+              <div className="group relative h-full overflow-hidden border border-line bg-panel p-9 shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-1 hover:border-blue hover:shadow-[var(--shadow-blue)]">
+                <div
+                  className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, var(--blue), var(--cyan))",
+                  }}
+                />
+                <div className="mb-5 grid size-12 place-items-center border-[1.5px] border-blue bg-blue-pale font-[var(--font-mono)] text-sm font-bold text-blue">
+                  {v.n}
+                </div>
+                <h3 className="font-[var(--font-display)] text-xl font-bold tracking-[-0.01em] text-graphite">
+                  {v.title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.7] text-graphite-soft">
+                  {v.desc}
                 </p>
               </div>
-            </div>
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -200,8 +170,6 @@ function TariffDetail() {
 
 function BigStatsBand() {
   const stats = [
-    { v: 4.8, dec: 1, u: "%", l: "MFN Duty (Taiwan)" },
-    { v: 25, dec: 0, u: "%+", l: "China Section 301" },
     { v: 20, dec: 0, u: "%+", l: "Typical Savings" },
     { v: 48, dec: 0, u: "hr", l: "Proposal Guarantee" },
   ];
@@ -220,7 +188,7 @@ function BigStatsBand() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,var(--glow),transparent_70%)]" />
 
       <div className="container-wrap relative">
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-2">
           {stats.map((s, i) => (
             <Reveal key={s.l} delay={i * 100}>
               <div
@@ -463,9 +431,9 @@ function CtaBig() {
 const whyZenokSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Why ZENOK — Taiwan Carbide Micro Tool Cost-Down Moat",
+  name: "Why ZENOK — Taiwan Carbide Micro Tool Cost-Down Advantage",
   description:
-    "The structural case for switching to ZENOK. Taiwan 4.8% MFN duty vs China 25%+ Section 301, bar stock supply moat, 48-hour proposal guarantee.",
+    "The structural case for switching to ZENOK. In-house carbide rod-to-tool production, 48-hour proposal guarantee.",
 };
 
 export default function WhyZenokPage() {
@@ -476,20 +444,18 @@ export default function WhyZenokPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Why ZENOK — The Structural Case for Switching | 4.8% MFN Duty vs China's 25%+"
-        description="Taiwan HTS 8207.70 exemption from Section 301. ZENOK supplies bar stock to its own competitors — structurally unbeatable finished tool pricing. 48-hour proposal guarantee."
+        title="Why ZENOK — The Structural Case for Switching"
+        description="Taiwan HTS 8207.70 manufacturing. In-house carbide rod-to-tool production. 48-hour proposal guarantee."
         canonicalPath="/why-zenok"
         schema={whyZenokSchema}
         keywords={[
-          "Taiwan tariff advantage",
           "HTS 8207.70",
-          "Section 301 exemption",
-          "carbide tool moat",
+          "vertical integration",
           "ZENOK",
         ]}
       />
       <PageHero />
-      <TariffDetail />
+      <VerticalIntegration />
       <BigStatsBand />
       <ValueCards />
       <ProcessSteps />

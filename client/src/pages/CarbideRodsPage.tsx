@@ -1,7 +1,7 @@
 /*
   /carbide-rods — Carbide bar stock supply page.
-  This is a STRATEGIC page — it's where ZENOK openly says "we sell the raw material
-  to our own competitors." That IS the moat. This page should feel confident, transparent,
+  This is a STRATEGIC page — it's where ZENOK openly talks about selling raw material.
+  That IS the moat. This page should feel confident, transparent,
   slightly contrarian.
 */
 import { useEffect } from "react";
@@ -49,7 +49,7 @@ export default function CarbideRodsPage() {
     "@type": "Product",
     name: "ZENOK Tungsten Carbide Bar Stock",
     description:
-      "ZENOK supplies SS308 tungsten carbide bar stock to tool manufacturers globally — including our own competitors. Ø 3–20 mm, HRA 91.5–93.0, TRS ≥ 4000 MPa.",
+      "ZENOK supplies SS308 tungsten carbide bar stock to tool manufacturers globally. Ø 3–20 mm, HRA 91.5–93.0, TRS ≥ 4000 MPa.",
     brand: { "@type": "Brand", name: "ZENOK" },
   };
 
@@ -86,7 +86,7 @@ export default function CarbideRodsPage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-graphite-soft">
-              ZENOK supplies SS308 tungsten carbide bar stock to tool manufacturers worldwide — many of whom compete with us in finished tools.{" "}
+              ZENOK supplies SS308 tungsten carbide bar stock to tool manufacturers worldwide.{" "}
               <em className="serif-italic text-graphite">That's not a leak. That's the moat.</em>
             </p>
           </Reveal>
@@ -174,7 +174,6 @@ export default function CarbideRodsPage() {
                     </div>
                     <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">
                       <span>Taiwan factory</span>
-                      <span>+ MFN 4.8%</span>
                       <span>+ logistics</span>
                     </div>
                   </div>
@@ -267,7 +266,7 @@ export default function CarbideRodsPage() {
                     <span className="font-bold text-blue">—</span>
                     <span>
                       <strong className="text-graphite">Distributors</strong>{" "}
-                      who want Taiwan-origin stock at MFN duty rates to serve US customers
+                      who want Taiwan-origin stock to serve US customers
                     </span>
                   </li>
                 </ul>

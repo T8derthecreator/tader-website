@@ -456,7 +456,7 @@ export default function InteractiveToolVisual() {
 
       {/* Spec badges */}
       <div style={{ ...badgeBase, right: 20, top: 86 }}>Ø 2.5 · L 50</div>
-      <div style={{ ...badgeBase, left: 20, top: 160 }}>MFN 4.8%</div>
+      <div style={{ ...badgeBase, left: 20, top: 160 }}>HTS 8207.70</div>
       <div style={{ ...badgeBase, right: 20, bottom: 120 }}>HRC 62</div>
       <div style={{ ...badgeBase, left: 20, bottom: 86 }}>T4 · HELIX 30°</div>
 

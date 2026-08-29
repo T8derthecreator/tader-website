@@ -1,6 +1,6 @@
 /*
   ZENOK HomePage — simplified per user decision.
-  Sections: Hero → Tariff+Moat (Why teaser) → Calculator → Process
+  Sections: Hero → Calculator → Process
           → Products Teaser (4 geometry cards) → Industries Teaser (3 cards) → CTA big
   Dropped vs Claude Design HTML: big Cost-Down marquee, value cards, full industries cards.
   Those moved to /why-zenok and /industries respectively to give those pages purpose.
@@ -68,13 +68,6 @@ function HeroSection() {
       <div className="container-wrap">
         <Reveal>
           <div className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel-faint">
-            <span className="inline-flex items-center gap-2">
-              <span className="relative inline-flex size-[6px]">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-                <span className="relative inline-flex size-[6px] rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]" />
-              </span>
-              LIVE · TAIWAN MFG
-            </span>
             <span>— EST. 2019</span>
             <span>— ISO 9001 · RoHS</span>
             <span className="hidden md:inline">— AEROSPACE / MEDICAL / ELECTRONICS</span>
@@ -99,9 +92,7 @@ function HeroSection() {
 
             <Reveal delay={200}>
               <p className="mt-8 max-w-xl text-[17px] leading-[1.7] text-graphite-soft">
-                ZENOK manufactures precision carbide micro cutting tools in Taiwan and supplies them to US aerospace, medical, and electronics CNC shops at{" "}
-                <strong className="font-semibold text-graphite">4.8% MFN duty</strong>
-                {" "}— while also supplying bar stock to our competitors. That's not a coincidence. That's the moat.
+                ZENOK manufactures precision carbide micro cutting tools in Taiwan for US aerospace, medical, and electronics CNC shops. Rod stock to finished tool, in-house — no middle margin.
               </p>
             </Reveal>
 
@@ -124,7 +115,7 @@ function HeroSection() {
 
             {/* Hero stats row */}
             <Reveal delay={500}>
-              <div className="mt-16 grid grid-cols-2 gap-6 border-t border-line pt-10 sm:grid-cols-4 sm:gap-8">
+              <div className="mt-16 grid grid-cols-2 gap-6 border-t border-line pt-10 sm:grid-cols-3 sm:gap-8">
                 <div>
                   <div className="font-[var(--font-display)] text-[38px] font-extrabold leading-none tracking-[-0.02em] text-graphite">
                     <CountUp to={156} />
@@ -139,14 +130,6 @@ function HeroSection() {
                   </div>
                   <div className="mt-3 font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.12em] text-steel">
                     Proposal Time
-                  </div>
-                </div>
-                <div>
-                  <div className="font-[var(--font-display)] text-[38px] font-extrabold leading-none tracking-[-0.02em] text-graphite">
-                    <CountUp to={4.8} decimals={1} suffix="%" />
-                  </div>
-                  <div className="mt-3 font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.12em] text-steel">
-                    MFN Duty
                   </div>
                 </div>
                 <div>
@@ -166,123 +149,6 @@ function HeroSection() {
             <InteractiveToolVisual />
           </Reveal>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- TARIFF + MOAT (Why ZENOK teaser) ---------- */
-
-function TariffMoatSection() {
-  return (
-    <section
-      id="why"
-      className="relative border-t border-line bg-bg py-20 lg:py-28"
-    >
-      <div className="container-wrap">
-        <Reveal>
-          <div className="sec-eyebrow">
-            Why ZENOK
-            <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-              [ 01 ]
-            </span>
-          </div>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <h2 className="max-w-4xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-              style={{ fontSize: "clamp(34px, 4.5vw, 60px)" }}>
-            Taiwan-made, Section 301–exempt,
-            <br />
-            priced to dismantle your China spend{" "}
-            <span className="text-blue">by 20%+</span>.
-          </h2>
-        </Reveal>
-
-        <Reveal delay={200}>
-          <p className="mt-6 max-w-3xl text-[17px] leading-[1.8] text-graphite-soft">
-            HTS 8207.70 cutting tools from Taiwan face only the 4.8% MFN general duty. The same tools from China stack the MFN duty plus Section 301 — often 25% or higher. Before quality, before coating,{" "}
-            <em className="serif-italic text-graphite">
-              that's where the cost-down starts.
-            </em>
-          </p>
-        </Reveal>
-
-        {/* Tariff bars */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {/* Taiwan — highlight */}
-          <Reveal>
-            <div className="h-full border-2 border-blue bg-panel-2 p-8 transition-shadow hover:shadow-[var(--shadow-blue)] lg:p-10">
-              <div className="mb-4 flex items-center justify-between font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em]">
-                <span className="text-graphite">
-                  🇹🇼 <strong>TAIWAN</strong> — MFN General
-                </span>
-                <span className="text-steel">HTS 8207.70</span>
-              </div>
-              <div className="font-[var(--font-display)] text-[80px] font-black leading-none tracking-[-0.03em] text-blue lg:text-[100px]">
-                <CountUp to={4.8} decimals={1} />
-                <span className="ml-2 text-[0.35em] font-bold text-blue/70">%</span>
-              </div>
-              <p className="mt-6 text-[14px] leading-[1.75] text-graphite-soft">
-                No Section 301 surcharge. No retaliatory bracket. Just the baseline MFN duty that any WTO member incurs — the same rate the US applies to Germany, Japan, Korea.
-              </p>
-              <div className="mt-6 h-2 overflow-hidden bg-line">
-                <div className="h-full w-[10%] bg-blue" />
-              </div>
-            </div>
-          </Reveal>
-
-          {/* China */}
-          <Reveal delay={150}>
-            <div className="h-full border border-line bg-panel p-8 lg:p-10">
-              <div className="mb-4 flex items-center justify-between font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em]">
-                <span className="text-graphite">
-                  🇨🇳 <strong>CHINA</strong> — MFN + 301
-                </span>
-                <span className="text-steel">+ Section 301</span>
-              </div>
-              <div className="font-[var(--font-display)] text-[80px] font-black leading-none tracking-[-0.03em] text-graphite lg:text-[100px]">
-                <CountUp to={25} />
-                <span className="ml-2 text-[0.35em] font-bold text-steel-faint">
-                  %+
-                </span>
-              </div>
-              <p className="mt-6 text-[14px] leading-[1.75] text-graphite-soft">
-                4.8% MFN plus 25% Section 301 surcharge compounds. Additional bracket categories may push total duty higher still — before any USD freight volatility.
-              </p>
-              <div className="mt-6 h-2 overflow-hidden bg-line">
-                <div className="h-full w-[60%] bg-graphite" />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* Moat callout */}
-        <Reveal delay={250}>
-          <div className="mt-10 flex flex-col gap-6 border border-blue/30 bg-panel p-8 md:flex-row md:items-start md:p-10">
-            <div className="flex-shrink-0 font-[var(--font-display)] text-5xl leading-none text-blue">
-              ◈
-            </div>
-            <div>
-              <h4 className="font-[var(--font-display)] text-xl font-bold leading-snug text-graphite lg:text-2xl">
-                The structural moat: we supply bar stock{" "}
-                <span className="serif-italic font-normal text-blue">
-                  to our own competitors.
-                </span>
-              </h4>
-              <p className="mt-4 text-[14px] leading-[1.75] text-graphite-soft">
-                ZENOK sells carbide bar stock to other tool manufacturers while simultaneously selling finished tools under our own brand. After their machining, depreciation, labor, and overhead, their finished tool cost carries the full distributor-tier stack. They can't structurally undercut us. That's not marketing — that's arithmetic.
-              </p>
-              <Link
-                href="/why-zenok"
-                className="mt-5 inline-flex items-center gap-2 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue hover:underline"
-              >
-                See the full moat breakdown
-                <ArrowRight className="size-3" />
-              </Link>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
@@ -428,7 +294,6 @@ function CalculatorSection() {
                   </span>
                 </div>
                 <select className="w-full border border-line bg-white p-3 font-[var(--font-mono)] text-sm text-graphite outline-none transition-colors focus:border-blue">
-                  <option>China (Section 301)</option>
                   <option>Other Asia / EU</option>
                   <option>US domestic</option>
                 </select>
@@ -477,7 +342,7 @@ function CalculatorSection() {
 
               <p className="text-xs leading-6 text-steel">
                 <strong className="text-graphite-soft">Rough estimate only.</strong>{" "}
-                Actual savings depend on tooling specification, volume tier, coating requirements, and shipping terms. Does not include applicable duties beyond MFN rate, freight surcharges, or state/local taxes. Submit specs for formal quote.
+                Actual savings depend on tooling specification, volume tier, coating requirements, and shipping terms. Does not include applicable duties, freight, and broker fees, or state/local taxes. Submit specs for formal quote.
               </p>
 
               <a
@@ -859,19 +724,17 @@ export default function HomePage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="ZENOK — Taiwan Micro Cutting Tool Cost-Down Partner | 4.8% MFN Duty"
-        description="Submit your CNC micro tooling specs and target price. ZENOK evaluates feasibility and delivers a cost-down proposal within 2 business days. Taiwan-made carbide end mills, 0.1–3.0 mm, 4.8% MFN duty advantage."
+        title="ZENOK — Taiwan Micro Cutting Tool Cost-Down Partner"
+        description="Submit your CNC micro tooling specs and target price. ZENOK evaluates feasibility and delivers a cost-down proposal within 2 business days. Taiwan-made carbide end mills, 0.1–3.0 mm."
         canonicalPath="/"
         schema={homepageSchema}
         keywords={[
           "micro end mills",
           "Taiwan carbide tools",
-          "4.8% MFN duty",
           "ZENOK",
         ]}
       />
       <HeroSection />
-      <TariffMoatSection />
       <CalculatorSection />
       <ProcessSection />
       <ProductsTeaserSection />

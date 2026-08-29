@@ -9,8 +9,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 const INQUIRY_URL = "https://toolinginquiryform.netlify.app/";
 
 const MARQUEE_ITEMS = [
-  "LIVE TAIWAN MFG",
-  "4.8% MFN DUTY",
+  "ROD STOCK TO FINISHED TOOL",
   "156 ACTIVE SKU",
   "Ø 0.1–3.0 MM",
   "2-DAY PROPOSAL",

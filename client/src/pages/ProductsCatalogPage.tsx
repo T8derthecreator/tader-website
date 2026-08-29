@@ -79,7 +79,7 @@ export default function ProductsCatalogPage() {
     <SiteLayout>
       <SeoHead
         title={`Catalog — All ${totalSkuCount} SKUs | ZENOK Taiwan`}
-        description={`Full searchable ZENOK catalog. All ${totalSkuCount} SKUs across flat, ball nose, corner radius and aluminum end mills. Filter by geometry, search by diameter or construction. Taiwan 4.8% MFN duty.`}
+        description={`Full searchable ZENOK catalog. All ${totalSkuCount} SKUs across flat, ball nose, corner radius and aluminum end mills. Filter by geometry, search by diameter or construction.`}
         canonicalPath="/products/catalog"
         schema={catalogSchema}
         keywords={["ZENOK catalog", "carbide end mill catalog", "Taiwan tools", "SKU list"]}

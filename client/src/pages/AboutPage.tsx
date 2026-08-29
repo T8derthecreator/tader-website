@@ -30,17 +30,17 @@ function Reveal({
 
 const VALUES = [
   { num: "01", title: "Arithmetic over marketing", body: "Every cost-down claim we make is backed by a written proposal with real landed numbers. We don't use the word \"savings\" without showing the math." },
-  { num: "02", title: "Vertical integration as moat", body: "Owning the substrate supply chain isn't a logistics advantage — it's a pricing floor our competitors structurally cannot break through." },
+  { num: "02", title: "Vertical integration", body: "We produce our own carbide rod stock and grind the finished tool in the same facility — one process chain, from raw material to shipped part." },
   { num: "03", title: "Engineer-to-engineer", body: "Every inquiry is handled by an application engineer, not a sales rep. We tell you when we can't help, and why — before you waste time on a qualification run." },
   { num: "04", title: "48-hour commitment", body: "A written proposal with landed pricing, lead time, and sample plan — within 48 hours of receiving your spec. Not an estimate. A commitment." },
   { num: "05", title: "Samples before volume", body: "We provide free evaluation samples for qualified programs. You don't commit to volume until you've run our tools in production. That's the correct order of operations." },
-  { num: "06", title: "Trade-law transparency", body: "We publish our HTS classification (8207.70), duty rate (4.8% MFN), and origin documentation. No surprises at customs. No duty reclassification risk." },
+  { num: "06", title: "Full origin documentation", body: "We publish our HTS classification (8207.70) and provide complete origin documentation with every shipment. Your broker gets what they need to clear customs without follow-up." },
 ];
 
 const CERTS = [
   { icon: "ISO", name: "ISO 9001:2015", desc: "Quality management system certified across all product lines and manufacturing processes." },
   { icon: "RoHS", name: "RoHS Compliant", desc: "All coatings and substrates comply with EU Restriction of Hazardous Substances directive." },
-  { icon: "HTS", name: "HTS 8207.70", desc: "Classified under HTS 8207.70 — 4.8% MFN general duty from Taiwan. Full origin documentation provided with every shipment." },
+  { icon: "HTS", name: "HTS 8207.70", desc: "Classified under HTS 8207.70. Full origin documentation provided with every shipment." },
   { icon: "CoC", name: "Certificate of Conformance", desc: "Full inspection certs and material traceability documentation available for all orders. Aerospace and medical qualification ready." },
 ];
 
@@ -48,7 +48,7 @@ const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About ZENOK — Taiwan Precision Carbide Micro Tooling",
-  description: "Founded in 2019 in Taichung, Taiwan. ZENOK manufactures precision carbide micro cutting tools and supplies SS308 bar stock — a vertically integrated moat that competitors structurally cannot undercut.",
+  description: "Founded in 2019 in Taichung, Taiwan. ZENOK manufactures precision carbide micro cutting tools and produces its own SS308 bar stock — vertical integration from raw material to finished tool.",
 };
 
 export default function AboutPage() {
@@ -60,7 +60,7 @@ export default function AboutPage() {
     <SiteLayout>
       <SeoHead
         title="About ZENOK — Built on One Structural Advantage | Taiwan Precision Tools"
-        description="ZENOK was founded in Taiwan in 2019 on a single thesis: the most durable competitive moat in precision tooling is vertical integration. We own the material, the process, and the relationship."
+        description="ZENOK was founded in Taiwan in 2019 on a single thesis: the most durable advantage in precision tooling is vertical integration. We own the material, the process, and the relationship."
         canonicalPath="/about"
         schema={aboutSchema}
         keywords={["ZENOK about", "Taiwan precision tools", "carbide micro tooling", "vertical integration"]}
@@ -87,7 +87,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-graphite-soft">
-              ZENOK was founded in Taiwan in 2019 with a single thesis: the most durable competitive moat in precision tooling is vertical integration — owning the material, the process, and the relationship.
+              ZENOK was founded in Taiwan in 2019 with a single thesis: the most durable advantage in precision tooling is vertical integration — owning the material, the process, and the relationship.
             </p>
           </Reveal>
         </div>
@@ -101,12 +101,6 @@ export default function AboutPage() {
               <div className="space-y-6 text-[17px] leading-[1.85] text-graphite-soft">
                 <p>
                   ZENOK manufactures precision carbide micro cutting tools at our facility in Taiwan and supplies them factory-direct to CNC shops across the United States — primarily in aerospace, medical device, and electronics manufacturing.
-                </p>
-                <p>
-                  What separates us structurally isn't just quality or price. It's that <strong className="text-graphite">we sell the raw carbide bar stock to other tool manufacturers</strong> — the same bar stock our finished tools are made from. After their machining overhead, coating, packaging, and distributor margin, their finished tool lands at full-stack distributor pricing. We manufacture at factory-direct cost and ship direct. The math doesn't leave room for downstream competitors to undercut us.
-                </p>
-                <p>
-                  Add Taiwan's <strong className="text-graphite">4.8% MFN general duty</strong> versus China's compounding Section 301 surcharges, and the cost-down case builds before we even discuss geometry, substrate, or coating.
                 </p>
                 <p>
                   We're not a catalog house. Every program we take on gets a dedicated engineer, a written proposal within 48 hours, and evaluation samples before any volume commitment.{" "}

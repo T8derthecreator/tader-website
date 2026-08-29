@@ -81,13 +81,8 @@ export const taderData = {
       {
         "label": "Diameter range",
         "value": "0.1–3.0 mm"
-      },
-      {
-        "label": "Taiwan MFN",
-        "value": "4.8%"
       }
-    ],
-    "tariffBadge": "Taiwan MFN 4.8% duty advantage"
+    ]
   },
   "navigation": [
     {
@@ -5671,16 +5666,6 @@ export const taderData = {
       ]
     },
     {
-      "id": "taiwan-duty",
-      "title": "Taiwan 4.8% MFN Duty Advantage",
-      "summary": "Taiwan-origin tooling can offer a tariff position advantage versus higher-duty sourcing routes, helping landed cost discussions with U.S. buyers. This duty advantage is factored into every cost-down proposal ZENOK submits — giving U.S. buyers a structurally lower landed cost versus China-origin alternatives.",
-      "points": [
-        "Home page highlights Taiwan MFN 4.8% as a commercial differentiator.",
-        "Technology page frames duty advantage in procurement language, not consumer marketing language.",
-        "Messaging is positioned as a sourcing advantage alongside precision and disciplined process control."
-      ]
-    },
-    {
       "id": "coating-options",
       "title": "Coating Options and Application Fit",
       "summary": "Coating selection affects tool life, surface finish, and total cost-per-part. ZENOK offers four standard coatings matched to workpiece material.",
@@ -5699,16 +5684,6 @@ export const taderData = {
         "Tipped construction can lower cost in selected programs.",
         "Full solid carbide supports broader rigidity and holder options.",
         "Selection depends on application, setup, and sourcing priorities."
-      ]
-    },
-    {
-      "id": "carbide-rod-supply-chain",
-      "title": "Vertically Integrated Supply Chain",
-      "summary": "ZENOK's finished tool cost structure starts below where most competitors begin purchasing. The result: cost-down proposals that are commercially realistic, not just theoretically possible.",
-      "points": [
-        "Direct carbide sourcing supports a structurally lower finished-tool cost basis for qualified programs.",
-        "Competitors purchasing from upstream rod suppliers do not start from the same cost position.",
-        "Every proposal reflects actual production economics, not discounted list prices."
       ]
     }
   ],

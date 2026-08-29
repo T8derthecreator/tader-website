@@ -99,7 +99,7 @@ export default function TechnologyPage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-graphite-soft">
-              Vertical integration isn't just a business moat — it's a process control advantage. Every ZENOK tool is traceable from the tungsten carbide batch it was sintered from, through the grinding cell that cut its geometry, to the PVD chamber that coated it.
+              Vertical integration isn't a marketing claim — it's a process chain we control end to end. Every ZENOK tool is traceable from the tungsten carbide batch it was sintered from, through the grinding cell that cut its geometry, to the PVD chamber that coated it.
             </p>
           </Reveal>
         </div>
@@ -132,7 +132,7 @@ export default function TechnologyPage() {
                     Most tool manufacturers buy carbide rod stock from upstream suppliers, then machine it into finished tools. ZENOK <strong className="text-graphite">synthesizes the carbide and grinds the finished tool in the same facility</strong> — which means we control substrate quality, grain structure, and finished-geometry tolerance as one continuous process.
                   </p>
                   <p>
-                    This vertical integration is how we offer structural cost-down to US customers without compromising on substrate grade or process qualification. Our competitors buy the substrate we manufacture — they cannot structurally undercut a supplier that skips the intermediary tiers.
+                    This vertical integration is how we offer structural cost-down to US customers without compromising on substrate grade or process qualification.
                   </p>
                   <p>
                     It's also why we can run custom programs at MOQ 200 — the rod stock for a custom diameter is <em className="serif-italic text-graphite">already in our inventory</em> as bar stock supply for other customers.
@@ -344,10 +344,6 @@ export default function TechnologyPage() {
               style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
             >
               SS308 tungsten carbide.
-              <br />
-              <span className="serif-italic font-normal text-graphite-soft">
-                The same substrate we supply competitors.
-              </span>
             </h2>
           </Reveal>
 
@@ -402,12 +398,6 @@ export default function TechnologyPage() {
                     <span className="font-bold text-blue">—</span>
                     <span>
                       <strong className="text-graphite">Lot-level traceability.</strong> Every shipment comes with Certificate of Conformance and material chemistry data.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-bold text-blue">—</span>
-                    <span>
-                      <strong className="text-graphite">Supplied to competitors.</strong> The ultimate market signal — other tool factories buy this substrate from us.
                     </span>
                   </li>
                 </ul>

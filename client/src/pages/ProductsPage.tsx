@@ -94,7 +94,7 @@ const productsSchema = {
   "@type": "CollectionPage",
   name: "ZENOK Products — Taiwan Carbide Micro End Mills",
   description:
-    "156 active SKUs across four geometry families. Flat, ball nose, corner radius, aluminum. Ø 0.1–3.0 mm. Taiwan 4.8% MFN duty.",
+    "156 active SKUs across four geometry families. Flat, ball nose, corner radius, aluminum. Ø 0.1–3.0 mm.",
 };
 
 export default function ProductsPage() {
@@ -108,7 +108,7 @@ export default function ProductsPage() {
     <SiteLayout>
       <SeoHead
         title="Products — 156 SKUs across 4 Geometry Families | ZENOK Taiwan"
-        description="Browse ZENOK's full catalog: 156 SKUs of precision carbide micro end mills. Flat, ball nose, corner radius, aluminum spec. Ø 0.1–3.0 mm from Taiwan at 4.8% MFN duty."
+        description="Browse ZENOK's full catalog: 156 SKUs of precision carbide micro end mills. Flat, ball nose, corner radius, aluminum spec. Ø 0.1–3.0 mm from Taiwan."
         canonicalPath="/products"
         schema={productsSchema}
         keywords={["carbide end mills", "micro tooling catalog", "Taiwan tools", "ZENOK products"]}
