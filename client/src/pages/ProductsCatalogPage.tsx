@@ -86,7 +86,7 @@ export default function ProductsCatalogPage() {
       />
 
       {/* Back to Products */}
-      <div className="border-b border-line bg-bg-2">
+      <div className="border-b border-line bg-bg-2 pt-6 md:pt-8">
         <div className="container-wrap py-4">
           <Link
             href="/products"

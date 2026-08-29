@@ -1,11 +1,7 @@
 /*
-  /carbide-rods — Carbide bar stock supply page.
-  This is a STRATEGIC page — it's where ZENOK openly talks about selling raw material.
-  That IS the moat. This page should feel confident, transparent,
-  slightly contrarian.
+  /carbide-rods — SS308 tungsten carbide rod stock, product specification page.
 */
 import { useEffect } from "react";
-import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SeoHead } from "@/components/site/SeoHead";
 import { ProductCategoryNav } from "@/components/site/ProductComponents";
@@ -29,14 +25,13 @@ function Reveal({
 }
 
 const SPEC_ROWS = [
-  { label: "Substrate", value: "SS308 tungsten carbide" },
-  { label: "Diameter range", value: "3–20 mm" },
-  { label: "Grain size", value: "Sub-micron to ultra-fine" },
+  { label: "Grade", value: "SS308 submicron tungsten carbide" },
+  { label: "Diameter", value: "Ø 3–20 mm" },
+  { label: "Tolerance", value: "h6 ground" },
   { label: "Hardness", value: "HRA 91.5–93.0" },
-  { label: "TRS", value: "≥ 4000 MPa" },
-  { label: "Length", value: "Standard 310 mm (custom available)" },
-  { label: "Tolerance", value: "h6 ground as standard" },
-  { label: "MOQ", value: "100 kg per specification" },
+  { label: "Transverse rupture strength", value: "TRS ≥ 4000 MPa" },
+  { label: "Length", value: "Cut to your requirement" },
+  { label: "MOQ", value: "100 kg" },
 ];
 
 export default function CarbideRodsPage() {
@@ -49,15 +44,15 @@ export default function CarbideRodsPage() {
     "@type": "Product",
     name: "ZENOK Tungsten Carbide Bar Stock",
     description:
-      "ZENOK supplies SS308 tungsten carbide bar stock to tool manufacturers globally. Ø 3–20 mm, HRA 91.5–93.0, TRS ≥ 4000 MPa.",
+      "SS308 submicron tungsten carbide rod stock, Ø 3–20 mm, h6 ground tolerance, HRA 91.5–93.0, TRS ≥ 4000 MPa, factory-direct pricing.",
     brand: { "@type": "Brand", name: "ZENOK" },
   };
 
   return (
     <SiteLayout>
       <SeoHead
-        title="Carbide Rods — SS308 Tungsten Carbide Bar Stock | ZENOK Taiwan"
-        description="ZENOK supplies SS308 tungsten carbide bar stock at factory-direct pricing. Ø 3–20 mm, h6 ground tolerance, HRA 91.5–93.0 hardness. MOQ 100 kg."
+        title="SS308 Tungsten Carbide Rod Stock | Ø 3–20 mm | ZENOK"
+        description="SS308 submicron tungsten carbide rod stock, Ø 3–20 mm, h6 ground tolerance, HRA 91.5–93.0, TRS ≥ 4000 MPa. MOQ 100 kg, factory-direct pricing from ZENOK."
         canonicalPath="/carbide-rods"
         schema={schema}
         keywords={["carbide bar stock", "tungsten carbide rods", "SS308", "Taiwan carbide", "ZENOK"]}
@@ -65,13 +60,13 @@ export default function CarbideRodsPage() {
 
       <ProductCategoryNav currentSlug="carbide-rods" categoryLabel="Carbide Rods" />
 
-      {/* Hero — moat-forward messaging */}
+      {/* Hero */}
       <section className="relative border-b border-line pt-16 pb-16 lg:pt-20 lg:pb-20">
         <div className="container-wrap">
           <Reveal>
             <div className="mb-6 inline-flex items-center gap-3 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.25em] text-blue">
               <span className="h-px w-8 bg-blue" />
-              Bar Stock Supply
+              Carbide Rod Stock
             </div>
           </Reveal>
           <Reveal delay={100}>
@@ -79,26 +74,25 @@ export default function CarbideRodsPage() {
               className="max-w-4xl font-[var(--font-display)] font-black tracking-[-0.04em] text-graphite leading-[0.92]"
               style={{ fontSize: "clamp(40px, 5.5vw, 76px)" }}
             >
-              We also sell the
+              SS308 tungsten carbide
               <br />
-              <span className="text-blue">raw carbide.</span>
+              <span className="text-blue">rod stock.</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-graphite-soft">
-              ZENOK supplies SS308 tungsten carbide bar stock to tool manufacturers worldwide.{" "}
-              <em className="serif-italic text-graphite">That's not a leak. That's the moat.</em>
+              Ground carbide rod in stock, Ø 3–20 mm. Same material we use in our own finished tools. MOQ 100 kg, factory-direct.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* The moat explanation */}
+      {/* Specifications */}
       <section className="relative py-20 lg:py-24">
         <div className="container-wrap">
           <Reveal>
             <div className="sec-eyebrow">
-              Why We Sell To Competitors
+              Specifications
               <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
                 [ 01 ]
               </span>
@@ -109,92 +103,36 @@ export default function CarbideRodsPage() {
               className="max-w-4xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
               style={{ fontSize: "clamp(30px, 4.2vw, 56px)" }}
             >
-              The arithmetic is simple.
-              <br />
-              <span className="serif-italic font-normal text-graphite-soft">
-                You can't undercut your supplier.
-              </span>
+              What you get.
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <Reveal delay={150}>
-              <div className="space-y-6 text-[16px] leading-[1.75] text-graphite-soft">
-                <p>
-                  Finished micro end mills sold through distribution carry substrate cost, machining overhead, coating, packaging, and margin at multiple tiers. <strong className="text-graphite">We start at the substrate and ship the finished tool</strong> — the tiers in between don't exist in our cost structure.
-                </p>
-                <p>
-                  ZENOK skips the distributor tier entirely. We sell finished tools at Taiwan factory pricing, direct to US CNC shops. The downstream competitor can't structurally match that — <strong className="text-graphite">not because they're worse at machining, but because their cost floor sits above our ceiling.</strong>
-                </p>
-                <p>
-                  <em className="serif-italic text-graphite">
-                    Selling them the rod openly is the demonstration.
-                  </em>{" "}
-                  We're not afraid of the arithmetic — we built the business around it.
-                </p>
-              </div>
-            </Reveal>
-
-            {/* Visual: structural position (no specific $) */}
-            <Reveal delay={250}>
-              <div className="border border-line bg-panel p-8 lg:p-10">
-                <div className="mb-6 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-                  Structural Cost Position
-                </div>
-
-                <div className="space-y-7">
-                  <div>
-                    <div className="mb-2 flex items-baseline justify-between">
-                      <span className="font-semibold text-graphite">Competitor route</span>
-                      <span className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-steel">
-                        Full stack
-                      </span>
-                    </div>
-                    <div className="h-3 overflow-hidden border border-line bg-bg-2">
-                      <div className="h-full w-full bg-graphite" />
-                    </div>
-                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">
-                      <span>ZENOK rod</span>
-                      <span>+ machining</span>
-                      <span>+ depreciation</span>
-                      <span>+ overhead</span>
-                      <span>+ distributor margin</span>
-                    </div>
+          <Reveal delay={150}>
+            <div className="mt-12 max-w-2xl border border-line bg-panel p-8 lg:p-10">
+              <div className="space-y-3">
+                {SPEC_ROWS.map((row) => (
+                  <div
+                    key={row.label}
+                    className="flex justify-between border-b border-line-soft pb-3 font-[var(--font-mono)] text-[13px] last:border-b-0"
+                  >
+                    <span className="text-steel uppercase tracking-[0.1em] text-[11px]">
+                      {row.label}
+                    </span>
+                    <span className="text-graphite font-semibold text-right">{row.value}</span>
                   </div>
-
-                  <div>
-                    <div className="mb-2 flex items-baseline justify-between">
-                      <span className="font-semibold text-graphite">ZENOK direct</span>
-                      <span className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.1em] text-blue">
-                        Factory-direct
-                      </span>
-                    </div>
-                    <div className="h-3 overflow-hidden border border-blue/50 bg-bg-2">
-                      <div className="h-full w-[55%] bg-blue" />
-                    </div>
-                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-steel">
-                      <span>Taiwan factory</span>
-                      <span>+ logistics</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 border-t border-line pt-5 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-steel">
-                  Typical ZENOK landed discount{" "}
-                  <strong className="text-blue">20–38%</strong>
-                </div>
+                ))}
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Spec table */}
+      {/* Ordering */}
       <section className="relative border-t border-line bg-bg-2 py-20 lg:py-24">
         <div className="container-wrap">
           <Reveal>
             <div className="sec-eyebrow">
-              Bar Stock Specifications
+              Ordering
               <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
                 [ 02 ]
               </span>
@@ -205,74 +143,14 @@ export default function CarbideRodsPage() {
               className="max-w-3xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
               style={{ fontSize: "clamp(30px, 4vw, 52px)" }}
             >
-              SS308 grade.
-              <br />
-              <span className="serif-italic font-normal text-graphite-soft">
-                Ground to h6 as standard.
-              </span>
+              How to order.
             </h2>
           </Reveal>
-
-          <div className="mt-12 grid gap-px border border-line bg-line md:grid-cols-2">
-            <Reveal>
-              <div className="h-full bg-panel p-8 lg:p-10">
-                <div className="mb-6 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-                  Technical Properties
-                </div>
-                <div className="space-y-3">
-                  {SPEC_ROWS.map((row) => (
-                    <div
-                      key={row.label}
-                      className="flex justify-between border-b border-line-soft pb-3 font-[var(--font-mono)] text-[13px] last:border-b-0"
-                    >
-                      <span className="text-steel uppercase tracking-[0.1em] text-[11px]">
-                        {row.label}
-                      </span>
-                      <span className="text-graphite font-semibold text-right">{row.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={150}>
-              <div className="h-full bg-panel-2 p-8 lg:p-10">
-                <div className="mb-6 font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-                  Best Suited For
-                </div>
-                <ul className="space-y-4 text-[15px] leading-[1.7] text-graphite-soft">
-                  <li className="flex gap-3">
-                    <span className="font-bold text-blue">—</span>
-                    <span>
-                      <strong className="text-graphite">Precision tool manufacturers</strong>{" "}
-                      producing end mills, drills, reamers below Ø 20 mm
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-bold text-blue">—</span>
-                    <span>
-                      <strong className="text-graphite">Dental and medical OEMs</strong>{" "}
-                      requiring bio-inert carbide substrates with full traceability
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-bold text-blue">—</span>
-                    <span>
-                      <strong className="text-graphite">Research and prototyping labs</strong>{" "}
-                      needing small batches with qualified material certs
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-bold text-blue">—</span>
-                    <span>
-                      <strong className="text-graphite">Distributors</strong>{" "}
-                      who want Taiwan-origin stock to serve US customers
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal delay={200}>
+            <p className="mt-6 max-w-2xl text-[17px] leading-[1.8] text-graphite-soft">
+              Send us your diameter, tolerance, and quantity. We confirm availability and pricing within 2 business days. Material certificates provided with every shipment.
+            </p>
+          </Reveal>
         </div>
       </section>
 
