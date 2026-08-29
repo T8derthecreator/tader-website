@@ -10,9 +10,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import {
-  NotFoundPage,
-} from "./pages/SitePages";
+import { NotFoundPage } from "./pages/NotFoundPage";
 import HomePage from "./pages/HomePage";
 import WhyZenokPage from "./pages/WhyZenokPage";
 import ProductsPage from "./pages/ProductsPage";
