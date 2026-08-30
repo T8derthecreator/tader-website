@@ -143,13 +143,13 @@ export function IndustryDetailPage({ slug }: { slug: string }) {
                   {industry.specs.map((spec) => (
                     <div
                       key={spec.label}
-                      className={`flex items-center justify-between gap-3 p-4 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.08em] ${
+                      className={`flex items-center justify-between gap-3 p-4 font-[var(--font-mono)] text-[11px] tracking-[0.08em] ${
                         spec.highlight ? "bg-blue-pale" : "bg-panel"
                       }`}
                     >
-                      <span className="text-steel">{spec.label}</span>
+                      <span className="uppercase text-steel">{spec.label}</span>
                       <span
-                        className={`text-right font-semibold normal-case ${
+                        className={`text-right font-semibold ${
                           spec.highlight ? "text-blue" : "text-graphite"
                         }`}
                       >
