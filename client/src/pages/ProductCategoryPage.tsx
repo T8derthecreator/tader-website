@@ -154,7 +154,7 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
               <span className="h-3 w-px bg-line" />
               <span>
                 <span className="text-steel">Ø range</span>{" "}
-                <strong className="text-graphite">{formatRange(categoryMeta.diameterRangeMm)}</strong>
+                <strong className="text-graphite normal-case">{formatRange(categoryMeta.diameterRangeMm)}</strong>
               </span>
               <span className="h-3 w-px bg-line" />
               <span>
@@ -225,19 +225,19 @@ export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) 
                           <div className="mt-6 space-y-2 border-t border-line pt-4 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.1em]">
                             <div className="flex justify-between">
                               <span className="text-steel">Flutes</span>
-                              <span className="text-graphite">{f.flutes ?? "—"}</span>
+                              <span className="text-graphite normal-case">{f.flutes ?? "—"}</span>
                             </div>
                             <div className="flex justify-between">
                               <span className="text-steel">Construction</span>
-                              <span className="text-graphite">{f.construction ?? "—"}</span>
+                              <span className="text-graphite normal-case">{f.construction ?? "—"}</span>
                             </div>
                             <div className="flex justify-between">
                               <span className="text-steel">Ø range</span>
-                              <span className="text-graphite">{formatRange(f.diameter_range_mm)}</span>
+                              <span className="text-graphite normal-case">{formatRange(f.diameter_range_mm)}</span>
                             </div>
                             <div className="flex items-center justify-between border-t border-line pt-2">
                               <span className="text-steel">SKUs</span>
-                              <span className="font-semibold text-blue">{f.sku_count}</span>
+                              <span className="font-semibold text-blue normal-case">{f.sku_count}</span>
                             </div>
                           </div>
                           <div className="mt-5 flex items-center gap-2 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-blue transition-transform duration-200 group-hover:translate-x-1">

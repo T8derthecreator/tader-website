@@ -60,7 +60,7 @@ export const INDUSTRIES = [
     specs: [
       { label: "Primary substrates", value: "Al · Cu · CFRP", highlight: false },
       { label: "Recommended coating", value: "DLC (Al) · Uncoated (Cu)", highlight: false },
-      { label: "DLC friction coeff.", value: "0.1 μ", highlight: true },
+      { label: "DLC friction coeff.", value: "0.1", highlight: true },
       { label: "Construction", value: "B-type (composite)", highlight: false },
       { label: "Avg cost reduction", value: "28%", highlight: true },
     ],

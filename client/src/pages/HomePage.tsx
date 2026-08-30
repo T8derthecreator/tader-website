@@ -67,7 +67,7 @@ function HeroSection() {
     <section className="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32">
       <div className="container-wrap">
         <Reveal>
-          <div className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel-faint">
+          <div className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 font-[var(--font-mono)] text-[10px] normal-case tracking-[0.15em] text-steel-faint">
             <span>— EST. 2019</span>
             <span>— ISO 9001 · RoHS</span>
             <span className="hidden md:inline">— AEROSPACE / MEDICAL / ELECTRONICS</span>
@@ -560,7 +560,7 @@ function ProductsTeaserSection() {
                   <div className="mt-6 font-[var(--font-display)] text-xl font-bold text-graphite">
                     {c.name}
                   </div>
-                  <div className="mt-2 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-steel">
+                  <div className="mt-2 font-[var(--font-mono)] text-[11px] normal-case tracking-[0.12em] text-steel">
                     {c.range}
                   </div>
                 </div>

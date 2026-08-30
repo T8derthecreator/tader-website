@@ -149,7 +149,7 @@ export function IndustryDetailPage({ slug }: { slug: string }) {
                     >
                       <span className="text-steel">{spec.label}</span>
                       <span
-                        className={`text-right font-semibold ${
+                        className={`text-right font-semibold normal-case ${
                           spec.highlight ? "text-blue" : "text-graphite"
                         }`}
                       >

@@ -162,7 +162,8 @@ button { font-family: inherit; }
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* No text-transform: items in MARQUEE_ITEMS are authored in their intended
+     casing so unit symbols (mm) and proper nouns (RoHS) render correctly. */
   font-weight: 600;
   border-bottom: 1px solid rgba(29, 78, 216, 0.15);
 }

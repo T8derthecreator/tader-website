@@ -220,7 +220,7 @@ export default function AboutPage() {
             {CERTS.map((c, i) => (
               <Reveal key={c.icon} delay={i * 80}>
                 <div className="h-full border border-line bg-panel p-7 transition-all hover:border-blue hover:shadow-[var(--shadow-blue)]">
-                  <div className="mb-5 flex size-14 items-center justify-center border-2 border-blue bg-blue font-[var(--font-mono)] text-xs font-bold uppercase tracking-[0.08em] text-white">
+                  <div className="mb-5 flex size-14 items-center justify-center border-2 border-blue bg-blue font-[var(--font-mono)] text-xs font-bold normal-case tracking-[0.08em] text-white">
                     {c.icon}
                   </div>
                   <div className="font-[var(--font-display)] text-lg font-bold text-graphite">

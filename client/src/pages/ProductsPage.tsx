@@ -163,7 +163,7 @@ export default function ProductsPage() {
                       <div className="mt-6 font-[var(--font-display)] text-xl font-bold text-graphite">
                         {c.name}
                       </div>
-                      <div className="mt-2 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.12em] text-steel">
+                      <div className="mt-2 font-[var(--font-mono)] text-[11px] normal-case tracking-[0.12em] text-steel">
                         {c.range} · {skuCount} SKU
                       </div>
                     </div>

@@ -188,25 +188,25 @@ export default function ProductDetailPage() {
             <div className="mt-10 grid max-w-2xl grid-cols-2 gap-6 border-t border-line pt-8 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.15em] sm:grid-cols-4">
               <div>
                 <div className="text-steel">Ø Range</div>
-                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-graphite tracking-tight">
+                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-graphite tracking-tight normal-case">
                   {rangeLabel}
                 </div>
               </div>
               <div>
                 <div className="text-steel">Flutes</div>
-                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-graphite tracking-tight">
+                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-graphite tracking-tight normal-case">
                   {family.flutes ?? "—"}
                 </div>
               </div>
               <div>
                 <div className="text-steel">Construction</div>
-                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-blue tracking-tight">
+                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-blue tracking-tight normal-case">
                   {family.construction ?? "—"}
                 </div>
               </div>
               <div>
                 <div className="text-steel">SKUs</div>
-                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-graphite tracking-tight">
+                <div className="mt-2 font-[var(--font-display)] text-xl font-bold text-graphite tracking-tight normal-case">
                   {family.sku_count}
                 </div>
               </div>

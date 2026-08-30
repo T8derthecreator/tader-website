@@ -11,7 +11,7 @@ const INQUIRY_URL = "https://toolinginquiryform.netlify.app/";
 const MARQUEE_ITEMS = [
   "ROD STOCK TO FINISHED TOOL",
   "156 ACTIVE SKU",
-  "Ø 0.1–3.0 MM",
+  "Ø 0.1–3.0 mm",
   "2-DAY PROPOSAL",
   "AEROSPACE · MEDICAL · ELECTRONICS",
   "ISO 9001 · RoHS",
