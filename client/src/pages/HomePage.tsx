@@ -375,7 +375,7 @@ const STEPS = [
   {
     n: "02",
     t: "Engineering review",
-    d: "Our team evaluates feasibility against Taiwan carbide production and coating lines.",
+    d: "Our team evaluates feasibility against our carbide production and coating lines.",
     m: "~ 24 hr",
   },
   {

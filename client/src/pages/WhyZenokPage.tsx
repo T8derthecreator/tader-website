@@ -77,7 +77,7 @@ function PageHero() {
         </Reveal>
         <Reveal delay={200}>
           <p className="mt-8 max-w-xl text-[17px] leading-[1.7] text-graphite-soft">
-            Taiwan origin. Factory-direct pricing. Before you evaluate a single dimension, the cost-down case is already built.
+            Factory-direct pricing. Before you evaluate a single dimension, the cost-down case is already built.
           </p>
         </Reveal>
       </div>
@@ -172,6 +172,7 @@ function BigStatsBand() {
   const stats = [
     { v: 20, dec: 0, u: "%+", l: "Typical Savings" },
     { v: 48, dec: 0, u: "hr", l: "Proposal Guarantee" },
+    { v: 156, dec: 0, u: "", l: "Active SKU" },
   ];
 
   return (
@@ -188,7 +189,7 @@ function BigStatsBand() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,var(--glow),transparent_70%)]" />
 
       <div className="container-wrap relative">
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 md:grid-cols-3">
           {stats.map((s, i) => (
             <Reveal key={s.l} delay={i * 100}>
               <div
@@ -266,7 +267,7 @@ function ValueCards() {
             Three reasons
             <br />
             <span className="serif-italic font-normal text-graphite-soft">
-              beyond the duty rate.
+              it holds up.
             </span>
           </h2>
         </Reveal>
@@ -312,7 +313,7 @@ const STEPS = [
   {
     n: "02",
     t: "Engineering review",
-    d: "Our team evaluates feasibility against Taiwan carbide production and coating lines.",
+    d: "Our team evaluates feasibility against our carbide production and coating lines.",
     m: "~ 24 hr",
   },
   {
