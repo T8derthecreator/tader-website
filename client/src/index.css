@@ -32,6 +32,29 @@
   --font-serif: "IBM Plex Sans", system-ui, sans-serif;
 }
 
+/* Unit / proper-noun guard.
+   Wrap unit symbols (μm, mm, °, Ø, HRC, Ra) and proper nouns (RoHS, TiAlN,
+   Ti-6Al-4V, DLC, PVD …) in <span class="u"> so an ancestor's
+   text-transform: uppercase cannot corrupt them. "±2 μm" rendering as
+   "±2 ΜM" reads as millimetres — a 1000× spec error.
+
+   Two complementary tools — pick by what the element contains:
+
+     normal-case  → the whole cell/element IS the value. Exempt it wholesale.
+                    Used by the product spec rows and stat tiles
+                    (e.g. HomePage, ProductsPage, ProductCategoryPage,
+                    ProductDetailPage, AboutPage cert badges).
+
+     .u           → an uppercase LABEL with a unit or proper noun mixed into
+                    it. Wrap only the symbol or name; the surrounding label
+                    text keeps its uppercase styling.
+
+   A third pattern also exists and is preferred where the markup allows it:
+   put `uppercase` on the label element only, never on the row container,
+   so values can never inherit it (see IndustriesPage / IndustryDetailPage
+   spec tables, and the .zk-marquee items which are authored as-rendered). */
+.u { text-transform: none !important; }
+
 /* Plain CSS variables for advanced components */
 :root {
   --bg: #e8ebf0;
