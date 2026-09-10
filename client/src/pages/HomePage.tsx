@@ -1,11 +1,11 @@
 /*
   ZENOK HomePage — simplified per user decision.
-  Sections: Hero → Calculator → Process
+  Sections: Hero → Process
           → Products Teaser (4 geometry cards) → Industries Teaser (3 cards) → CTA big
   Dropped vs Claude Design HTML: big Cost-Down marquee, value cards, full industries cards.
   Those moved to /why-zenok and /industries respectively to give those pages purpose.
 */
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -154,215 +154,6 @@ function HeroSection() {
   );
 }
 
-/* ---------- CALCULATOR ---------- */
-
-const CALC_CATEGORIES = [
-  { v: 3.5, label: "3mm Flat End Mill · (B)" },
-  { v: 6.0, label: "R-series Ball Nose · (B) uncoated" },
-  { v: 9.0, label: "R-series Ball Nose · (C) TiAlN" },
-  { v: 8.5, label: '1/8" Custom · (B/C)' },
-  { v: 7.0, label: "Corner Radius · (C)" },
-];
-
-function CalculatorSection() {
-  const [factoryCost, setFactoryCost] = useState(9.0);
-  const [curPrice, setCurPrice] = useState(14.5);
-  const [volume, setVolume] = useState(500);
-
-  const math = useMemo(() => {
-    const landedZenok = factoryCost * 1.16;
-    const perUnitSave = Math.max(0, curPrice - landedZenok);
-    const annual = perUnitSave * volume * 12;
-    const pct = curPrice > 0 ? (perUnitSave / curPrice) * 100 : 0;
-    return { landedZenok, perUnitSave, annual, pct };
-  }, [factoryCost, curPrice, volume]);
-
-  return (
-    <section
-      id="calc"
-      className="relative border-t border-line bg-bg-2 py-20 lg:py-28"
-    >
-      <div className="container-wrap">
-        <Reveal>
-          <div className="sec-eyebrow">
-            Interactive Tool
-            <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-              [ 02 ]
-            </span>
-          </div>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <h2 className="max-w-4xl font-[var(--font-display)] font-bold tracking-[-0.03em] text-graphite leading-[1.02]"
-              style={{ fontSize: "clamp(34px, 4.5vw, 60px)" }}>
-            Calculate your annual cost-down.
-            <br />
-            <span className="text-blue">Live.</span> No form.
-          </h2>
-        </Reveal>
-
-        <Reveal delay={200}>
-          <p className="mt-6 max-w-2xl text-[17px] leading-[1.8] text-graphite-soft">
-            Drop in your current tooling spend and we'll show you the math. Real numbers from our engineering team inside 48 hours.
-          </p>
-        </Reveal>
-
-        <div className="mt-14 grid gap-px border border-line bg-line lg:grid-cols-2">
-          {/* LEFT — inputs */}
-          <Reveal>
-            <div className="space-y-8 bg-panel p-8 lg:p-10">
-              <div>
-                <div className="mb-3 flex items-center justify-between">
-                  <label className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-graphite">
-                    Tool Category
-                  </label>
-                  <span className="font-[var(--font-mono)] text-[10px] text-steel">
-                    — 01/04
-                  </span>
-                </div>
-                <select
-                  value={factoryCost}
-                  onChange={(e) => setFactoryCost(parseFloat(e.target.value))}
-                  className="w-full border border-line bg-white p-3 font-[var(--font-mono)] text-sm text-graphite outline-none transition-colors focus:border-blue"
-                >
-                  {CALC_CATEGORIES.map((c) => (
-                    <option key={c.label} value={c.v}>
-                      {c.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <div className="mb-3 flex items-center justify-between">
-                  <label className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-graphite">
-                    Current Unit Price (USD)
-                  </label>
-                  <span className="font-[var(--font-mono)] text-[10px] text-steel">
-                    — 02/04
-                  </span>
-                </div>
-                <div className="flex items-center border border-line bg-white">
-                  <span className="border-r border-line px-3 py-3 font-[var(--font-mono)] text-sm text-steel">
-                    $
-                  </span>
-                  <input
-                    type="number"
-                    value={curPrice}
-                    step="0.5"
-                    min="1"
-                    onChange={(e) =>
-                      setCurPrice(parseFloat(e.target.value) || 0)
-                    }
-                    className="flex-1 p-3 font-[var(--font-mono)] text-sm text-graphite outline-none"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <div className="mb-3 flex items-center justify-between">
-                  <label className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-graphite">
-                    Monthly Volume (units)
-                  </label>
-                  <span className="font-[var(--font-mono)] text-[10px] text-steel">
-                    — 03/04
-                  </span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <input
-                    type="range"
-                    min={50}
-                    max={5000}
-                    step={50}
-                    value={volume}
-                    onChange={(e) => setVolume(parseInt(e.target.value, 10))}
-                    className="flex-1 accent-blue"
-                  />
-                  <div className="min-w-[80px] text-right font-[var(--font-display)] text-2xl font-bold text-blue">
-                    {volume.toLocaleString()}
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div className="mb-3 flex items-center justify-between">
-                  <label className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-graphite">
-                    Current Origin
-                  </label>
-                  <span className="font-[var(--font-mono)] text-[10px] text-steel">
-                    — 04/04
-                  </span>
-                </div>
-                <select className="w-full border border-line bg-white p-3 font-[var(--font-mono)] text-sm text-graphite outline-none transition-colors focus:border-blue">
-                  <option>Other Asia / EU</option>
-                  <option>US domestic</option>
-                </select>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* RIGHT — result */}
-          <Reveal delay={150}>
-            <div className="flex h-full flex-col bg-panel-2 p-8 lg:p-10">
-              <div className="font-[var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.15em] text-blue">
-                Estimated Annual Savings
-              </div>
-              <div className="mt-4 font-[var(--font-display)] font-black leading-none tabular-nums text-graphite tracking-[-0.02em]"
-                   style={{ fontSize: "clamp(42px, 6vw, 80px)" }}>
-                ${Math.round(math.annual).toLocaleString()}
-              </div>
-              <div className="mt-2 text-sm text-graphite-soft">
-                {math.perUnitSave > 0
-                  ? `≈ ${math.pct.toFixed(0)}% per unit · based on your inputs`
-                  : "Your pricing is already near ZENOK's landed level — still worth submitting for review."}
-              </div>
-
-              <div className="my-8 space-y-3 border-y border-line py-6">
-                <div className="flex justify-between text-sm">
-                  <span className="text-steel">Your current / unit</span>
-                  <span className="font-[var(--font-mono)] text-graphite">
-                    ${curPrice.toFixed(2)}
-                  </span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-steel">Typical cost-down</span>
-                  <span className="font-[var(--font-mono)] font-semibold text-blue">
-                    {math.perUnitSave > 0 ? `≈ ${math.pct.toFixed(0)}% per unit` : "—"}
-                  </span>
-                </div>
-                <div className="flex justify-between border-t border-line pt-3 text-base">
-                  <span className="font-semibold text-graphite">
-                    Annual savings (12 mo × volume)
-                  </span>
-                  <span className="font-[var(--font-mono)] font-semibold text-graphite">
-                    ${Math.round(math.annual).toLocaleString()}
-                  </span>
-                </div>
-              </div>
-
-              <p className="text-xs leading-6 text-steel">
-                <strong className="text-graphite-soft">Rough estimate only.</strong>{" "}
-                Actual savings depend on tooling specification, volume tier, coating requirements, and shipping terms. Does not include applicable duties, freight, and broker fees, or state/local taxes. Submit specs for formal quote.
-              </p>
-
-              <a
-                href={INQUIRY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary mt-auto w-full justify-center pt-4"
-                style={{ marginTop: "24px" }}
-              >
-                <span>Get Exact Numbers</span>
-                <span className="ar">→</span>
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- PROCESS ---------- */
 
 const STEPS = [
@@ -400,7 +191,7 @@ function ProcessSection() {
           <div className="sec-eyebrow">
             Workflow
             <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-              [ 03 ]
+              [ 01 ]
             </span>
           </div>
         </Reveal>
@@ -521,7 +312,7 @@ function ProductsTeaserSection() {
           <div className="sec-eyebrow">
             Catalog
             <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-              [ 04 ]
+              [ 02 ]
             </span>
           </div>
         </Reveal>
@@ -604,7 +395,7 @@ function IndustriesTeaserSection() {
           <div className="sec-eyebrow">
             Applications
             <span className="ml-auto font-[var(--font-mono)] text-[11px] font-medium tracking-[0.15em] text-steel-faint">
-              [ 05 ]
+              [ 03 ]
             </span>
           </div>
         </Reveal>
@@ -735,7 +526,6 @@ export default function HomePage() {
         ]}
       />
       <HeroSection />
-      <CalculatorSection />
       <ProcessSection />
       <ProductsTeaserSection />
       <IndustriesTeaserSection />
