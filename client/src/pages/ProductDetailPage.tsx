@@ -19,6 +19,15 @@ import { taderData } from "@/data/taderData";
 
 const INQUIRY_URL = "https://toolinginquiryform.netlify.app/";
 
+/* Dimensions render with at least one decimal site-wide (1 -> "1.0"), em dash
+   when the spec does not apply to that geometry. Extra precision is kept:
+   ball-nose radii are R0.75 / R1.25 and must not be rounded to 0.8 / 1.3. */
+function dim(value: number | null | undefined) {
+  if (value == null) return "—";
+  const decimals = value.toString().split(".")[1]?.length ?? 0;
+  return value.toFixed(Math.max(1, decimals));
+}
+
 function Reveal({
   children,
   delay = 0,
@@ -293,22 +302,22 @@ export default function ProductDetailPage() {
                         >
                           <td className="p-3 font-semibold text-graphite">{s.model_no}</td>
                           <td className="p-3 text-right tabular-nums text-graphite">
-                            {s.diameter_mm ?? "—"}
+                            {dim(s.diameter_mm)}
                           </td>
                           <td className="p-3 text-right tabular-nums text-steel">
-                            {s.radius_mm ?? "—"}
+                            {dim(s.radius_mm)}
                           </td>
                           <td className="p-3 text-right tabular-nums text-steel">
-                            {s.cut_length_mm ?? "—"}
+                            {dim(s.cut_length_mm)}
                           </td>
                           <td className="p-3 text-right tabular-nums text-steel">
-                            {s.effective_length_mm ?? "—"}
+                            {dim(s.effective_length_mm)}
                           </td>
                           <td className="p-3 text-right tabular-nums text-steel">
-                            {s.overall_length_mm ?? "—"}
+                            {dim(s.overall_length_mm)}
                           </td>
                           <td className="p-3 text-right tabular-nums text-steel">
-                            {s.shank_diameter_mm ?? "—"}
+                            {dim(s.shank_diameter_mm)}
                           </td>
                           <td className="p-3 text-center">
                             <div className="flex flex-wrap items-center justify-center gap-1">

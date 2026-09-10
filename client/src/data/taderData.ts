@@ -129,7 +129,6 @@ export const taderData = {
       "route": "/products/ball-nose-end-mills",
       "seriesCodes": [
         "ZB2",
-        "ZB2-LS",
         "ZB2-LN"
       ],
       "skuCount": 21,
@@ -309,7 +308,7 @@ export const taderData = {
       "series_slug": "zb2",
       "flutes": 2,
       "construction": "B/C",
-      "sku_count": 6,
+      "sku_count": 7,
       "diameter_range_mm": [
         1.0,
         3.0
@@ -319,33 +318,10 @@ export const taderData = {
         null
       ],
       "legacy_series": "SB2",
-      "line_name": "Ball Nose End Mill · 2-Flute · Regular",
+      "line_name": "Ball Nose End Mill · 2-Flute",
       "route": "/products/ball-nose-end-mills",
-      "intro": "2-flute regular ball nose end mill product line for core micro-machining programs and everyday high-precision features.",
-      "skuCount": 6
-    },
-    {
-      "series": "ZB2-LS",
-      "category": "Ball Nose End Mill",
-      "category_slug": "ball-nose-end-mills",
-      "sub_type": "Long Shank",
-      "series_slug": "zb2-ls",
-      "flutes": 2,
-      "construction": "B/C",
-      "sku_count": 1,
-      "diameter_range_mm": [
-        2.0,
-        2.0
-      ],
-      "effective_length_range_mm": [
-        null,
-        null
-      ],
-      "legacy_series": "SB2L",
-      "line_name": "Ball Nose End Mill · 2-Flute · Long Shank",
-      "route": "/products/ball-nose-end-mills",
-      "intro": "2-flute long shank ball nose end mill product line for extended projection setups that need added reach from the holder.",
-      "skuCount": 1
+      "intro": "2-flute ball nose end mill product line for core micro-machining programs and everyday high-precision features, including a long shank option for extended projection setups.",
+      "skuCount": 7
     },
     {
       "series": "ZB2-LN",
@@ -2644,8 +2620,8 @@ export const taderData = {
     },
     {
       "model_no": "SB2LR0100L075",
-      "series": "ZB2-LS",
-      "series_slug": "zb2-ls",
+      "series": "ZB2",
+      "series_slug": "zb2",
       "category": "Ball Nose End Mill",
       "category_slug": "ball-nose-end-mills",
       "sub_type": "Long Shank",

@@ -65,6 +65,12 @@ function LegacyAluminumEndMillsRedirect() {
   return <LegacyCategoryRedirect target="/products/aluminum-end-mills" />;
 }
 
+// ZB2-LS was merged into ZB2 (the series held a single SKU after the
+// Ø 1.0–3.0 mm supply-range restriction). Keep the old URL reachable.
+function LegacyZb2LsRedirect() {
+  return <LegacyCategoryRedirect target="/products/zb2" />;
+}
+
 function Router() {
   return (
     <Switch>
@@ -75,6 +81,7 @@ function Router() {
       <Route path="/products/ball-nose-end-mills" component={BallNoseEndMillsPage} />
       <Route path="/products/corner-radius-end-mills" component={CornerRadiusEndMillsPage} />
       <Route path="/products/aluminum-end-mills" component={AluminumEndMillsPage} />
+      <Route path="/products/zb2-ls" component={LegacyZb2LsRedirect} />
       <Route path="/products/:slug" component={ProductDetailPage} />
       <Route path="/flat-end-mills" component={LegacyFlatEndMillsRedirect} />
       <Route path="/ball-nose-end-mills" component={LegacyBallNoseEndMillsRedirect} />

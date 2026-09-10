@@ -69,9 +69,9 @@ function formatRange(range: readonly [number | null, number | null] | undefined)
   if (!range) return "—";
   const [a, b] = range;
   if (a == null && b == null) return "—";
-  if (a != null && b != null) return `${a}–${b} mm`;
-  if (a != null) return `≥ ${a} mm`;
-  return `≤ ${b} mm`;
+  if (a != null && b != null) return a === b ? `${a.toFixed(1)} mm` : `${a.toFixed(1)}–${b.toFixed(1)} mm`;
+  if (a != null) return `≥ ${a.toFixed(1)} mm`;
+  return `≤ ${b.toFixed(1)} mm`;
 }
 
 export function ProductCategoryPage({ categorySlug }: { categorySlug: string }) {

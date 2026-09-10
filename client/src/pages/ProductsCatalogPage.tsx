@@ -138,7 +138,7 @@ export default function ProductsCatalogPage() {
           </Reveal>
           <Reveal delay={150}>
             <p className="mt-6 text-xs text-steel">
-              <strong className="text-graphite-soft">Column legend:</strong> D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. All dimensions in millimeters; — means not applicable to that geometry. Construction: B = composite (SS shank + carbide tip), C = solid carbide (SS308).
+              <strong className="text-graphite-soft">Column legend:</strong> D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. All dimensions in millimeters; — means not applicable to that geometry. Construction: B = composite (SS shank + carbide tip, shank ≤ 6 mm), C = solid carbide (SS308).
             </p>
           </Reveal>
         </div>

@@ -106,8 +106,9 @@ export function ConstructionLegend() {
         </div>
       </div>
 
-      {/* C — Solid Carbide (PREMIUM — blue accent) */}
-      <div className="relative flex items-start gap-4 border-b border-line-soft bg-blue-pale px-6 py-5">
+      {/* C — Solid Carbide (PREMIUM — blue accent). Last card: no border-b, the
+          panel's own border closes the stack. */}
+      <div className="relative flex items-start gap-4 bg-blue-pale px-6 py-5">
         <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-blue" />
         <div className="flex size-14 flex-none items-center justify-center border-2 border-blue bg-blue font-[var(--font-display)] text-2xl font-black text-white">
           C
@@ -123,26 +124,6 @@ export function ConstructionLegend() {
           </div>
           <p className="mt-1 text-[13px] leading-[1.55] text-graphite-soft">
             One-piece full carbide. <strong className="text-graphite">Highest precision.</strong> Shrink-fit toolholder compatible.
-          </p>
-        </div>
-      </div>
-
-      {/* S — New Brazing */}
-      <div className="flex items-start gap-4 px-6 py-5">
-        <div className="flex size-14 flex-none items-center justify-center border-2 border-steel bg-panel font-[var(--font-display)] text-2xl font-black text-graphite-soft">
-          S
-        </div>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-baseline justify-between gap-2">
-            <div className="font-[var(--font-display)] text-base font-bold text-graphite">
-              New Brazing
-            </div>
-            <div className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.1em] text-steel">
-              On request
-            </div>
-          </div>
-          <p className="mt-1 text-[13px] leading-[1.55] text-graphite-soft">
-            Carbide-to-carbide brazed joint. <strong className="text-graphite">Middle ground</strong> between composite and solid.
           </p>
         </div>
       </div>
@@ -235,6 +216,15 @@ export function CoatingOptions() {
 
 /* ---------- SkuFilterableTable ---------- */
 
+/* Dimensions render with at least one decimal site-wide (1 -> "1.0"), em dash
+   when the spec does not apply to that geometry. Extra precision is kept:
+   ball-nose radii are R0.75 / R1.25 and must not be rounded to 0.8 / 1.3. */
+function dim(value: number | null | undefined) {
+  if (value == null) return "—";
+  const decimals = value.toString().split(".")[1]?.length ?? 0;
+  return value.toFixed(Math.max(1, decimals));
+}
+
 export type SkuTableRow = {
   model_no: string;
   series: string;
@@ -281,7 +271,8 @@ export function SkuFilterableTable({
         const hay = `${s.model_no} ${s.series} ${s.geometry} ${s.diameter_mm} ${s.construction_options.join(" ")}`.toLowerCase();
         return hay.includes(q);
       })
-      .slice(0, 60); // cap visible rows for performance
+      .slice(0, 200); // headroom above the current catalog size; search and
+      // category filters are the intended way to narrow results
   }, [skus, activeCat, query]);
 
   return (
@@ -353,12 +344,12 @@ export function SkuFilterableTable({
                 <td className="p-3 font-semibold text-graphite">{s.model_no}</td>
                 <td className="p-3 text-steel">{s.series}</td>
                 <td className="p-3 text-graphite-soft">{s.geometry}</td>
-                <td className="p-3 text-right tabular-nums text-graphite">{s.diameter_mm ?? "—"}</td>
-                <td className="p-3 text-right tabular-nums text-steel">{s.radius_mm ?? "—"}</td>
-                <td className="p-3 text-right tabular-nums text-steel">{s.cut_length_mm ?? "—"}</td>
-                <td className="p-3 text-right tabular-nums text-steel">{s.effective_length_mm ?? "—"}</td>
-                <td className="p-3 text-right tabular-nums text-steel">{s.overall_length_mm ?? "—"}</td>
-                <td className="p-3 text-right tabular-nums text-steel">{s.shank_diameter_mm ?? "—"}</td>
+                <td className="p-3 text-right tabular-nums text-graphite">{dim(s.diameter_mm)}</td>
+                <td className="p-3 text-right tabular-nums text-steel">{dim(s.radius_mm)}</td>
+                <td className="p-3 text-right tabular-nums text-steel">{dim(s.cut_length_mm)}</td>
+                <td className="p-3 text-right tabular-nums text-steel">{dim(s.effective_length_mm)}</td>
+                <td className="p-3 text-right tabular-nums text-steel">{dim(s.overall_length_mm)}</td>
+                <td className="p-3 text-right tabular-nums text-steel">{dim(s.shank_diameter_mm)}</td>
                 <td className="p-3 text-center">
                   <div className="flex flex-wrap items-center justify-center gap-1">
                     {s.construction_options.map((opt) => (
