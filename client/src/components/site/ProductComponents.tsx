@@ -4,7 +4,7 @@
   - ConstructionLegend: inline brief B/S/C explanation (replaces full section)
   - SkuFilterableTable: reusable filterable/searchable SKU table
 */
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, Search } from "lucide-react";
 
@@ -216,6 +216,8 @@ export function CoatingOptions() {
 
 /* ---------- SkuFilterableTable ---------- */
 
+const ROW_CAP = 200;
+
 /* Dimensions render with at least one decimal site-wide (1 -> "1.0"), em dash
    when the spec does not apply to that geometry. Extra precision is kept:
    ball-nose radii are R0.75 / R1.25 and must not be rounded to 0.8 / 1.3. */
@@ -245,11 +247,14 @@ export function SkuFilterableTable({
   initialCategory = "all",
   showCategoryTabs = true,
   totalLabel,
+  legend,
 }: {
   skus: SkuTableRow[];
   initialCategory?: string;
   showCategoryTabs?: boolean;
   totalLabel?: string;
+  /** Column key, rendered above the table so it is read before the rows. */
+  legend?: ReactNode;
 }) {
   const [activeCat, setActiveCat] = useState(initialCategory);
   const [query, setQuery] = useState("");
@@ -262,7 +267,7 @@ export function SkuFilterableTable({
     { k: "aluminum-end-mills", label: "Aluminum" },
   ];
 
-  const visible = useMemo(() => {
+  const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return skus
       .filter((s) => (activeCat === "all" ? true : s.category_slug === activeCat))
@@ -270,10 +275,14 @@ export function SkuFilterableTable({
         if (!q) return true;
         const hay = `${s.model_no} ${s.series} ${s.geometry} ${s.diameter_mm} ${s.construction_options.join(" ")}`.toLowerCase();
         return hay.includes(q);
-      })
-      .slice(0, 200); // headroom above the current catalog size; search and
-      // category filters are the intended way to narrow results
+      });
   }, [skus, activeCat, query]);
+
+  // Headroom above the current catalog size; search and category filters are the
+  // intended way to narrow results. The footer only mentions the cap when it
+  // actually bites, so the notice can never go stale as the catalog grows.
+  const visible = filtered.slice(0, ROW_CAP);
+  const truncated = filtered.length > visible.length;
 
   return (
     <div className="border border-line bg-panel">
@@ -316,6 +325,14 @@ export function SkuFilterableTable({
           </div>
         </div>
       </div>
+
+      {/* Column key — outside the scroll container so it stays put while the
+          table pans sideways on narrow screens. */}
+      {legend && (
+        <div className="border-b border-line bg-panel-2 px-4 py-3 text-[11px] leading-[1.6] text-steel lg:px-5">
+          {legend}
+        </div>
+      )}
 
       {/* Table */}
       <div className="overflow-x-auto">
@@ -392,7 +409,8 @@ export function SkuFilterableTable({
       {/* Foot */}
       <div className="flex flex-wrap justify-between gap-4 border-t border-line p-4 lg:p-5">
         <div className="text-xs text-steel">
-          Showing up to 60 rows · Use search for specific SKUs · Final pricing via formal quote
+          {truncated && `Showing ${visible.length} of ${filtered.length} matches · `}
+          Use search for specific SKUs · Final pricing via formal quote
         </div>
       </div>
     </div>

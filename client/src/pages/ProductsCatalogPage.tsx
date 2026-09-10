@@ -134,12 +134,15 @@ export default function ProductsCatalogPage() {
             <SkuFilterableTable
               skus={skuRows}
               totalLabel={`${totalSkuCount} total in catalog`}
+              legend={
+                <>
+                  <strong className="text-graphite-soft">Dimensions (mm):</strong>{" "}
+                  D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. — = not applicable to that geometry.{" "}
+                  <strong className="text-graphite-soft">Construction:</strong>{" "}
+                  B = composite (SS shank + carbide tip, shank ≤ 6 mm), C = solid carbide (SS308).
+                </>
+              }
             />
-          </Reveal>
-          <Reveal delay={150}>
-            <p className="mt-6 text-xs text-steel">
-              <strong className="text-graphite-soft">Column legend:</strong> D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. All dimensions in millimeters; — means not applicable to that geometry. Construction: B = composite (SS shank + carbide tip, shank ≤ 6 mm), C = solid carbide (SS308).
-            </p>
           </Reveal>
         </div>
       </section>

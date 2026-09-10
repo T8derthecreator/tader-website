@@ -279,7 +279,18 @@ export default function ProductDetailPage() {
               </Reveal>
 
               <Reveal delay={250}>
-                <div className="mt-10 overflow-x-auto border border-line bg-panel">
+                <div className="mt-10 border border-line bg-panel">
+                  {/* Column key — outside the scroll container so it stays put
+                      while the table pans sideways on narrow screens. */}
+                  <div className="border-b border-line bg-panel-2 px-4 py-3 text-[11px] leading-[1.6] text-steel lg:px-5">
+                    <strong className="text-graphite-soft">Dimensions (mm):</strong>{" "}
+                    D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. — = not applicable to that geometry.{" "}
+                    <strong className="text-graphite-soft">Construction:</strong>{" "}
+                    refer to the reference panels{" "}
+                    <span className="hidden lg:inline">on the left</span>
+                    <span className="lg:hidden">above</span>.
+                  </div>
+                  <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead className="bg-panel-2">
                       <tr className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel">
@@ -349,16 +360,8 @@ export default function ProductDetailPage() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 </div>
-              </Reveal>
-
-              <Reveal delay={350}>
-                <p className="mt-6 text-xs text-steel">
-                  <strong className="text-graphite-soft">Column legend:</strong> D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. All in millimeters; — means not applicable to that geometry. Refer to the reference panels {" "}
-                  <span className="hidden lg:inline">on the left</span>
-                  <span className="lg:hidden">above</span>{" "}
-                  for construction and coating options.
-                </p>
               </Reveal>
             </div>
           </div>
