@@ -240,7 +240,9 @@ export type SkuTableRow = {
   series: string;
   geometry: string;
   diameter_mm: number | null;
+  radius_mm: number | null;
   cut_length_mm: number | null;
+  effective_length_mm: number | null;
   overall_length_mm: number | null;
   shank_diameter_mm: number | null;
   construction_options: string[];
@@ -333,7 +335,9 @@ export function SkuFilterableTable({
               <th className="whitespace-nowrap p-3 text-left">Series</th>
               <th className="whitespace-nowrap p-3 text-left">Geometry</th>
               <th className="whitespace-nowrap p-3 text-right">Ø (D)</th>
+              <th className="whitespace-nowrap p-3 text-right">R</th>
               <th className="whitespace-nowrap p-3 text-right">Cut (l)</th>
+              <th className="whitespace-nowrap p-3 text-right">l1</th>
               <th className="whitespace-nowrap p-3 text-right">OAL (L)</th>
               <th className="whitespace-nowrap p-3 text-right">Shank (d)</th>
               <th className="whitespace-nowrap p-3 text-center">Construction</th>
@@ -350,7 +354,9 @@ export function SkuFilterableTable({
                 <td className="p-3 text-steel">{s.series}</td>
                 <td className="p-3 text-graphite-soft">{s.geometry}</td>
                 <td className="p-3 text-right tabular-nums text-graphite">{s.diameter_mm ?? "—"}</td>
+                <td className="p-3 text-right tabular-nums text-steel">{s.radius_mm ?? "—"}</td>
                 <td className="p-3 text-right tabular-nums text-steel">{s.cut_length_mm ?? "—"}</td>
+                <td className="p-3 text-right tabular-nums text-steel">{s.effective_length_mm ?? "—"}</td>
                 <td className="p-3 text-right tabular-nums text-steel">{s.overall_length_mm ?? "—"}</td>
                 <td className="p-3 text-right tabular-nums text-steel">{s.shank_diameter_mm ?? "—"}</td>
                 <td className="p-3 text-center">
@@ -383,7 +389,7 @@ export function SkuFilterableTable({
             ))}
             {visible.length === 0 && (
               <tr>
-                <td colSpan={9} className="p-10 text-center text-steel">
+                <td colSpan={11} className="p-10 text-center text-steel">
                   No matching SKUs — try broadening your filter.
                 </td>
               </tr>

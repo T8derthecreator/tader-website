@@ -262,7 +262,7 @@ export default function QuoteRequestPage() {
                 label: "Bar stock",
                 value: "Rod supply inquiry",
                 href: INQUIRY_URL,
-                note: "SS308 tungsten carbide bar stock — Ø 3–20 mm, MOQ 100 kg.",
+                note: "SS308 tungsten carbide bar stock — Ø 1.0–3.0 mm, MOQ 100 kg.",
               },
             ].map((c) => (
               <Reveal key={c.label}>

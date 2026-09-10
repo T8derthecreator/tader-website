@@ -40,7 +40,7 @@ export const INDUSTRIES = [
       "For FDA-regulated programs, we provide full material traceability, lot documentation, and Certificate of Conformance with every shipment. Our ISO 9001:2015 certification covers all product lines with no exclusions.",
     specs: [
       { label: "Primary substrates", value: "Ti · SS · PEEK", highlight: false },
-      { label: "Min feature size", value: "Ø 0.1 mm", highlight: false },
+      { label: "Min feature size", value: "Ø 1.0 mm", highlight: false },
       { label: "Tolerance", value: "±2 μm", highlight: true },
       { label: "Regulatory", value: "ISO 9001 · FDA-traceable", highlight: false },
       { label: "Avg cost reduction", value: "22%", highlight: true },

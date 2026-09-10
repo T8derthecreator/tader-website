@@ -34,7 +34,7 @@ const GEOM_CARDS = [
   {
     num: "01 / FLAT",
     name: "Flat End Mills",
-    range: "Ø 0.1–3 mm",
+    range: "Ø 1.0–3.0 mm",
     href: "/products/flat-end-mills",
     slug: "flat-end-mills",
     svg: (
@@ -48,7 +48,7 @@ const GEOM_CARDS = [
   {
     num: "02 / BALL",
     name: "Ball Nose",
-    range: "Ø 0.2–3 mm",
+    range: "R0.5–R1.5 (Ø 1.0–3.0 mm)",
     href: "/products/ball-nose-end-mills",
     slug: "ball-nose-end-mills",
     svg: (
@@ -62,7 +62,7 @@ const GEOM_CARDS = [
   {
     num: "03 / CORNER",
     name: "Corner Radius",
-    range: "Ø 1–3 mm",
+    range: "Ø 1.0–3.0 mm",
     href: "/products/corner-radius-end-mills",
     slug: "corner-radius-end-mills",
     svg: (
@@ -76,7 +76,7 @@ const GEOM_CARDS = [
   {
     num: "04 / AL",
     name: "Aluminum Spec",
-    range: "Ø 1–3 mm",
+    range: "Ø 1.0–3.0 mm",
     href: "/products/aluminum-end-mills",
     slug: "aluminum-end-mills",
     svg: (
@@ -94,7 +94,7 @@ const productsSchema = {
   "@type": "CollectionPage",
   name: "ZENOK Products — Taiwan Carbide Micro End Mills",
   description:
-    "156 active SKUs across four geometry families. Flat, ball nose, corner radius, aluminum. Ø 0.1–3.0 mm.",
+    "97 active SKUs across four geometry families. Flat, ball nose, corner radius, aluminum. Ø 1.0–3.0 mm.",
 };
 
 export default function ProductsPage() {
@@ -107,8 +107,8 @@ export default function ProductsPage() {
   return (
     <SiteLayout>
       <SeoHead
-        title="Products — 156 SKUs across 4 Geometry Families | ZENOK Taiwan"
-        description="Browse ZENOK's full catalog: 156 SKUs of precision carbide micro end mills. Flat, ball nose, corner radius, aluminum spec. Ø 0.1–3.0 mm from Taiwan."
+        title="Products — 97 SKUs across 4 Geometry Families | ZENOK Taiwan"
+        description="Browse ZENOK's full catalog: 97 SKUs of precision carbide micro end mills. Flat, ball nose, corner radius, aluminum spec. Ø 1.0–3.0 mm from Taiwan."
         canonicalPath="/products"
         schema={productsSchema}
         keywords={["carbide end mills", "micro tooling catalog", "Taiwan tools", "ZENOK products"]}

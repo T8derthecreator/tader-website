@@ -385,7 +385,7 @@ export default function TechnologyPage() {
                   <li className="flex gap-3">
                     <span className="font-bold text-blue">—</span>
                     <span>
-                      <strong className="text-graphite">Balanced grain + binder.</strong> Fine enough for Ø 0.1 mm features, tough enough for aerospace Inconel programs.
+                      <strong className="text-graphite">Balanced grain + binder.</strong> Fine enough for Ø 1.0 mm features, tough enough for aerospace Inconel programs.
                     </span>
                   </li>
                   <li className="flex gap-3">

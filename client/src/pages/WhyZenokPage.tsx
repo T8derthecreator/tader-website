@@ -172,7 +172,7 @@ function BigStatsBand() {
   const stats = [
     { v: 20, dec: 0, u: "%+", l: "Typical Savings" },
     { v: 48, dec: 0, u: "hr", l: "Proposal Guarantee" },
-    { v: 156, dec: 0, u: "", l: "Active SKU" },
+    { v: 97, dec: 0, u: "", l: "Active SKU" },
   ];
 
   return (

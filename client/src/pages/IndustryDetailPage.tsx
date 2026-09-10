@@ -178,7 +178,7 @@ export function IndustryDetailPage({ slug }: { slug: string }) {
                     Browse tools qualified for {industry.shortLabel.toLowerCase()} programs.
                   </h3>
                   <p className="mt-2 text-[15px] leading-[1.6] text-graphite-soft">
-                    ZENOK's full catalog includes 156 SKUs across four geometry families — filter by construction and coating.
+                    ZENOK's full catalog includes 97 SKUs across four geometry families — filter by construction and coating.
                   </p>
                 </div>
                 <div className="inline-flex items-center gap-3 whitespace-nowrap font-[var(--font-mono)] text-[13px] font-semibold uppercase tracking-[0.15em] text-blue">

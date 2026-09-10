@@ -118,7 +118,7 @@ function HeroSection() {
               <div className="mt-16 grid grid-cols-2 gap-6 border-t border-line pt-10 sm:grid-cols-3 sm:gap-8">
                 <div>
                   <div className="font-[var(--font-display)] text-[38px] font-extrabold leading-none tracking-[-0.02em] text-graphite">
-                    <CountUp to={156} />
+                    <CountUp to={97} />
                   </div>
                   <div className="mt-3 font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.12em] text-steel">
                     Active SKU
@@ -450,7 +450,7 @@ const PRODUCT_CARDS = [
   {
     num: "01 / FLAT",
     name: "Flat End Mills",
-    range: "Ø 0.1–3 mm · 97 SKU",
+    range: "Ø 1.0–3.0 mm · 54 SKU",
     href: "/products/flat-end-mills",
     svg: (
       <g fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -463,7 +463,7 @@ const PRODUCT_CARDS = [
   {
     num: "02 / BALL",
     name: "Ball Nose",
-    range: "Ø 0.2–3 mm · 37 SKU",
+    range: "R0.5–R1.5 (Ø 1.0–3.0 mm) · 21 SKU",
     href: "/products/ball-nose-end-mills",
     svg: (
       <g fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -476,7 +476,7 @@ const PRODUCT_CARDS = [
   {
     num: "03 / CORNER",
     name: "Corner Radius",
-    range: "Ø 1–3 mm · 6 SKU",
+    range: "Ø 1.0–3.0 mm · 6 SKU",
     href: "/products/corner-radius-end-mills",
     svg: (
       <g fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -492,7 +492,7 @@ const PRODUCT_CARDS = [
   {
     num: "04 / AL",
     name: "Aluminum Spec",
-    range: "Ø 1–3 mm · 16 SKU",
+    range: "Ø 1.0–3.0 mm · 16 SKU",
     href: "/products/aluminum-end-mills",
     svg: (
       <g fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -535,7 +535,7 @@ function ProductsTeaserSection() {
 
         <Reveal delay={200}>
           <p className="mt-6 max-w-2xl text-[17px] leading-[1.8] text-graphite-soft">
-            Four geometry families. 156 active SKUs. Custom work beyond the catalog starts at MOQ 200.
+            Four geometry families. 97 active SKUs. Custom work beyond the catalog starts at MOQ 200.
           </p>
         </Reveal>
 
@@ -725,7 +725,7 @@ export default function HomePage() {
     <SiteLayout>
       <SeoHead
         title="ZENOK — Taiwan Micro Cutting Tool Cost-Down Partner"
-        description="Submit your CNC micro tooling specs and target price. ZENOK evaluates feasibility and delivers a cost-down proposal within 2 business days. Taiwan-made carbide end mills, 0.1–3.0 mm."
+        description="Submit your CNC micro tooling specs and target price. ZENOK evaluates feasibility and delivers a cost-down proposal within 2 business days. Taiwan-made carbide end mills, 1.0–3.0 mm."
         canonicalPath="/"
         schema={homepageSchema}
         keywords={[

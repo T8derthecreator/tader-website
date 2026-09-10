@@ -59,7 +59,9 @@ type Sku = {
   category_slug: string;
   sub_type?: string | null;
   diameter_mm: number | null;
+  radius_mm: number | null;
   cut_length_mm: number | null;
+  effective_length_mm: number | null;
   overall_length_mm: number | null;
   shank_diameter_mm: number | null;
   construction_options: string[];
@@ -274,7 +276,9 @@ export default function ProductDetailPage() {
                       <tr className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-steel">
                         <th className="whitespace-nowrap p-3 text-left">Model No.</th>
                         <th className="whitespace-nowrap p-3 text-right">Ø (D)</th>
+                        <th className="whitespace-nowrap p-3 text-right">R</th>
                         <th className="whitespace-nowrap p-3 text-right">Cut (l)</th>
+                        <th className="whitespace-nowrap p-3 text-right">l1</th>
                         <th className="whitespace-nowrap p-3 text-right">OAL (L)</th>
                         <th className="whitespace-nowrap p-3 text-right">Shank (d)</th>
                         <th className="whitespace-nowrap p-3 text-center">Construction</th>
@@ -292,7 +296,13 @@ export default function ProductDetailPage() {
                             {s.diameter_mm ?? "—"}
                           </td>
                           <td className="p-3 text-right tabular-nums text-steel">
+                            {s.radius_mm ?? "—"}
+                          </td>
+                          <td className="p-3 text-right tabular-nums text-steel">
                             {s.cut_length_mm ?? "—"}
+                          </td>
+                          <td className="p-3 text-right tabular-nums text-steel">
+                            {s.effective_length_mm ?? "—"}
                           </td>
                           <td className="p-3 text-right tabular-nums text-steel">
                             {s.overall_length_mm ?? "—"}
@@ -335,7 +345,7 @@ export default function ProductDetailPage() {
 
               <Reveal delay={350}>
                 <p className="mt-6 text-xs text-steel">
-                  <strong className="text-graphite-soft">Column legend:</strong> D = diameter, l = cut length, L = overall length, d = shank diameter. All in millimeters. Refer to the reference panels {" "}
+                  <strong className="text-graphite-soft">Column legend:</strong> D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. All in millimeters; — means not applicable to that geometry. Refer to the reference panels {" "}
                   <span className="hidden lg:inline">on the left</span>
                   <span className="lg:hidden">above</span>{" "}
                   for construction and coating options.

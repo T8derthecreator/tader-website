@@ -40,7 +40,9 @@ function buildSkuRows(): SkuTableRow[] {
     category_slug: string;
     sub_type?: string | null;
     diameter_mm: number | null;
+    radius_mm: number | null;
     cut_length_mm: number | null;
+    effective_length_mm: number | null;
     overall_length_mm: number | null;
     shank_diameter_mm: number | null;
     construction_options: string[];
@@ -51,7 +53,9 @@ function buildSkuRows(): SkuTableRow[] {
     series: s.series,
     geometry: s.sub_type ? `${s.category} · ${s.sub_type}` : s.category,
     diameter_mm: s.diameter_mm,
+    radius_mm: s.radius_mm,
     cut_length_mm: s.cut_length_mm,
+    effective_length_mm: s.effective_length_mm,
     overall_length_mm: s.overall_length_mm,
     shank_diameter_mm: s.shank_diameter_mm,
     construction_options: s.construction_options ?? [],
@@ -64,7 +68,7 @@ const catalogSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "ZENOK Catalog — Full SKU Table",
-  description: "Searchable table of all 156 ZENOK SKUs — flat, ball nose, corner radius, aluminum end mills.",
+  description: "Searchable table of all 97 ZENOK SKUs — flat, ball nose, corner radius, aluminum end mills.",
 };
 
 export default function ProductsCatalogPage() {
@@ -134,7 +138,7 @@ export default function ProductsCatalogPage() {
           </Reveal>
           <Reveal delay={150}>
             <p className="mt-6 text-xs text-steel">
-              <strong className="text-graphite-soft">Column legend:</strong> D = diameter, l = cut length, L = overall length, d = shank diameter. All dimensions in millimeters. Construction: B = composite (SS shank + carbide tip), C = solid carbide (SS308).
+              <strong className="text-graphite-soft">Column legend:</strong> D = diameter, R = corner or ball radius, l = cut length, l1 = effective length, L = overall length, d = shank diameter. All dimensions in millimeters; — means not applicable to that geometry. Construction: B = composite (SS shank + carbide tip), C = solid carbide (SS308).
             </p>
           </Reveal>
         </div>

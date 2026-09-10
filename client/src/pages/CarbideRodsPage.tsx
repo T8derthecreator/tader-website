@@ -26,7 +26,7 @@ function Reveal({
 
 const SPEC_ROWS = [
   { label: "Grade", value: "SS308 submicron tungsten carbide" },
-  { label: "Diameter", value: "Ø 3–20 mm" },
+  { label: "Diameter", value: "Ø 1.0–3.0 mm" },
   { label: "Tolerance", value: "h6 ground" },
   { label: "Hardness", value: "HRA 91.5–93.0" },
   { label: "Transverse rupture strength", value: "TRS ≥ 4000 MPa" },
@@ -44,15 +44,15 @@ export default function CarbideRodsPage() {
     "@type": "Product",
     name: "ZENOK Tungsten Carbide Bar Stock",
     description:
-      "SS308 submicron tungsten carbide rod stock, Ø 3–20 mm, h6 ground tolerance, HRA 91.5–93.0, TRS ≥ 4000 MPa, factory-direct pricing.",
+      "SS308 submicron tungsten carbide rod stock, Ø 1.0–3.0 mm, h6 ground tolerance, HRA 91.5–93.0, TRS ≥ 4000 MPa, factory-direct pricing.",
     brand: { "@type": "Brand", name: "ZENOK" },
   };
 
   return (
     <SiteLayout>
       <SeoHead
-        title="SS308 Tungsten Carbide Rod Stock | Ø 3–20 mm | ZENOK"
-        description="SS308 submicron tungsten carbide rod stock, Ø 3–20 mm, h6 ground tolerance, HRA 91.5–93.0, TRS ≥ 4000 MPa. MOQ 100 kg, factory-direct pricing from ZENOK."
+        title="SS308 Tungsten Carbide Rod Stock | Ø 1.0–3.0 mm | ZENOK"
+        description="SS308 submicron tungsten carbide rod stock, Ø 1.0–3.0 mm, h6 ground tolerance, HRA 91.5–93.0, TRS ≥ 4000 MPa. MOQ 100 kg, factory-direct pricing from ZENOK."
         canonicalPath="/carbide-rods"
         schema={schema}
         keywords={["carbide bar stock", "tungsten carbide rods", "SS308", "Taiwan carbide", "ZENOK"]}
@@ -81,7 +81,7 @@ export default function CarbideRodsPage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-graphite-soft">
-              Ground carbide rod in stock, Ø 3–20 mm. Same material we use in our own finished tools. MOQ 100 kg, factory-direct.
+              Ground carbide rod in stock, Ø 1.0–3.0 mm. Same material we use in our own finished tools. MOQ 100 kg, factory-direct.
             </p>
           </Reveal>
         </div>
